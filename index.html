@@ -1,211 +1,182 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fragaria SA | Soluciones Agropecuarias</title>
-  <meta name="description" content="Fertilizantes biologicos, coadyuvantes y especialidades agropecuarias. Mas de 25 anos de trayectoria."/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fragaria S.A. | Empresa</title>
+  <meta name="description" content="Conocé Fragaria S.A.: más de 25 años desarrollando, produciendo y comercializando fertilizantes biológicos, coadyuvantes y especialidades agropecuarias." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { primary: "#10b981", agro: "#065f46", "agro-dark": "#064e3b" },
-          fontFamily: { display: ["Manrope", "sans-serif"] }
+          colors: {
+            fragaria: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              700: '#15803d',
+              900: '#052e16'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 20px 45px -20px rgba(5, 46, 22, 0.35)'
+          }
         }
       }
     }
   </script>
   <style>
-    body { font-family: 'Manrope', sans-serif; }
-    .glass { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+    .hero-gradient {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.25), transparent 42%),
+        radial-gradient(circle at 80% 10%, rgba(22, 163, 74, 0.2), transparent 35%),
+        linear-gradient(135deg, #052e16 0%, #14532d 52%, #166534 100%);
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
-
-  <!-- Hero Section -->
-  <div class="relative min-h-screen flex flex-col">
-    <div class="absolute inset-0 z-0">
-      <img src="https://images.unsplash.com/photo-1625246333195-f89889974e48?q=80&w=2070&auto=format&fit=crop" 
-           class="w-full h-full object-cover" alt="Agricultura"/>
-      <div class="absolute inset-0 bg-gradient-to-r from-agro-dark/95 via-agro-dark/85 to-agro-dark/70"></div>
-    </div>
-    
-    <header class="relative z-10 flex justify-between items-center px-6 md:px-20 py-6">
-      <div class="flex items-center gap-3">
-        <img src="fragaruua.webp" alt="Fragaria" class="h-12 w-auto"/>
-      </div>
-      <nav class="hidden md:flex gap-8">
-        <a href="#" class="text-white/90 hover:text-emerald-400 transition font-medium text-sm">Inicio</a>
-        <a href="#productos" class="text-white/90 hover:text-emerald-400 transition font-medium text-sm">Productos</a>
-        <a href="#nosotros" class="text-white/90 hover:text-emerald-400 transition font-medium text-sm">Nosotros</a>
-        <a href="#contacto" class="text-white/90 hover:text-emerald-400 transition font-medium text-sm">Contacto</a>
-      </nav>
-      <button class="bg-primary text-white px-6 py-2.5 rounded-full font-semibold hover:bg-emerald-600 transition text-sm">
-        Contactar
-      </button>
-    </header>
-    
-    <main class="relative z-10 flex-1 flex flex-col justify-center items-center text-center px-6 py-20">
-      <div class="glass px-4 py-2 rounded-full mb-6">
-        <span class="text-white/90 text-sm font-medium">+25 anos de trayectoria</span>
-      </div>
-      <h1 class="text-white text-5xl md:text-7xl font-black mb-4 leading-tight">
-        Fragaria SA
-      </h1>
-      <p class="text-emerald-400 text-2xl md:text-3xl font-medium mb-6">
-        Soluciones Agropecuarias de Excelencia
-      </p>
-      <p class="text-white/90 text-lg max-w-2xl mb-8 leading-relaxed">
-        Empresa Argentina que desde 1999 desarrolla, produce y comercializa fertilizantes biologicos, 
-        coadyuvantes y especialidades agropecuarias. Planta propia de produccion.
-      </p>
-      <div class="flex gap-4">
-        <a href="#productos" class="bg-primary text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:scale-105 transition">
-          Ver Productos
-        </a>
-        <a href="#nosotros" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-agro-dark transition">
-          Conocer Mas
-        </a>
-      </div>
-    </main>
-  </div>
-
-  <!-- Stats Section -->
-  <section class="bg-agro py-16 px-6 md:px-20">
-    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-      <div>
-        <div class="text-5xl font-black">25+</div>
-        <div class="text-white/80 mt-2 text-sm">Anos de experiencia</div>
-      </div>
-      <div>
-        <div class="text-5xl font-black">6</div>
-        <div class="text-white/80 mt-2 text-sm">Lineas de productos</div>
-      </div>
-      <div>
-        <div class="text-5xl font-black">Planta</div>
-        <div class="text-white/80 mt-2 text-sm">Propia de produccion</div>
-      </div>
-      <div>
-        <div class="text-5xl font-black">AR</div>
-        <div class="text-white/80 mt-2 text-sm">Exportacion regional</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Nosotros Section -->
-  <section id="nosotros" class="py-24 px-6 md:px-20 bg-white">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-      <div>
-        <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Quienes Somos</span>
-        <h2 class="text-slate-900 text-4xl font-black mb-6 leading-tight">
-          Mas de dos decadas acompañando al campo argentino
-        </h2>
-        <p class="text-slate-600 text-lg mb-4 leading-relaxed">
-          Fragaria SA es una empresa Argentina que desde hace mas de 25 años participa del mercado 
-          agropecuario desarrollando, produciendo y comercializando <strong>fertilizantes biologicos, 
-          coadyuvantes y otras especialidades</strong>.
-        </p>
-        <p class="text-slate-600 text-lg mb-4 leading-relaxed">
-          Con planta propia de produccion y marcado caracter evolutivo, proveemos a clientes 
-          Argentinos y otros paises. Nos sustentamos en los <strong>inquebrantables conceptos de 
-          calidad, seriedad, eficiencia y honestidad</strong>.
-        </p>
-        <p class="text-slate-600 text-lg mb-6 leading-relaxed">
-          Asimismo, ponemos especial enfasis en la <strong>amigabilidad con el medio ambiente</strong>, 
-          desarrollando soluciones sostenibles.
-        </p>
-        <div class="flex gap-6">
-          <span class="flex items-center gap-2 text-primary font-bold">✓ Calidad garantizada</span>
-          <span class="flex items-center gap-2 text-primary font-bold">✓ Sustentable</span>
-        </div>
-      </div>
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=1000&auto=format&fit=crop" 
-             alt="Campos de cultivo" class="rounded-2xl shadow-2xl"/>
-      </div>
-    </div>
-  </section>
-
-  <!-- Productos Section -->
-  <section id="productos" class="py-24 px-6 md:px-20 bg-slate-50">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Nuestros Productos</span>
-        <h2 class="text-slate-900 text-4xl font-black mb-4">Lineas de Productos</h2>
-        <p class="text-slate-600 text-lg max-w-2xl mx-auto">
-          Ofrecemos las mejores soluciones para maximizar el rendimiento y la calidad de la produccion agropecuaria.
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition">
-          <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-primary text-2xl mb-6">🧬</div>
-          <h3 class="text-xl font-bold mb-3 text-slate-900">Inoculantes</h3>
-          <p class="text-slate-600">Microorganismos beneficiosos para fijar nitrogeno y mejorar la productividad del suelo.</p>
-        </div>
-        
-        <div class="bg-white p-8 rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition">
-          <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-primary text-2xl mb-6">💧</div>
-          <h3 class="text-xl font-bold mb-3 text-slate-900">Coadyuvantes</h3>
-          <p class="text-slate-600">Productos que mejoran la eficacia de los tratamientos fitosanitarios y fertilizantes.</p>
-        </div>
-        
-</div>
-        
-        <div class="bg-white p-8 rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition">
-          <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-primary text-2xl mb-6">🌱</div>
-          <h3 class="text-xl font-bold mb-3 text-slate-900">Fertilizantes</h3>
-          <p class="text-slate-600">Nutrientes esenciales para el crecimiento optimo de los cultivos.</p>
-        </div>
-        
-        <div class="bg-white p-8 rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition">
-          <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-primary text-2xl mb-6">🍄</div>
-          <h3 class="text-xl font-bold mb-3 text-slate-900">Fungicidas</h3>
-          <p class="text-slate-600">Proteccion efectiva contra enfermedades fungicas de los cultivos.</p>
-        </div>
-        
-        <div class="bg-white p-8 rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition">
-          <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-primary text-2xl mb-6">🌾</div>
-          <h3 class="text-xl font-bold mb-3 text-slate-900">Curasemillas</h3>
-          <p class="text-slate-600">Tratamientos para proteger y mejorar el potencial germinativo de las semillas.</p>
-        </div>
-        
-        <div class="bg-white p-8 rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition">
-          <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-primary text-2xl mb-6">🐛</div>
-          <h3 class="text-xl font-bold mb-3 text-slate-900">Insecticidas</h3>
-          <p class="text-slate-600">Control biologico y convencional de plagas que afectan los cultivos.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contacto Section -->
-  <section id="contacto" class="py-24 px-6 md:px-20 bg-agro-dark">
-    <div class="max-w-4xl mx-auto text-center">
-      <span class="text-emerald-400 font-bold tracking-widest uppercase text-sm mb-4 block">Contacto</span>
-      <h2 class="text-white text-4xl font-black mb-6">Trabajemos juntos</h2>
-      <p class="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-        Conozca nuestras soluciones agropecuarias. Planta propia de produccion en Argentina.
-      </p>
-      <a href="mailto:info@fragaria.com.ar" class="bg-primary text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:scale-105 transition inline-block">
-        Enviar Consulta
+<body class="bg-white text-slate-900">
+  <header class="hero-gradient text-white">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
+      <a href="#inicio" class="flex items-center gap-3">
+        <img src="fragaruua.webp" alt="Fragaria" class="h-11 w-auto" />
       </a>
-      <p class="text-white/60 text-sm mt-8">
-        Email: info@fragaria.com.ar | Tel: +54 9 11 XXXX-XXXX
-      </p>
-    </div>
-  </section>
+      <div class="hidden items-center gap-8 text-sm font-medium md:flex">
+        <a href="#empresa" class="text-white/85 transition hover:text-white">Empresa</a>
+        <a href="#valores" class="text-white/85 transition hover:text-white">Valores</a>
+        <a href="#lineas" class="text-white/85 transition hover:text-white">Líneas</a>
+        <a href="#contacto" class="text-white/85 transition hover:text-white">Contacto</a>
+      </div>
+      <a href="#contacto" class="rounded-full border border-white/40 px-5 py-2 text-sm font-semibold hover:bg-white hover:text-fragaria-900">Escribinos</a>
+    </nav>
 
-  <!-- Footer -->
-  <footer class="bg-slate-900 py-12 px-6 md:px-20">
-    <div class="max-w-6xl mx-auto text-center text-white/60 text-sm">
-      <p class="mb-2">Fragaria SA - Soluciones Agropecuarias</p>
-      <p>&copy; 2025 Fragaria SA. Todos los derechos reservados.</p>
-      <p class="mt-4 text-xs">Mas de 25 anos de trayectoria en el campo argentino</p>
+    <section id="inicio" class="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-20 pt-6 lg:grid-cols-2 lg:px-10 lg:pb-24">
+      <div>
+        <span class="mb-5 inline-flex rounded-full border border-white/30 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.14em]">Desde 1999 en el mercado agropecuario</span>
+        <h1 class="text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">Innovación y confianza para una agricultura más eficiente</h1>
+        <p class="mt-6 max-w-xl text-lg text-white/85">Fragaria S.A. desarrolla, produce y comercializa fertilizantes biológicos, coadyuvantes y especialidades agropecuarias con planta propia en Argentina.</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#empresa" class="rounded-full bg-white px-7 py-3 text-sm font-bold text-fragaria-900 hover:bg-fragaria-100">Conocer la empresa</a>
+          <a href="#lineas" class="rounded-full border border-white/50 px-7 py-3 text-sm font-bold text-white hover:bg-white/10">Ver líneas de trabajo</a>
+        </div>
+      </div>
+
+      <div class="rounded-3xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm shadow-soft">
+        <h2 class="text-lg font-semibold">Fragaria en cifras</h2>
+        <div class="mt-6 grid grid-cols-2 gap-5">
+          <article class="rounded-2xl bg-white/10 p-5">
+            <p class="text-3xl font-extrabold">+25</p>
+            <p class="mt-1 text-sm text-white/80">años de trayectoria</p>
+          </article>
+          <article class="rounded-2xl bg-white/10 p-5">
+            <p class="text-3xl font-extrabold">1</p>
+            <p class="mt-1 text-sm text-white/80">planta propia de producción</p>
+          </article>
+          <article class="rounded-2xl bg-white/10 p-5">
+            <p class="text-3xl font-extrabold">AR + región</p>
+            <p class="mt-1 text-sm text-white/80">presencia comercial</p>
+          </article>
+          <article class="rounded-2xl bg-white/10 p-5">
+            <p class="text-3xl font-extrabold">100%</p>
+            <p class="mt-1 text-sm text-white/80">compromiso con calidad</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="empresa" class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-[0.14em] text-fragaria-700">Empresa</p>
+          <h2 class="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">Una compañía argentina con evolución constante</h2>
+          <p class="mt-6 text-base leading-7 text-slate-600">Desde hace más de 25 años participamos activamente del mercado agropecuario, brindando soluciones para mejorar rendimiento, eficiencia y sustentabilidad en campo.</p>
+          <p class="mt-4 text-base leading-7 text-slate-600">Nuestra propuesta combina desarrollo propio, producción y comercialización de insumos con foco técnico, respaldo comercial y cercanía con productores y distribuidores.</p>
+        </div>
+        <div class="rounded-3xl bg-fragaria-50 p-8 ring-1 ring-fragaria-100">
+          <h3 class="text-lg font-bold text-fragaria-900">Especialidades destacadas</h3>
+          <ul class="mt-5 space-y-3 text-slate-700">
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-fragaria-700"></span>Fertilizantes biológicos.</li>
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-fragaria-700"></span>Coadyuvantes para optimizar aplicaciones.</li>
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-fragaria-700"></span>Otras especialidades agropecuarias.</li>
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-fragaria-700"></span>Desarrollo con enfoque ambiental responsable.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="valores" class="bg-slate-50 py-20">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="max-w-2xl">
+          <p class="text-sm font-bold uppercase tracking-[0.14em] text-fragaria-700">Valores que nos sostienen</p>
+          <h2 class="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">La base de nuestro vínculo con el agro</h2>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <article class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+            <h3 class="font-bold text-slate-900">Calidad</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-600">Procesos orientados a desempeño consistente en cada solución.</p>
+          </article>
+          <article class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+            <h3 class="font-bold text-slate-900">Seriedad</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-600">Compromiso real en plazos, asistencia y respuesta comercial.</p>
+          </article>
+          <article class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+            <h3 class="font-bold text-slate-900">Eficiencia</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-600">Soluciones pensadas para potenciar resultados productivos.</p>
+          </article>
+          <article class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+            <h3 class="font-bold text-slate-900">Honestidad</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-600">Relaciones de largo plazo basadas en transparencia y confianza.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="lineas" class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <div class="rounded-3xl bg-fragaria-900 px-8 py-12 text-white lg:px-12">
+        <h2 class="text-3xl font-extrabold sm:text-4xl">Compromiso con la sustentabilidad</h2>
+        <p class="mt-4 max-w-3xl text-white/85">En Fragaria priorizamos tecnologías amigables con el medio ambiente y mantenemos un perfil evolutivo para seguir mejorando nuestra propuesta técnica en cada campaña.</p>
+        <div class="mt-10 grid gap-5 md:grid-cols-3">
+          <article class="rounded-2xl border border-white/20 bg-white/5 p-5">
+            <h3 class="font-semibold">Desarrollo</h3>
+            <p class="mt-2 text-sm text-white/80">Investigación aplicada para nuevas soluciones.</p>
+          </article>
+          <article class="rounded-2xl border border-white/20 bg-white/5 p-5">
+            <h3 class="font-semibold">Producción</h3>
+            <p class="mt-2 text-sm text-white/80">Infraestructura propia para control y trazabilidad.</p>
+          </article>
+          <article class="rounded-2xl border border-white/20 bg-white/5 p-5">
+            <h3 class="font-semibold">Comercialización</h3>
+            <p class="mt-2 text-sm text-white/80">Presencia en Argentina y alcance hacia otros países.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="border-t border-slate-200 bg-white py-16">
+      <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-6 lg:flex-row lg:items-center lg:px-10">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-[0.14em] text-fragaria-700">Contacto</p>
+          <h2 class="mt-2 text-2xl font-extrabold text-slate-900 sm:text-3xl">¿Querés trabajar con Fragaria?</h2>
+          <p class="mt-3 text-slate-600">Contactanos para recibir asesoramiento sobre nuestras especialidades agropecuarias.</p>
+        </div>
+        <a href="mailto:info@fragaria.com.ar" class="rounded-full bg-fragaria-700 px-8 py-3 text-sm font-bold text-white transition hover:bg-fragaria-900">info@fragaria.com.ar</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-900 py-8">
+    <div class="mx-auto flex max-w-7xl flex-col gap-2 px-6 text-sm text-slate-400 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+      <p>Fragaria S.A. · Soluciones agropecuarias</p>
+      <p>© 2026 Fragaria S.A. Todos los derechos reservados.</p>
     </div>
   </footer>
-
 </body>
 </html>
