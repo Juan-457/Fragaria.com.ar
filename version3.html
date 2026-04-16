@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fragaria S.A. | Versión 3 — Raíces</title>
+  <meta name="description" content="Fragaria S.A.: fertilizantes biológicos y especialidades agropecuarias con más de 37 años de historia argentina." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: { 50: '#fdfaf4', 100: '#f9f4e8', 200: '#f0e6cc' },
+            sage: { 400: '#8aaf8a', 500: '#6b9b6b', 600: '#527a52', 700: '#3d5e3d', 800: '#294029', 900: '#172317' },
+            terra: { 300: '#d4956a', 400: '#c17f59', 500: '#a8643e', 600: '#8c4e2e' }
+          },
+          fontFamily: {
+            display: ['Lora', 'serif'],
+            body: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .blob1 { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+    .blob2 { border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; }
+    .wave-bottom { position: absolute; bottom: -1px; left: 0; right: 0; overflow: hidden; line-height: 0; }
+    .wave-bottom svg { display: block; }
+    .text-balance { text-wrap: balance; }
+    input, textarea { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-cream-50 font-body text-sage-900 antialiased">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 z-50 w-full">
+    <div class="mx-auto mt-4 flex max-w-7xl items-center justify-between rounded-2xl border border-sage-700/15 bg-cream-50/95 px-6 py-3 shadow-sm backdrop-blur-md mx-4 lg:mx-10">
+      <a href="#inicio">
+        <img src="fragaruua.webp" alt="Fragaria" class="h-10 w-auto" />
+      </a>
+      <div class="hidden items-center gap-6 md:flex">
+        <a href="#empresa" class="text-sm font-medium text-sage-700 transition hover:text-sage-900">Empresa</a>
+        <a href="#lineas" class="text-sm font-medium text-sage-700 transition hover:text-sage-900">Líneas</a>
+        <a href="#valores" class="text-sm font-medium text-sage-700 transition hover:text-sage-900">Valores</a>
+        <a href="#contacto" class="text-sm font-medium text-sage-700 transition hover:text-sage-900">Contacto</a>
+      </div>
+      <a href="https://wa.me/543462450100?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20sus%20productos." target="_blank"
+         class="flex items-center gap-2 rounded-xl bg-sage-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sage-800">
+        <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.104 1.522 5.826L.057 23.882a.75.75 0 0 0 .93.93l6.056-1.465A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 0 1-5.12-1.408l-.368-.217-3.816.924.943-3.816-.238-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="inicio" class="relative min-h-screen overflow-hidden bg-sage-800 pt-28 pb-32">
+    <!-- Organic blobs -->
+    <div class="blob1 absolute -top-20 -right-20 h-96 w-96 bg-sage-600/30 blur-2xl"></div>
+    <div class="blob2 absolute bottom-20 -left-20 h-80 w-80 bg-terra-400/20 blur-2xl"></div>
+    <!-- Video overlay -->
+    <video class="absolute inset-0 h-full w-full object-cover opacity-20" autoplay muted loop playsinline>
+      <source src="hero.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-br from-sage-900/80 via-sage-800/60 to-sage-700/40"></div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pt-8">
+      <div class="grid gap-16 lg:grid-cols-5 items-center">
+        <!-- Text: 3 cols -->
+        <div class="lg:col-span-3">
+          <p class="mb-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-terra-300">
+            <span class="h-px w-8 bg-terra-300"></span>
+            Desde 1999 en el agro argentino
+          </p>
+          <h1 class="font-display text-5xl font-bold leading-tight text-white sm:text-6xl lg:text-7xl text-balance">
+            Cuidamos el campo,<br/>
+            <em class="not-italic text-terra-300">cuidamos</em><br/>
+            la tierra
+          </h1>
+          <p class="mt-8 max-w-xl text-lg text-white/70 leading-relaxed">
+            Fragaria desarrolla, produce y comercializa fertilizantes biológicos, coadyuvantes y especialidades agropecuarias con presencia en Argentina y más de 13 países.
+          </p>
+
+          <!-- CTA dual -->
+          <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a href="https://wa.me/543462450100?text=Hola%2C%20quiero%20consultar%20sobre%20los%20productos%20de%20Fragaria." target="_blank"
+               class="flex items-center justify-center gap-3 rounded-2xl bg-[#25d366] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#25d366]/20 transition hover:bg-[#1ebe57]">
+              <svg class="h-5 w-5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.104 1.522 5.826L.057 23.882a.75.75 0 0 0 .93.93l6.056-1.465A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 0 1-5.12-1.408l-.368-.217-3.816.924.943-3.816-.238-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Consultanos por WhatsApp
+            </a>
+            <a href="#contacto" class="flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-8 py-4 text-base font-semibold text-white transition hover:bg-white/10">
+              Escribirnos un mensaje
+            </a>
+          </div>
+        </div>
+
+        <!-- Stats sidebar: 2 cols -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="rounded-3xl bg-white/10 p-7 backdrop-blur-sm border border-white/10">
+            <p class="font-display text-5xl font-bold text-terra-300">+37</p>
+            <p class="mt-2 text-base text-white/70">años desarrollando soluciones para el campo</p>
+          </div>
+          <div class="rounded-3xl bg-white/10 p-7 backdrop-blur-sm border border-white/10">
+            <p class="font-display text-5xl font-bold text-terra-300">+13</p>
+            <p class="mt-2 text-base text-white/70">países con presencia comercial internacional</p>
+          </div>
+          <div class="rounded-3xl bg-terra-500/20 p-7 border border-terra-400/20">
+            <p class="font-display text-5xl font-bold text-terra-300">+6</p>
+            <p class="mt-2 text-base text-white/70">zonas comerciales en Argentina</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wave bottom -->
+    <div class="wave-bottom">
+      <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#fdfaf4"/></svg>
+    </div>
+  </header>
+
+  <main>
+    <!-- EMPRESA -->
+    <section id="empresa" class="bg-cream-50 py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="grid gap-16 lg:grid-cols-2 items-start">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-terra-500">Quiénes somos</p>
+            <h2 class="mt-4 font-display text-4xl font-bold leading-snug text-sage-900 sm:text-5xl">
+              Una compañía argentina con evolución constante
+            </h2>
+            <p class="mt-6 text-base leading-8 text-sage-700">
+              Desde hace más de 37 años participamos activamente del mercado agropecuario, brindando soluciones para mejorar rendimiento, eficiencia y sustentabilidad en campo.
+            </p>
+            <p class="mt-4 text-base leading-8 text-sage-700">
+              Nuestra propuesta combina desarrollo propio, producción y comercialización de insumos con foco técnico, respaldo comercial y cercanía con productores y distribuidores.
+            </p>
+            <a href="https://wa.me/543462450100?text=Hola%2C%20quisiera%20saber%20m%C3%A1s%20sobre%20Fragaria." target="_blank"
+               class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-sage-700 underline decoration-sage-400 underline-offset-4 transition hover:text-sage-900">
+              Conocer más sobre la empresa →
+            </a>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-start gap-5 rounded-2xl border border-cream-200 bg-white p-6 shadow-sm">
+              <div class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sage-700/10">
+                <svg class="h-5 w-5 text-sage-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-sage-900">Fertilizantes biológicos</h3>
+                <p class="mt-1 text-sm text-sage-600 leading-6">Productos que mejoran la productividad con menor impacto ambiental.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-5 rounded-2xl border border-cream-200 bg-white p-6 shadow-sm">
+              <div class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-terra-400/15">
+                <svg class="h-5 w-5 text-terra-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-sage-900">Coadyuvantes</h3>
+                <p class="mt-1 text-sm text-sage-600 leading-6">Optimizadores de aplicaciones para mayor eficacia en campo.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-5 rounded-2xl border border-cream-200 bg-white p-6 shadow-sm">
+              <div class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sage-700/10">
+                <svg class="h-5 w-5 text-sage-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-sage-900">Presencia internacional</h3>
+                <p class="mt-1 text-sm text-sage-600 leading-6">Alcance en Argentina y más de 13 países con distribuidores comprometidos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LÍNEAS (fondo sage oscuro) -->
+    <section id="lineas" class="relative bg-sage-800 py-24 text-white overflow-hidden">
+      <div class="blob1 absolute -bottom-10 -right-10 h-64 w-64 bg-sage-600/20 blur-2xl pointer-events-none"></div>
+      <div class="mx-auto max-w-7xl px-6 lg:px-10 relative z-10">
+        <div class="mb-14 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-terra-300">Especialidades</p>
+            <h2 class="mt-4 font-display text-4xl font-bold sm:text-5xl">Nuestras líneas de trabajo</h2>
+          </div>
+          <a href="https://wa.me/543462450100?text=Hola%2C%20quiero%20consultar%20sobre%20las%20l%C3%ADneas%20de%20productos." target="_blank"
+             class="flex shrink-0 items-center gap-2 self-start rounded-xl bg-[#25d366] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#1ebe57] sm:self-auto">
+            <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.104 1.522 5.826L.057 23.882a.75.75 0 0 0 .93.93l6.056-1.465A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 0 1-5.12-1.408l-.368-.217-3.816.924.943-3.816-.238-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Consultar por WhatsApp
+          </a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="group cursor-pointer rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:bg-terra-500/15 hover:border-terra-400/30">
+            <div class="mb-4 text-terra-300 text-3xl font-display font-bold">01</div>
+            <h3 class="text-xl font-semibold">Inoculantes</h3>
+            <p class="mt-3 text-sm text-white/60 leading-6">Fijación biológica de nitrógeno para mayor rendimiento en leguminosas.</p>
+          </div>
+          <div class="group cursor-pointer rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:bg-terra-500/15 hover:border-terra-400/30">
+            <div class="mb-4 text-terra-300 text-3xl font-display font-bold">02</div>
+            <h3 class="text-xl font-semibold">Coadyuvantes</h3>
+            <p class="mt-3 text-sm text-white/60 leading-6">Mejorar la eficacia de aplicaciones fitosanitarias y fertilizantes.</p>
+          </div>
+          <div class="group cursor-pointer rounded-3xl border border-terra-400/20 bg-terra-500/10 p-8 transition hover:bg-terra-500/20">
+            <div class="mb-4 text-terra-300 text-3xl font-display font-bold">03</div>
+            <h3 class="text-xl font-semibold text-terra-200">Fertilizantes</h3>
+            <p class="mt-3 text-sm text-white/60 leading-6">Nutrición balanceada con foco en productividad y cuidado del suelo.</p>
+          </div>
+          <div class="group cursor-pointer rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:bg-terra-500/15 hover:border-terra-400/30">
+            <div class="mb-4 text-terra-300 text-3xl font-display font-bold">04</div>
+            <h3 class="text-xl font-semibold">Fungicidas</h3>
+            <p class="mt-3 text-sm text-white/60 leading-6">Control de enfermedades fúngicas para proteger el rendimiento.</p>
+          </div>
+          <div class="group cursor-pointer rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:bg-terra-500/15 hover:border-terra-400/30">
+            <div class="mb-4 text-terra-300 text-3xl font-display font-bold">05</div>
+            <h3 class="text-xl font-semibold">Curasemillas</h3>
+            <p class="mt-3 text-sm text-white/60 leading-6">Protección temprana para mejor implantación de los cultivos.</p>
+          </div>
+          <div class="group cursor-pointer rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:bg-terra-500/15 hover:border-terra-400/30">
+            <div class="mb-4 text-terra-300 text-3xl font-display font-bold">06</div>
+            <h3 class="text-xl font-semibold">Insecticidas</h3>
+            <p class="mt-3 text-sm text-white/60 leading-6">Manejo de plagas con formulaciones de alta performance y selectividad.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALORES -->
+    <section id="valores" class="bg-cream-100 py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="mb-14 text-center">
+          <p class="text-xs font-bold uppercase tracking-widest text-terra-500">Nuestros valores</p>
+          <h2 class="mt-4 font-display text-4xl font-bold text-sage-900 sm:text-5xl">La base de nuestro vínculo con el agro</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          <div class="rounded-3xl bg-white p-8 shadow-sm border border-cream-200 text-center">
+            <div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-sage-700/10">
+              <svg class="h-7 w-7 text-sage-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-sage-900">Calidad</h3>
+            <p class="mt-3 text-sm text-sage-600 leading-6">Procesos orientados a desempeño consistente en cada solución.</p>
+          </div>
+          <div class="rounded-3xl bg-white p-8 shadow-sm border border-cream-200 text-center">
+            <div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-terra-400/15">
+              <svg class="h-7 w-7 text-terra-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-sage-900">Seriedad</h3>
+            <p class="mt-3 text-sm text-sage-600 leading-6">Compromiso real en plazos, asistencia y respuesta comercial.</p>
+          </div>
+          <div class="rounded-3xl bg-white p-8 shadow-sm border border-cream-200 text-center">
+            <div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-sage-700/10">
+              <svg class="h-7 w-7 text-sage-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-sage-900">Eficiencia</h3>
+            <p class="mt-3 text-sm text-sage-600 leading-6">Soluciones pensadas para potenciar los resultados productivos.</p>
+          </div>
+          <div class="rounded-3xl bg-white p-8 shadow-sm border border-cream-200 text-center">
+            <div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-terra-400/15">
+              <svg class="h-7 w-7 text-terra-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-sage-900">Honestidad</h3>
+            <p class="mt-3 text-sm text-sage-600 leading-6">Relaciones duraderas basadas en transparencia y confianza mutua.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="bg-cream-50 py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="grid gap-16 lg:grid-cols-2 items-start">
+          <!-- Left info -->
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-terra-500">Contacto</p>
+            <h2 class="mt-4 font-display text-4xl font-bold text-sage-900 sm:text-5xl leading-snug">
+              ¿Querés trabajar con Fragaria?
+            </h2>
+            <p class="mt-6 text-lg text-sage-600 leading-relaxed">
+              Contactanos para recibir asesoramiento personalizado sobre nuestras especialidades agropecuarias. Estamos disponibles para productores, distribuidores y técnicos.
+            </p>
+
+            <!-- WhatsApp destacado -->
+            <a href="https://wa.me/543462450100?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20asesoramiento%20sobre%20los%20productos%20de%20Fragaria." target="_blank"
+               class="mt-8 flex items-center gap-4 rounded-2xl bg-[#25d366]/10 border border-[#25d366]/20 p-6 transition hover:bg-[#25d366]/15 group">
+              <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#25d366]">
+                <svg class="h-7 w-7 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.104 1.522 5.826L.057 23.882a.75.75 0 0 0 .93.93l6.056-1.465A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 0 1-5.12-1.408l-.368-.217-3.816.924.943-3.816-.238-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              </div>
+              <div>
+                <p class="font-bold text-sage-900">Escribinos por WhatsApp</p>
+                <p class="text-sm text-sage-600">+54 3462 450 100 · Respuesta rápida</p>
+              </div>
+              <svg class="ml-auto h-5 w-5 text-sage-400 group-hover:text-[#25d366] transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+
+            <div class="mt-4 space-y-3">
+              <div class="flex items-center gap-4 rounded-xl border border-cream-200 bg-white px-5 py-4">
+                <svg class="h-5 w-5 shrink-0 text-sage-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span class="text-sm text-sage-700">info@fragaria.com.ar</span>
+              </div>
+              <div class="flex items-center gap-4 rounded-xl border border-cream-200 bg-white px-5 py-4">
+                <svg class="h-5 w-5 shrink-0 text-sage-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <span class="text-sm text-sage-700">Calle 57 esq. 40, Villa Cañas, Argentina</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form class="rounded-3xl border border-cream-200 bg-white p-8 shadow-sm" onsubmit="handleSubmit(event)">
+            <h3 class="font-display text-2xl font-bold text-sage-900">Envianos un mensaje</h3>
+            <p class="mt-2 text-sm text-sage-500">Te respondemos en menos de 24 horas hábiles.</p>
+            <div class="mt-8 space-y-5">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-sage-500">Nombre</label>
+                  <input type="text" required placeholder="Juan García" class="w-full rounded-xl border border-cream-200 bg-cream-50 px-4 py-3 text-sm text-sage-900 placeholder-sage-300 focus:border-sage-500 focus:outline-none focus:ring-1 focus:ring-sage-500 transition" />
+                </div>
+                <div>
+                  <label class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-sage-500">Empresa</label>
+                  <input type="text" placeholder="Mi empresa" class="w-full rounded-xl border border-cream-200 bg-cream-50 px-4 py-3 text-sm text-sage-900 placeholder-sage-300 focus:border-sage-500 focus:outline-none focus:ring-1 focus:ring-sage-500 transition" />
+                </div>
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-sage-500">Email</label>
+                <input type="email" required placeholder="juan@ejemplo.com" class="w-full rounded-xl border border-cream-200 bg-cream-50 px-4 py-3 text-sm text-sage-900 placeholder-sage-300 focus:border-sage-500 focus:outline-none focus:ring-1 focus:ring-sage-500 transition" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-sage-500">Teléfono</label>
+                <input type="tel" placeholder="+54 9 3462 ..." class="w-full rounded-xl border border-cream-200 bg-cream-50 px-4 py-3 text-sm text-sage-900 placeholder-sage-300 focus:border-sage-500 focus:outline-none focus:ring-1 focus:ring-sage-500 transition" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-sage-500">Mensaje</label>
+                <textarea required rows="4" placeholder="Contanos en qué podemos ayudarte..." class="w-full rounded-xl border border-cream-200 bg-cream-50 px-4 py-3 text-sm text-sage-900 placeholder-sage-300 focus:border-sage-500 focus:outline-none focus:ring-1 focus:ring-sage-500 transition resize-none"></textarea>
+              </div>
+              <button type="submit" class="w-full rounded-xl bg-sage-700 py-4 text-sm font-bold text-white transition hover:bg-sage-800 active:scale-[0.98]">
+                Enviar mensaje →
+              </button>
+              <p class="text-center text-xs text-sage-400">
+                O escribinos directo por
+                <a href="https://wa.me/543462450100" target="_blank" class="text-[#25d366] font-medium">WhatsApp</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-cream-200 bg-cream-50 py-10">
+    <div class="mx-auto flex max-w-7xl flex-col gap-3 px-6 text-sm text-sage-500 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+      <div class="flex items-center gap-3">
+        <img src="fragaruua.webp" alt="Fragaria" class="h-8 w-auto opacity-60" />
+        <p class="font-semibold text-sage-700">Fragaria S.A. · Soluciones agropecuarias</p>
+      </div>
+      <p>© 2026 Fragaria S.A. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/543462450100?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20sus%20productos." target="_blank"
+     class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] shadow-lg transition hover:scale-110">
+    <svg class="h-7 w-7 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.104 1.522 5.826L.057 23.882a.75.75 0 0 0 .93.93l6.056-1.465A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 0 1-5.12-1.408l-.368-.217-3.816.924.943-3.816-.238-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type=submit]');
+      btn.textContent = '¡Mensaje enviado! ✓';
+      btn.classList.add('bg-[#25d366]');
+      btn.classList.remove('bg-sage-700','hover:bg-sage-800');
+      setTimeout(() => { e.target.reset(); btn.textContent = 'Enviar mensaje →'; btn.classList.remove('bg-[#25d366]'); btn.classList.add('bg-sage-700','hover:bg-sage-800'); }, 3000);
+    }
+  </script>
+</body>
+</html>
