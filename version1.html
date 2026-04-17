@@ -56,18 +56,18 @@
 
   <!-- HERO -->
   <header id="inicio" class="clip-diagonal relative min-h-screen bg-forest-900 pt-20 pb-32 overflow-hidden">
-    <video class="absolute inset-0 h-full w-full object-cover opacity-55 scale-105" autoplay muted loop playsinline>
+    <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline>
       <source src="hero2.mp4" type="video/mp4" />
     </video>
-    <div class="absolute inset-0 bg-gradient-to-b from-forest-900/45 via-forest-900/25 to-forest-900/55"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/40"></div>
     <!-- grain texture overlay -->
-    <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22300%22 height=%22300%22 filter=%22url(%23noise)%22 opacity=%221%22/%3E%3C/svg%3E')"></div>
+    <div class="absolute inset-0 opacity-5" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22300%22 height=%22300%22 filter=%22url(%23noise)%22 opacity=%221%22/%3E%3C/svg%3E')"></div>
 
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pt-16 lg:pt-24">
       <div class="grid gap-16 lg:grid-cols-2 items-center">
         <!-- Text -->
-        <div>
-          <p class="mb-4 inline-block rounded-full border border-gold-500/40 bg-gold-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold-400">
+        <div class="rounded-3xl border border-white/15 bg-black/20 p-6 backdrop-blur-sm lg:p-8">
+          <p class="mb-4 inline-block rounded-full border border-gold-500/40 bg-gold-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold-300">
             Desde 1999 en el agro argentino
           </p>
           <h1 class="font-display text-5xl font-black leading-tight text-white sm:text-6xl lg:text-7xl">
@@ -75,7 +75,7 @@
             <span class="text-stroke">soluciones</span><br/>
             <span class="text-gold-400">para el futuro</span>
           </h1>
-          <p class="mt-6 max-w-lg text-lg text-white/75 leading-relaxed">
+          <p class="mt-6 max-w-lg text-lg text-white/85 leading-relaxed">
             Fertilizantes biológicos, coadyuvantes y especialidades agropecuarias con presencia en Argentina y más de 13 países.
           </p>
           <div class="mt-10 flex flex-wrap gap-4">
@@ -92,19 +92,19 @@
 
         <!-- Stats grid -->
         <div class="grid grid-cols-2 gap-4">
-          <div class="rounded-3xl border border-gold-500/20 bg-white/5 p-8 backdrop-blur">
+          <div class="rounded-3xl border border-white/20 bg-black/25 p-8 backdrop-blur-md">
             <p class="font-display text-5xl font-black text-gold-400">+37</p>
             <p class="mt-2 text-sm text-white/70">años de trayectoria</p>
           </div>
-          <div class="rounded-3xl border border-forest-500/30 bg-forest-800/40 p-8">
+          <div class="rounded-3xl border border-white/20 bg-black/25 p-8 backdrop-blur-md">
             <p class="font-display text-5xl font-black text-forest-500">+13</p>
             <p class="mt-2 text-sm text-white/70">países con presencia</p>
           </div>
-          <div class="rounded-3xl border border-forest-500/30 bg-forest-800/40 p-8">
+          <div class="rounded-3xl border border-white/20 bg-black/25 p-8 backdrop-blur-md">
             <p class="font-display text-5xl font-black text-forest-500">+6</p>
             <p class="mt-2 text-sm text-white/70">zonas comerciales en ARG</p>
           </div>
-          <div class="rounded-3xl border border-gold-500/20 bg-white/5 p-8 backdrop-blur">
+          <div class="rounded-3xl border border-white/20 bg-black/25 p-8 backdrop-blur-md">
             <p class="font-display text-5xl font-black text-gold-400">100%</p>
             <p class="mt-2 text-sm text-white/70">compromiso ambiental</p>
           </div>
