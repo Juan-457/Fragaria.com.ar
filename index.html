@@ -68,19 +68,19 @@
         <h2 class="text-lg font-semibold">Fragaria en cifras</h2>
         <div class="mt-6 grid grid-cols-2 gap-5">
           <article class="rounded-2xl bg-white/10 p-5">
-            <p class="text-3xl font-extrabold">+37</p>
+            <p class="text-3xl font-extrabold">+<span data-counter data-target="37">0</span></p>
             <p class="mt-1 text-sm text-white/80">años de trayectoria</p>
           </article>
           <article class="rounded-2xl bg-white/10 p-5">
-            <p class="text-3xl font-extrabold">+13</p>
+            <p class="text-3xl font-extrabold">+<span data-counter data-target="13">0</span></p>
             <p class="mt-1 text-sm text-white/80">países con presencia</p>
           </article>
           <article class="rounded-2xl bg-white/10 p-5">
-            <p class="text-3xl font-extrabold">+6</p>
+            <p class="text-3xl font-extrabold">+<span data-counter data-target="6">0</span></p>
             <p class="mt-1 text-sm text-white/80">zonas comerciales en Argentina</p>
           </article>
           <article class="rounded-2xl bg-white/10 p-5">
-            <p class="text-3xl font-extrabold">100%</p>
+            <p class="text-3xl font-extrabold"><span data-counter data-target="100">0</span>%</p>
             <p class="mt-1 text-sm text-white/80">compromiso calidad</p>
           </article>
         </div>
@@ -199,5 +199,50 @@
     </div>
   </footer>
   <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+  <script>
+    function animateCounter(el, duration = 1200) {
+      const target = Number(el.dataset.target || 0);
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(target * eased);
+        el.textContent = value.toString();
+
+        if (progress < 1) requestAnimationFrame(update);
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    function initHeroCounters() {
+      const counters = document.querySelectorAll('[data-counter]');
+      if (!counters.length) return;
+
+      const startAnimation = () => counters.forEach((counter) => animateCounter(counter));
+
+      if (!('IntersectionObserver' in window)) {
+        startAnimation();
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            startAnimation();
+            observer.disconnect();
+          });
+        },
+        { threshold: 0.45 }
+      );
+
+      observer.observe(counters[0]);
+    }
+
+    initHeroCounters();
+  </script>
 </body>
 </html>
