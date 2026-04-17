@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fragaria S.A. | Catálogo de Productos</title>
+  <meta name="description" content="Catálogo completo de soluciones agropecuarias Fragaria: coadyuvantes, fertilizantes, inoculantes, curasemillas, fungicidas e insecticidas." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            fragaria: {
+              50:  '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#052e16'
+            }
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          boxShadow: { soft: '0 20px 45px -20px rgba(5,46,22,0.35)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    .card-img-wrapper { aspect-ratio: 730/887; }
+    .product-card { transition: transform .2s, box-shadow .2s; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -16px rgba(5,46,22,.25); }
+    .filter-btn { transition: background .15s, color .15s, border-color .15s; }
+    .filter-btn.active { background: #15803d; color: #fff; border-color: #15803d; }
+    .hidden-card { display: none !important; }
+  </style>
+</head>
+<body class="bg-white text-slate-900 font-sans">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-100 shadow-sm">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="fragaruua.webp" alt="Fragaria" class="h-10 w-auto" />
+      </a>
+      <div class="hidden items-center gap-6 text-sm font-medium md:flex">
+        <a href="index.html#empresa" class="text-slate-600 hover:text-fragaria-700">Empresa</a>
+        <a href="index.html#valores" class="text-slate-600 hover:text-fragaria-700">Valores</a>
+        <a href="catalogo.html" class="font-semibold text-fragaria-700">Catálogo</a>
+        <a href="index.html#contacto" class="text-slate-600 hover:text-fragaria-700">Contacto</a>
+      </div>
+      <a href="index.html#contacto" class="rounded-full bg-fragaria-700 px-5 py-2 text-sm font-semibold text-white hover:bg-fragaria-900">Escribinos</a>
+    </div>
+  </nav>
+
+  <!-- HERO STRIP -->
+  <div class="bg-fragaria-900 py-14 text-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <p class="text-sm font-bold uppercase tracking-[0.14em] text-fragaria-200">Soluciones agropecuarias</p>
+      <h1 class="mt-3 text-4xl font-extrabold sm:text-5xl">Catálogo de productos</h1>
+      <p class="mt-4 max-w-2xl text-white/80">Filtrá por categoría para encontrar la solución que necesitás: desde coadyuvantes e inoculantes hasta insecticidas y fungicidas.</p>
+    </div>
+  </div>
+
+  <main class="mx-auto max-w-7xl px-6 py-12 lg:px-10">
+
+    <!-- SEARCH + FILTERS -->
+    <div class="mb-10 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+
+      <!-- Search -->
+      <div class="relative w-full max-w-sm">
+        <svg class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>
+        <input id="search-input" type="text" placeholder="Buscar producto…" class="w-full rounded-full border border-slate-200 bg-slate-50 py-2.5 pl-9 pr-4 text-sm text-slate-800 focus:border-fragaria-500 focus:outline-none focus:ring-2 focus:ring-fragaria-200" />
+      </div>
+
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-2" id="filter-buttons" role="group" aria-label="Filtrar por categoría">
+        <button data-filter="todos" class="filter-btn active rounded-full border border-fragaria-700 px-4 py-2 text-sm font-semibold text-fragaria-700">
+          Todos <span class="ml-1 text-xs opacity-70" id="count-todos"></span>
+        </button>
+        <button data-filter="plagas" class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700">
+          🐛 Plagas <span class="ml-1 text-xs opacity-60" id="count-plagas"></span>
+        </button>
+        <button data-filter="enfermedades" class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700">
+          🍄 Enfermedades <span class="ml-1 text-xs opacity-60" id="count-enfermedades"></span>
+        </button>
+        <button data-filter="nutricion" class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700">
+          🌱 Nutrición <span class="ml-1 text-xs opacity-60" id="count-nutricion"></span>
+        </button>
+        <button data-filter="inoculantes" class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700">
+          🧫 Inoculantes <span class="ml-1 text-xs opacity-60" id="count-inoculantes"></span>
+        </button>
+        <button data-filter="coadyuvantes" class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700">
+          ⚗️ Coadyuvantes <span class="ml-1 text-xs opacity-60" id="count-coadyuvantes"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- RESULT COUNT -->
+    <p id="result-count" class="mb-6 text-sm text-slate-500"></p>
+
+    <!-- PRODUCT GRID -->
+    <div id="product-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+      <!-- ── INSECTICIDAS / PLAGAS ── -->
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="plagas" data-name="jumkan">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/JUMKAN-730x887.png" alt="JUMKAN" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">JK</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Plagas</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">JUMKAN</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Insecticida-acaricida orgánico de contacto. Combate ácaros, trips, mosca blanca y áfidos. Biodegradable, sin residuos.</p>
+          <a href="https://fragaria.com.ar/producto/jumkan/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="plagas" data-name="aba 0.7">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/ABA-730x887.png" alt="ABA 0.7" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ABA</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Plagas</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">ABA 0.7</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Insecticida biológico de origen natural. Acción sobre plagas resistentes sin impacto ambiental.</p>
+          <a href="https://fragaria.com.ar/producto/aba-0-7/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="plagas" data-name="mirka bti">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/MIRKA-BTI-730x887.png" alt="Mirka BTI" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BTI</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Plagas</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Mirka BTI</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Insecticida biológico a base de <em>Bacillus thuringiensis israelensis</em>. Control específico de dípteros y larvas.</p>
+          <a href="https://fragaria.com.ar/producto/mirka-bti/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- ── CURASEMILLAS / ENFERMEDADES ── -->
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="mirka">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/MIRKA-730x887.png" alt="MIRKA" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">MK</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">MIRKA</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Curasemillas con Carbendazim + Tiram. Protección contra patógenos del suelo en soja, maíz, trigo, cebada y más.</p>
+          <a href="https://fragaria.com.ar/producto/mirka/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="mirka 50%">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/MIRKA-50-730x887.png" alt="MIRKA 50%" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">50%</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">MIRKA 50%</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Curasemillas de alta concentración. Amplio espectro de control fúngico para cereales y oleaginosas.</p>
+          <a href="https://fragaria.com.ar/producto/mirka-50/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="mirka metalaxil-m">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/MIRKA-METALAXIL-M-730x887.png" alt="MIRKA METALAXIL-M" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">MTX</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">MIRKA METALAXIL-M</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Curasemillas sistémico con Metalaxil-M. Control de oomicetos (Pythium, Phytophthora) en semillas.</p>
+          <a href="https://fragaria.com.ar/producto/mirka-metalaxil-m/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="synergi">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/SYNERGI-730x887.png" alt="SYNERGI" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SYN</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">SYNERGI</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Fungicida curasemillas de amplio espectro. Protección y arranque de plántulas en condiciones adversas.</p>
+          <a href="https://fragaria.com.ar/producto/synergi/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="better">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/BETTER-730x887.png" alt="BETTER" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BTR</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">BETTER</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Curasemillas formulado para protección temprana de semillas frente a hongos de suelo y semilla.</p>
+          <a href="https://fragaria.com.ar/producto/better/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="enlarger">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/ENLARGER-730x887.png" alt="ENLARGER" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ENL</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">ENLARGER</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Fungicida curasemillas con efecto promotor del crecimiento. Mejora el establecimiento del cultivo.</p>
+          <a href="https://fragaria.com.ar/producto/enlarger/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="trichorium">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/TRICHORIUM-730x887.png" alt="TRICHORIUM" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">TRI</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">TRICHORIUM</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Fungicida biológico a base de <em>Trichoderma</em>. Control de enfermedades radiculares con acción bioestimulante.</p>
+          <a href="https://fragaria.com.ar/producto/trichorium/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- ── FERTILIZANTES / NUTRICIÓN ── -->
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="nutricion" data-name="inghol">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/INGHOL-730x887.png" alt="INGHOL" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ING</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Nutrición</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">INGHOL</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Fertilizante foliar con micronutrientes. Estimula el metabolismo vegetal y mejora eficiencia de aplicaciones.</p>
+          <a href="https://fragaria.com.ar/producto/inghol/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="nutricion" data-name="inghol pack">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/INGHOL-PACK-730x887.png" alt="INGHOL PACK" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ING</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Nutrición</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">INGHOL PACK</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Kit de fertilización foliar INGHOL en formato combinado para mayor cobertura de nutrientes en campo.</p>
+          <a href="https://fragaria.com.ar/producto/inghol-pack/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="nutricion" data-name="ferti bsp">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/FERTI-BSP-730x887.png" alt="Ferti BSP" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BSP</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Nutrición</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Ferti BSP</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Fertilizante biológico solubilizador de fósforo. Incrementa disponibilidad de P para el cultivo.</p>
+          <a href="https://fragaria.com.ar/producto/ferti-bsp/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="nutricion" data-name="maizazo">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/MAIZAZO-730x887.png" alt="Maizazo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">MZZ</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Nutrición</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Maizazo</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Fertilizante biológico especialmente formulado para maíz. Promueve el crecimiento radicular y el rendimiento.</p>
+          <a href="https://fragaria.com.ar/producto/maizazo/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="nutricion" data-name="n-fixer full">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/N-FIXER-FULL-730x887.png" alt="N-Fixer Full" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">NFX</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Nutrición</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">N-Fixer Full</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Fijador biológico de nitrógeno. Reduce dependencia de fertilizantes nitrogenados en gramíneas.</p>
+          <a href="https://fragaria.com.ar/producto/n-fixer-full/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- ── INOCULANTES ── -->
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua legumbres">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/ACQUA-LEGUMBRES-730x887.png" alt="Acqua Legumbres" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ACQ</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Legumbres</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante líquido para leguminosas. Fijación biológica de nitrógeno con rizobios de alta concentración.</p>
+          <a href="https://fragaria.com.ar/producto/acqua-legumbres/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua nod triple">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/ACQUA-NOD-TRIPLE-730x887.png" alt="Acqua Nod Triple" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">NOD</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Nod Triple</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Triple inoculante líquido con rizobios, PGPR y Azospirillum. Mayor nodulación y crecimiento radicular.</p>
+          <a href="https://fragaria.com.ar/producto/acqua-nod-triple/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua pack">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/ACQUA-PACK-730x887.png" alt="Acqua Pack" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">PKG</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Pack</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Pack de inoculantes Acqua para leguminosas y gramíneas. Solución completa de biología del suelo.</p>
+          <a href="https://fragaria.com.ar/producto/acqua-pack/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua protector">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/ACQUA-PROTECTOR-730x887.png" alt="Acqua Protector" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">PRO</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Protector</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante con protector de rizobios. Preserva la viabilidad bacteriana frente a agroquímicos y calor.</p>
+          <a href="https://fragaria.com.ar/producto/acqua-protector/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua sensing">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/ACQUA-SENSING-730x887.png" alt="Acqua Sensing" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SNS</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Sensing</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante de última generación con tecnología de reconocimiento. Maximiza la simbiosis rizobio-planta.</p>
+          <a href="https://fragaria.com.ar/producto/acqua-sensing/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua synergi">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/ACQUA-SYNERGI-730x887.png" alt="Acqua Synergi" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SYN</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Synergi</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante líquido combinado con promotores de crecimiento y bioestimulantes para soja y cereales.</p>
+          <a href="https://fragaria.com.ar/producto/acqua-synergi/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="biofertilizante acqua duo">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/ACQUA-DUO-730x887.png" alt="Biofertilizante Acqua Duo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">DUO</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Biofertilizante Acqua Duo</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Biofertilizante dual con doble fuente microbiana. Fijación de N y solubilización de P en un solo producto.</p>
+          <a href="https://fragaria.com.ar/producto/biofertilizante-acqua-duo/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="biosilo">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/BIOSILO-730x887.png" alt="Biosilo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BSL</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Biosilo</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante bacteriano para ensilado. Mejora la fermentación láctica y la calidad nutricional del silo.</p>
+          <a href="https://fragaria.com.ar/producto/biosilo/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="synergi pack">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/SYNERGI-PACK-730x887.png" alt="Synergi Pack" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SPK</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Synergi Pack</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Pack combinado de inoculación + fungicida SYNERGI. Protección y fijación biológica en un solo tratamiento de semilla.</p>
+          <a href="https://fragaria.com.ar/producto/synergi-pack/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="trigalazo">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/TRIGALAZO-730x887.png" alt="Trigalazo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">TRG</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Trigalazo</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante triple para gramíneas: fijación de N, solubilización de P y PGPR. Especialmente indicado para trigo y cebada.</p>
+          <a href="https://fragaria.com.ar/producto/trigalazo/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- ── COADYUVANTES ── -->
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="sap plus">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/SAP-3D-2024.png" alt="SAP PLUS" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SAP</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">SAP PLUS</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Corrector de agua + fertilizante foliar soluble. Quelante catiónico, regulador de pH y potenciador de herbicidas.</p>
+          <a href="https://fragaria.com.ar/producto/sap-plus/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="sap 100">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/SAP-100-730x887.png" alt="SAP 100" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">100</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">SAP 100</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Corrector de agua de alta concentración. Neutraliza iones divalentes que reducen la eficacia de herbicidas y fungicidas.</p>
+          <a href="https://fragaria.com.ar/producto/sap-100/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="sap 42">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/SAP-42-730x887.png" alt="SAP 42" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">42</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">SAP 42</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Corrector de agua de amplio espectro. Optimiza la compatibilidad de mezclas en el caldo de aplicación.</p>
+          <a href="https://fragaria.com.ar/producto/sap-42/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="ph4">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/PH4-730x887.png" alt="PH4" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">PH</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">PH4</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Regulador de pH para caldos de aplicación. Acidifica el agua hasta pH óptimo para máxima eficiencia de agroquímicos.</p>
+          <a href="https://fragaria.com.ar/producto/ph4/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="mirka total cleaner">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/MIRKA-TOTAL-CLEANER-730x887.png" alt="Mirka Total Cleaner" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">TCL</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Mirka Total Cleaner</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Limpiador de equipos de aplicación. Elimina residuos de agroquímicos en tanques, mangueras y picos.</p>
+          <a href="https://fragaria.com.ar/producto/mirka-total-cleaner/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="mirk oil">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/MIRK-OIL-730x887.png" alt="Mirk Oil" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">OIL</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Mirk Oil</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Aceite vegetal concentrado como coadyuvante. Mejora la cobertura, penetración y retención foliar de agroquímicos.</p>
+          <a href="https://fragaria.com.ar/producto/mirk-oil/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="lecithin silicon max">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/LECITHIN-SILICON-MAX-730x887.png" alt="Lecithin Silicon Max" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">LSM</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">Lecithin Silicon Max</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Coadyuvante orgánico con lecitina y silicona. Alta actividad superficial para mejor mojado y adherencia en hoja.</p>
+          <a href="https://fragaria.com.ar/producto/lecithin-silicon-max/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="bq-max">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/BQ-MAX-730x887.png" alt="BQ-MAX" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BQ</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">BQ-MAX</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Coadyuvante multicomponente. Reduce tensión superficial, mejora la dispersión y minimiza la deriva en aplicaciones.</p>
+          <a href="https://fragaria.com.ar/producto/bq-max/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="biomethil-max">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/BIOMETHIL-MAX-730x887.png" alt="BIOMETHIL-MAX" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BMX</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">BIOMETHIL-MAX</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Metilado de aceite vegetal. Potencia herbicidas sistémicos y mejora la absorción foliar de principios activos.</p>
+          <a href="https://fragaria.com.ar/producto/biomethil-max-20l/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="bioemag 76">
+        <div class="card-img-wrapper relative bg-fragaria-50">
+          <img src="https://fragaria.com.ar/wp-content/uploads/2024/06/BIOEMAG-76-730x887.png" alt="BIOEMAG 76" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">B76</span></div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+          <h2 class="mt-2 text-base font-bold text-slate-900">BIOEMAG 76</h2>
+          <p class="mt-1 text-xs leading-5 text-slate-500">Emulsificante agrícola de alta eficiencia. Estabiliza mezclas complejas y mejora la distribución en el caldo.</p>
+          <a href="https://fragaria.com.ar/producto/bioemag-76/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div id="empty-state" class="hidden py-20 text-center">
+      <p class="text-4xl">🌾</p>
+      <p class="mt-4 text-lg font-semibold text-slate-700">Sin resultados</p>
+      <p class="mt-2 text-sm text-slate-500">Probá con otro término de búsqueda o cambiá el filtro.</p>
+    </div>
+
+    <!-- CTA STRIP -->
+    <div class="mt-16 rounded-3xl bg-fragaria-900 px-8 py-12 text-white lg:px-12 text-center">
+      <h2 class="text-2xl font-extrabold sm:text-3xl">¿Necesitás asesoramiento técnico?</h2>
+      <p class="mt-3 text-white/80 max-w-xl mx-auto">Nuestro equipo puede ayudarte a elegir la combinación óptima de productos para tu cultivo y zona.</p>
+      <a href="mailto:info@fragaria.com.ar" class="mt-6 inline-block rounded-full bg-white px-8 py-3 text-sm font-bold text-fragaria-900 hover:bg-fragaria-100">Contactar a un técnico</a>
+    </div>
+
+  </main>
+
+  <footer class="mt-16 bg-slate-900 py-8">
+    <div class="mx-auto flex max-w-7xl flex-col gap-2 px-6 text-sm text-slate-400 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+      <p>Fragaria S.A. · Soluciones agropecuarias</p>
+      <p>© 2026 Fragaria S.A. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const cards = Array.from(document.querySelectorAll('#product-grid .product-card'));
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const searchInput = document.getElementById('search-input');
+    const resultCount = document.getElementById('result-count');
+    const emptyState = document.getElementById('empty-state');
+    let activeFilter = 'todos';
+
+    const categoryCounts = {};
+    cards.forEach(c => {
+      const cat = c.dataset.category;
+      categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+    });
+    document.getElementById('count-todos').textContent = `(${cards.length})`;
+    Object.entries(categoryCounts).forEach(([cat, n]) => {
+      const el = document.getElementById(`count-${cat}`);
+      if (el) el.textContent = `(${n})`;
+    });
+
+    function applyFilters() {
+      const query = searchInput.value.toLowerCase().trim();
+      let visible = 0;
+      cards.forEach(card => {
+        const catMatch = activeFilter === 'todos' || card.dataset.category === activeFilter;
+        const nameMatch = !query || card.dataset.name.includes(query) || card.querySelector('h2').textContent.toLowerCase().includes(query);
+        if (catMatch && nameMatch) {
+          card.classList.remove('hidden-card');
+          visible++;
+        } else {
+          card.classList.add('hidden-card');
+        }
+      });
+      resultCount.textContent = `${visible} producto${visible !== 1 ? 's' : ''} encontrado${visible !== 1 ? 's' : ''}`;
+      emptyState.classList.toggle('hidden', visible > 0);
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener('input', applyFilters);
+    applyFilters();
+  </script>
+</body>
+</html>
