@@ -64,15 +64,15 @@
     <div class="blob1 absolute -top-20 -right-20 h-96 w-96 bg-sage-600/30 blur-2xl"></div>
     <div class="blob2 absolute bottom-20 -left-20 h-80 w-80 bg-terra-400/20 blur-2xl"></div>
     <!-- Video overlay -->
-    <video class="absolute inset-0 h-full w-full object-cover opacity-35 scale-105" autoplay muted loop playsinline>
+    <video class="absolute inset-0 h-full w-full object-cover opacity-60 scale-105" autoplay muted loop playsinline>
       <source src="hero.mp4" type="video/mp4" />
     </video>
-    <div class="absolute inset-0 bg-gradient-to-br from-sage-900/90 via-sage-800/70 to-sage-700/45"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-sage-900/75 via-sage-800/45 to-sage-700/20"></div>
 
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pt-8">
-      <div class="grid gap-12 lg:grid-cols-5 items-center">
+      <div class="grid gap-10 lg:grid-cols-5 items-center">
         <!-- Text: 3 cols -->
-        <div class="lg:col-span-4">
+        <div class="lg:col-span-3">
           <p class="mb-6 inline-flex items-center gap-2 rounded-full border border-terra-300/30 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-terra-200 shadow-sm shadow-black/10">
             <span class="h-px w-8 bg-terra-300"></span>
             Desde 1999 en el agro argentino
@@ -99,19 +99,26 @@
           </div>
         </div>
 
-        <!-- Stats sidebar: 2 cols -->
-        <div class="lg:col-span-1 space-y-3 lg:justify-self-end lg:max-w-[220px]">
-          <div class="rounded-3xl bg-white/10 p-5 backdrop-blur-sm border border-white/15">
-            <p class="font-display text-4xl font-bold text-terra-300">+37</p>
-            <p class="mt-1 text-sm text-white/70">años en el agro</p>
+        <!-- Video focus + stats -->
+        <div class="lg:col-span-2 lg:justify-self-end w-full lg:max-w-[430px] space-y-4">
+          <div class="overflow-hidden rounded-[2rem] border border-white/20 bg-black/20 shadow-2xl shadow-black/40 backdrop-blur-sm">
+            <video class="h-[360px] w-full object-cover" autoplay muted loop playsinline>
+              <source src="hero.mp4" type="video/mp4" />
+            </video>
           </div>
-          <div class="rounded-3xl bg-white/10 p-5 backdrop-blur-sm border border-white/15">
-            <p class="font-display text-4xl font-bold text-terra-300">+13</p>
-            <p class="mt-1 text-sm text-white/70">países con presencia</p>
-          </div>
-          <div class="rounded-3xl bg-terra-500/20 p-5 border border-terra-400/30">
-            <p class="font-display text-4xl font-bold text-terra-300">+6</p>
-            <p class="mt-1 text-sm text-white/70">zonas comerciales</p>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="rounded-2xl bg-white/10 p-4 backdrop-blur-sm border border-white/15">
+              <p class="font-display text-3xl font-bold text-terra-300">+37</p>
+              <p class="mt-1 text-xs text-white/70">años en el agro</p>
+            </div>
+            <div class="rounded-2xl bg-white/10 p-4 backdrop-blur-sm border border-white/15">
+              <p class="font-display text-3xl font-bold text-terra-300">+13</p>
+              <p class="mt-1 text-xs text-white/70">países</p>
+            </div>
+            <div class="rounded-2xl bg-terra-500/20 p-4 border border-terra-400/30">
+              <p class="font-display text-3xl font-bold text-terra-300">+6</p>
+              <p class="mt-1 text-xs text-white/70">zonas</p>
+            </div>
           </div>
         </div>
       </div>
