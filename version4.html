@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Fragaria S.A. | Versión 4</title>
+  <meta name="description" content="Fragaria S.A.: más de 37 años desarrollando, produciendo y comercializando fertilizantes biológicos, coadyuvantes y especialidades agropecuarias." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "inverse-on-surface": "#f3f0ef",
+            "surface-tint": "#146d35",
+            "on-secondary-fixed-variant": "#484737",
+            "primary-container": "#05652e",
+            "surface-container-highest": "#e4e2e1",
+            "outline-variant": "#bfc9bc",
+            "tertiary": "#334600",
+            "on-tertiary-container": "#b7da66",
+            "primary-fixed": "#a1f6af",
+            "secondary-container": "#e6e3cd",
+            "on-tertiary-fixed-variant": "#394d00",
+            "on-background": "#1b1c1c",
+            "on-error": "#ffffff",
+            "on-surface": "#1b1c1c",
+            "surface-dim": "#dcd9d9",
+            "outline": "#707a6f",
+            "inverse-surface": "#303030",
+            "surface-container-high": "#eae7e7",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#b0d360",
+            "on-surface-variant": "#3f493f",
+            "on-tertiary-fixed": "#151f00",
+            "secondary": "#605f4e",
+            "background": "#fcf9f8",
+            "surface-container": "#f0eded",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-container": "#666554",
+            "tertiary-fixed": "#ccf078",
+            "secondary-fixed-dim": "#cac7b2",
+            "tertiary-container": "#475f00",
+            "on-primary": "#ffffff",
+            "on-primary-fixed": "#00210a",
+            "on-primary-fixed-variant": "#005324",
+            "primary": "#004b20",
+            "primary-fixed-dim": "#85d994",
+            "surface-container-low": "#f6f3f2",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#1c1c0f",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#e6e3cd",
+            "on-primary-container": "#8ce09b",
+            "surface-variant": "#e4e2e1",
+            "error-container": "#ffdad6",
+            "inverse-primary": "#85d994",
+            "surface": "#fcf9f8",
+            "surface-bright": "#fcf9f8"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          fontFamily: {
+            headline: ["Manrope"],
+            body: ["Inter"],
+            label: ["Inter"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .hero-gradient-overlay { background: linear-gradient(135deg, rgba(0, 75, 32, 0.85) 0%, rgba(5, 101, 46, 0.4) 100%); }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+  <nav class="fixed top-0 w-full z-50 bg-[#fcf9f8]/80 dark:bg-[#1b1c1c]/80 backdrop-blur-xl">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+      <div class="text-2xl font-extrabold tracking-tighter font-headline">Fragaria</div>
+      <div class="hidden md:flex items-center gap-8">
+        <a class="text-[#05652E] font-bold border-b-2 border-[#05652E] pb-1 font-headline tracking-tight" href="#empresa">Empresa</a>
+        <a class="hover:text-[#05652E] transition-colors font-headline tracking-tight" href="#valores">Valores</a>
+        <a class="hover:text-[#05652E] transition-colors font-headline tracking-tight" href="#lineas">Líneas</a>
+        <a class="hover:text-[#05652E] transition-colors font-headline tracking-tight" href="#contacto">Contacto</a>
+      </div>
+      <a href="mailto:info@fragaria.com.ar" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-3 rounded-full font-bold hover:opacity-80 transition-all duration-300">Escribinos</a>
+    </div>
+  </nav>
+
+  <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+        <source src="hero.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 hero-gradient-overlay"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
+      <div class="max-w-3xl">
+        <span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-secondary-container text-on-secondary-container font-label text-sm font-semibold tracking-wide uppercase">Desde 1999 en el mercado agropecuario</span>
+        <h1 class="text-5xl md:text-7xl font-headline font-extrabold text-white leading-[0.95] tracking-tighter mb-8">Innovación y confianza para una agricultura más eficiente</h1>
+        <p class="text-xl md:text-2xl text-on-primary-container/90 mb-10 font-body max-w-2xl">Desarrollamos, producimos y comercializamos fertilizantes biológicos, coadyuvantes y especialidades agropecuarias, con presencia comercial en Argentina y más de 13 países.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#empresa" class="bg-white text-primary px-10 py-5 rounded-full font-bold text-lg hover:bg-surface-container-low transition-all duration-300 shadow-xl">Conocer la empresa</a>
+          <a href="#lineas" class="border-2 border-white/30 backdrop-blur-md text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300">Ver líneas de trabajo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="empresa" class="py-24 bg-surface px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16">
+        <h2 class="text-4xl md:text-6xl font-headline font-bold tracking-tighter">Una compañía argentina con evolución constante</h2>
+        <p class="text-on-surface-variant text-lg mt-4 max-w-3xl">Más de 37 años participando activamente del mercado agropecuario con soluciones para mejorar rendimiento, eficiencia y sustentabilidad en campo.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div class="md:col-span-8 relative overflow-hidden rounded-[2rem] bg-surface-container-low min-h-[420px]">
+          <img src="fragaruua.webp" alt="Logo Fragaria" class="absolute right-0 top-0 h-full w-full object-contain opacity-10" />
+          <div class="relative h-full flex flex-col justify-end p-10 bg-gradient-to-t from-background via-transparent to-transparent">
+            <span class="text-tertiary font-bold tracking-widest text-sm uppercase mb-2">Qué hacemos</span>
+            <h3 class="text-4xl font-headline font-bold mb-4">Desarrollo, producción y comercialización</h3>
+            <p class="text-on-surface-variant max-w-2xl mb-4">Combinamos desarrollo propio, foco técnico, respaldo comercial y cercanía con productores y distribuidores.</p>
+            <ul class="text-on-surface-variant list-disc pl-5 space-y-1">
+              <li>Fertilizantes biológicos.</li>
+              <li>Coadyuvantes para optimizar aplicaciones.</li>
+              <li>Especialidades agropecuarias con enfoque ambiental responsable.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="md:col-span-4 rounded-[2rem] bg-secondary-container p-10 flex flex-col justify-between">
+          <div>
+            <div class="w-16 h-16 rounded-2xl bg-primary-container/10 flex items-center justify-center mb-8">
+              <span class="material-symbols-outlined text-primary-container text-4xl">eco</span>
+            </div>
+            <h3 class="text-3xl font-headline font-bold text-on-secondary-container mb-4">Compromiso con la sustentabilidad</h3>
+            <p class="text-on-secondary-fixed-variant">Priorizamos tecnologías amigables con el medio ambiente y una mejora continua de la propuesta técnica en cada campaña.</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 rounded-[2rem] bg-surface-container-high p-8">
+          <div class="text-5xl font-headline font-bold text-tertiary mb-2">+37</div>
+          <p class="text-on-surface-variant text-sm font-medium">años de trayectoria</p>
+        </div>
+        <div class="md:col-span-3 rounded-[2rem] bg-surface-container-highest p-8">
+          <div class="text-5xl font-headline font-bold text-tertiary mb-2">+13</div>
+          <p class="text-on-surface-variant text-sm font-medium">países con presencia comercial</p>
+        </div>
+        <div class="md:col-span-3 rounded-[2rem] bg-surface-container p-8">
+          <div class="text-5xl font-headline font-bold text-tertiary mb-2">+6</div>
+          <p class="text-on-surface-variant text-sm font-medium">zonas comerciales en Argentina</p>
+        </div>
+        <div class="md:col-span-3 rounded-[2rem] bg-primary text-on-primary p-8">
+          <div class="text-5xl font-headline font-bold mb-2">100%</div>
+          <p class="text-sm font-medium text-on-primary/80">compromiso con la calidad</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="valores" class="py-24 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-8">
+      <h3 class="text-5xl font-headline font-extrabold leading-tight mb-8">Valores que sostienen nuestra forma de trabajar</h3>
+      <div class="grid md:grid-cols-4 gap-6 text-on-surface-variant">
+        <div class="rounded-3xl bg-white p-6"><h4 class="font-bold text-on-surface mb-2">Calidad</h4><p>Desempeño consistente en cada solución.</p></div>
+        <div class="rounded-3xl bg-white p-6"><h4 class="font-bold text-on-surface mb-2">Seriedad</h4><p>Compromiso real en plazos y asistencia.</p></div>
+        <div class="rounded-3xl bg-white p-6"><h4 class="font-bold text-on-surface mb-2">Eficiencia</h4><p>Herramientas pensadas para potenciar resultados.</p></div>
+        <div class="rounded-3xl bg-white p-6"><h4 class="font-bold text-on-surface mb-2">Honestidad</h4><p>Relaciones transparentes y de largo plazo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lineas" class="py-20 bg-primary text-on-primary">
+    <div class="max-w-7xl mx-auto px-8">
+      <h3 class="text-4xl font-headline font-bold">Líneas de trabajo Fragaria</h3>
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        <article class="rounded-2xl border border-white/20 bg-white/5 p-5">
+          <h4 class="font-semibold">Desarrollo</h4>
+          <p class="mt-2 text-sm text-white/80">Investigación aplicada para nuevas soluciones.</p>
+        </article>
+        <article class="rounded-2xl border border-white/20 bg-white/5 p-5">
+          <h4 class="font-semibold">Producción</h4>
+          <p class="mt-2 text-sm text-white/80">Control y trazabilidad en cada proceso.</p>
+        </article>
+        <article class="rounded-2xl border border-white/20 bg-white/5 p-5">
+          <h4 class="font-semibold">Comercialización</h4>
+          <p class="mt-2 text-sm text-white/80">Cobertura nacional y alcance internacional.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contacto" class="w-full rounded-t-[2rem] mt-20 bg-[#f6f3f2]">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-12 py-16 max-w-7xl mx-auto">
+      <div class="space-y-6">
+        <div class="text-xl font-black text-[#05652E]">Fragaria S.A.</div>
+        <p class="text-sm max-w-sm opacity-80">Seguinos para ver novedades y lanzamientos en Instagram o escribinos para asesoramiento comercial.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://www.instagram.com/fragaria.com.ar/" target="_blank" rel="noopener noreferrer" class="underline font-semibold">Instagram</a>
+          <a href="mailto:info@fragaria.com.ar" class="underline font-semibold">info@fragaria.com.ar</a>
+          <a href="catalogo.html" class="underline font-semibold">Ver catálogo</a>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-8">
+        <div class="flex flex-col gap-4">
+          <h5 class="font-bold">Explorar</h5>
+          <a class="text-sm opacity-70 hover:opacity-100" href="#empresa">Empresa</a>
+          <a class="text-sm opacity-70 hover:opacity-100" href="#valores">Valores</a>
+        </div>
+        <div class="flex flex-col gap-4">
+          <h5 class="font-bold">Iniciativa</h5>
+          <a class="text-sm opacity-70 hover:opacity-100" href="#lineas">Sustentabilidad</a>
+          <a class="text-sm opacity-70 hover:opacity-100" href="catalogo.html">Productos</a>
+        </div>
+      </div>
+      <div class="md:col-span-2 pt-12 border-t border-on-surface/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-sm">© 2026 Fragaria S.A. Todos los derechos reservados.</div>
+        <div class="text-sm">Spanish (ES)</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
