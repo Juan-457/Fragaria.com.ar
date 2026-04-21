@@ -3,23 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fragaria S.A. | Versión 1 — Tierra Viva</title>
+  <title>Fragaria S.A. | Versión 1 — Roboto</title>
   <meta name="description" content="Fragaria S.A.: más de 37 años desarrollando fertilizantes biológicos, coadyuvantes y especialidades agropecuarias." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             forest: { 900: '#0a2e1a', 800: '#1b4332', 700: '#2d6a4f', 500: '#52b788', 100: '#d8f3dc' },
-            gold: { 500: '#d4a017', 400: '#e8b931', 300: '#f5d06a' }
+            gold: { 500: '#d4a017', 400: '#e8b931', 300: '#f5d06a' },
+            lime: { 400: '#a3e635', 500: '#84cc16', 600: '#65a30d', 700: '#4d7c0f' },
+            ink: { 950: '#080c10', 900: '#0f172a', 800: '#1e293b', 700: '#334155' }
           },
           fontFamily: {
             display: ['Playfair Display', 'serif'],
-            body: ['Inter', 'sans-serif']
+            sans: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            roboto: ['Roboto', 'sans-serif']
           }
         }
       }
@@ -30,6 +34,12 @@
     .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
     .clip-diagonal-rev { clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%); }
     .text-stroke { -webkit-text-stroke: 1px #7fe5bf; color: #4fd1a2; text-shadow: 0 0 16px rgba(79, 209, 162, 0.28); }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+    .float { animation: float 4s ease-in-out infinite; }
+    .gradient-text { background: linear-gradient(135deg, #b8f36a 0%, #55d67b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-soft-green { font-weight: 600; letter-spacing: 0.01em; text-shadow: 0 0 14px rgba(120, 235, 160, 0.22); }
+    .hero-soft-green-solid { color: #3f8f67; font-weight: 600; letter-spacing: 0.01em; text-shadow: 0 0 10px rgba(90, 180, 130, 0.18); }
+    .dot-grid { background-image: radial-gradient(circle, #334155 1px, transparent 1px); background-size: 28px 28px; }
   </style>
   <link rel="icon" href="img/favicon-32.png" sizes="32x32" />
   <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
@@ -38,85 +48,114 @@
 <body class="bg-[#faf3e0] font-body text-forest-900 antialiased">
 
   <!-- NAV -->
-  <nav class="fixed top-0 z-50 w-full bg-forest-900/95 backdrop-blur-md border-b border-forest-800">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-      <a href="#inicio">
-        <img src="fragaruua.webp" alt="Fragaria" class="h-10 w-auto brightness-0 invert" />
+  <nav class="fixed top-0 z-50 w-full border-b border-black/10 bg-neutral-50/95 backdrop-blur-md">
+    <div class="mx-auto flex h-[5.5rem] max-w-7xl items-center justify-between px-6 lg:px-10">
+      <a href="#inicio" class="flex items-center gap-3">
+        <img src="fragaruua.webp" alt="Fragaria" class="h-[4.25rem] w-auto" />
+        <img src="fragaria transparente.png" alt="Fragaria transparente" class="h-[3.9rem] w-auto origin-left scale-[1.75] object-contain" />
       </a>
-      <div class="hidden items-center gap-8 md:flex">
-        <a href="#empresa" class="text-sm font-medium text-white/70 transition hover:text-gold-400">Empresa</a>
-        <a href="#lineas" class="text-sm font-medium text-white/70 transition hover:text-gold-400">Líneas</a>
-        <a href="#valores" class="text-sm font-medium text-white/70 transition hover:text-gold-400">Valores</a>
-        <a href="#contacto" class="text-sm font-medium text-white/70 transition hover:text-gold-400">Contacto</a>
+      <div class="hidden items-center gap-3 md:flex">
+        <a href="#empresa" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">Empresa</a>
+        <a href="#lineas" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">Líneas</a>
+        <a href="#valores" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">Valores</a>
+        <a href="#contacto" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">Contacto</a>
       </div>
-      <a href="https://wa.me/543462450100?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20sus%20productos." target="_blank"
+      <a href="catalogo.html"
          class="flex items-center gap-2 rounded-full bg-[#25d366] px-5 py-2 text-sm font-bold text-white transition hover:bg-[#1ebe57]">
-        <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.104 1.522 5.826L.057 23.882a.75.75 0 0 0 .93.93l6.056-1.465A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 0 1-5.12-1.408l-.368-.217-3.816.924.943-3.816-.238-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        WhatsApp
+        Soluciones
       </a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <header id="inicio" class="clip-diagonal relative min-h-screen bg-forest-900 pt-20 pb-32 overflow-hidden">
-    <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline>
+  <header id="inicio" class="relative min-h-screen overflow-hidden pt-20">
+    <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline aria-hidden="true">
       <source src="hero2.mp4" type="video/mp4" />
     </video>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/40"></div>
-    <!-- grain texture overlay -->
-    <div class="absolute inset-0 opacity-5" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22300%22 height=%22300%22 filter=%22url(%23noise)%22 opacity=%221%22/%3E%3C/svg%3E')"></div>
+    <div class="absolute inset-0 bg-ink-950/65"></div>
+    <div class="dot-grid absolute inset-0 opacity-30"></div>
+    <!-- Glow blobs -->
+    <div class="absolute -top-40 left-1/4 h-96 w-96 rounded-full bg-lime-500/10 blur-3xl"></div>
+    <div class="absolute top-1/3 -right-20 h-80 w-80 rounded-full bg-lime-600/10 blur-3xl"></div>
 
-    <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pt-16 lg:pt-24">
-      <div class="grid gap-16 lg:grid-cols-2 items-center">
-        <!-- Text -->
-        <div class="rounded-3xl border border-white/15 bg-black/20 p-6 backdrop-blur-sm lg:p-8">
-          <p class="mb-4 inline-block rounded-full border border-gold-500/40 bg-gold-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold-300">
-            Desde 1999 en el agro argentino
-          </p>
-          <h1 class="font-display text-5xl font-black leading-tight text-white sm:text-6xl lg:text-7xl">
-            Sembramos<br/>
-            <span class="text-stroke">soluciones</span><br/>
-            <span class="text-gold-400">para el futuro</span>
+    <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-24">
+      <div class="grid gap-12 lg:grid-cols-2 items-center">
+        <!-- Left text -->
+        <div>
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-lime-500/30 bg-lime-500/10 px-4 py-1.5">
+            <span class="h-2 w-2 rounded-full bg-lime-500 animate-pulse"></span>
+            <span class="text-xs font-semibold text-lime-400 tracking-wider uppercase">Agro · Tecnología · Sustentabilidad</span>
+          </div>
+          <h1 class="text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            Innovación<br/>
+            para una<br/>
+            <span class="gradient-text hero-soft-green">agricultura</span><br/>
+            <span class="text-white">eficiente</span>
           </h1>
-          <p class="mt-6 max-w-lg text-lg text-white/85 leading-relaxed">
-            Fertilizantes biológicos, coadyuvantes y especialidades agropecuarias con presencia en Argentina y más de 13 países.
+          <p class="mt-8 max-w-lg text-lg text-white/60 font-body leading-relaxed">
+            Fragaria S.A. desarrolla, produce y comercializa fertilizantes biológicos, coadyuvantes y especialidades agropecuarias con más de 37 años de trayectoria.
           </p>
           <div class="mt-10 flex flex-wrap gap-4">
-            <a href="https://wa.me/543462450100?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20sus%20productos." target="_blank"
-               class="flex items-center gap-2 rounded-full bg-[#25d366] px-8 py-4 text-base font-bold text-white shadow-lg transition hover:bg-[#1ebe57] hover:shadow-xl">
+            <a href="https://wa.me/543462450100?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20los%20productos%20de%20Fragaria." target="_blank"
+               class="flex items-center gap-2.5 rounded-xl bg-[#25d366] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#25d366]/20 transition hover:bg-[#1ebe57] hover:shadow-[#25d366]/40">
               <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.104 1.522 5.826L.057 23.882a.75.75 0 0 0 .93.93l6.056-1.465A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 0 1-5.12-1.408l-.368-.217-3.816.924.943-3.816-.238-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-              Consultanos por WhatsApp
+              Escribinos por WhatsApp
             </a>
-            <a href="#empresa" class="rounded-full border border-white/30 px-8 py-4 text-base font-semibold text-white transition hover:bg-white/10">
-              Conocer más →
+            <a href="#empresa" class="rounded-xl border border-white/15 px-7 py-3.5 text-sm font-semibold text-white/80 transition hover:border-white/30 hover:text-white">
+              Ver empresa ↓
             </a>
           </div>
         </div>
 
-        <!-- Stats grid -->
-        <div class="grid grid-cols-2 gap-4">
-          <div class="rounded-3xl border border-white/20 bg-black/25 p-8 backdrop-blur-md">
-            <p class="font-display text-5xl font-black text-gold-400 js-counter" data-target="37" data-prefix="+">+0</p>
-            <p class="mt-2 text-sm text-white/70">años de trayectoria</p>
-          </div>
-          <div class="rounded-3xl border border-white/20 bg-black/25 p-8 backdrop-blur-md">
-            <p class="font-display text-5xl font-black text-forest-500 js-counter" data-target="13" data-prefix="+">+0</p>
-            <p class="mt-2 text-sm text-white/70">países con presencia</p>
-          </div>
-          <div class="rounded-3xl border border-white/20 bg-black/25 p-8 backdrop-blur-md">
-            <p class="font-display text-5xl font-black text-forest-500 js-counter" data-target="6" data-prefix="+">+0</p>
-            <p class="mt-2 text-sm text-white/70">zonas comerciales en ARG</p>
-          </div>
-          <div class="rounded-3xl border border-white/20 bg-black/25 p-8 backdrop-blur-md">
-            <p class="font-display text-5xl font-black text-gold-400 js-counter" data-target="100" data-suffix="%">0%</p>
-            <p class="mt-2 text-sm text-white/70">compromiso ambiental</p>
+        <!-- Right: animated metrics card -->
+        <div class="float relative">
+          <div class="rounded-3xl border border-white/10 bg-ink-900/80 p-8 backdrop-blur-xl shadow-2xl">
+            <div class="mb-6 flex items-center justify-between">
+              <p class="text-sm font-semibold text-white/60">Fragaria en cifras</p>
+              <span class="rounded-full bg-lime-500/20 px-3 py-1 text-xs font-bold text-lime-400">2026</span>
+            </div>
+            <div class="space-y-5">
+              <div class="flex items-center justify-between rounded-xl bg-white/5 p-4">
+                <div>
+                  <p class="text-xs text-white">Trayectoria</p>
+                  <p class="text-2xl font-bold text-white">
+                    <span class="js-counter" data-target="37" data-prefix="+">+0</span> años
+                  </p>
+                </div>
+                <div class="h-10 w-10 rounded-xl bg-lime-500/20 flex items-center justify-center">
+                  <svg class="h-5 w-5 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+              </div>
+              <div class="flex items-center justify-between rounded-xl bg-white/5 p-4">
+                <div>
+                  <p class="text-xs text-white">Alcance internacional</p>
+                  <p class="text-2xl font-bold text-white">
+                    <span class="js-counter" data-target="13" data-prefix="+">+0</span> países
+                  </p>
+                </div>
+                <div class="h-10 w-10 rounded-xl bg-lime-500/20 flex items-center justify-center">
+                  <svg class="h-5 w-5 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+              </div>
+              <div class="flex items-center justify-between rounded-xl bg-lime-500/10 border border-lime-500/20 p-4">
+                <div>
+                  <p class="text-xs text-white">Zonas en Argentina</p>
+                  <p class="text-2xl font-bold text-white">
+                    <span class="js-counter" data-target="6" data-prefix="+">+0</span> zonas
+                  </p>
+                </div>
+                <div class="h-10 w-10 rounded-xl bg-lime-500/30 flex items-center justify-center">
+                  <svg class="h-5 w-5 text-lime-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <main>
+  <main class="font-roboto">
     <!-- EMPRESA -->
     <section id="empresa" class="bg-[#faf3e0] py-24">
       <div class="mx-auto max-w-7xl px-6 lg:px-10">
