@@ -69,20 +69,24 @@
     <div class="dot-grid absolute inset-0 opacity-15"></div>
     <div class="absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-lime-500/10 blur-3xl"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-      <div class="text-left max-w-2xl">
-        <p class="text-sm font-semibold tracking-[0.25em] text-lime-400 uppercase">Conocé</p>
-        <h1 class="mt-4 font-display text-5xl font-black leading-tight text-white sm:text-6xl">Nuestra <span class="gradient-text">Empresa</span></h1>
-        <p class="mt-6 text-sm text-white/60">Fragaria &gt; Empresa &gt; Nuestra Empresa</p>
-        <p class="mt-8 text-lg leading-8 text-white/80">
-          Fragaria SA es una empresa Argentina que hace más de 30 años participa del mercado agropecuario desarrollando,
-          produciendo y comercializando fertilizantes biológicos, bioestimulantes, coadyuvantes y otras especialidades amigables.
-        </p>
-        <p class="mt-4 text-lg leading-8 text-white/80">
-          Con planta propia de producción y marcado carácter evolutivo, proveemos al mercado argentino y de otros países dentro y fuera de América.
-        </p>
-        <p class="mt-4 text-lg leading-8 text-white/80">
-          Nos fundamentamos en los inquebrantables conceptos de calidad, seriedad, eficiencia y honestidad. Asimismo, ponemos especial énfasis en la amigabilidad con el medio ambiente.
-        </p>
+      <div class="grid gap-8 lg:grid-cols-[2fr_3fr] lg:items-center">
+        <!-- Izquierda: label + título + breadcrumb -->
+        <div>
+          <p class="text-sm font-semibold tracking-[0.25em] text-lime-400 uppercase">Conocé</p>
+          <h1 class="mt-4 font-display text-5xl font-black leading-tight text-white sm:text-6xl">Nuestra <span class="gradient-text">Empresa</span></h1>
+          <p class="mt-4 text-xs text-white/35 tracking-wide">Fragaria › Empresa › Nuestra Empresa</p>
+        </div>
+        <!-- Derecha: descripción condensada + badges -->
+        <div>
+          <p class="text-lg leading-8 text-white/80">
+            Empresa argentina con más de 30 años en el mercado agropecuario. Desarrollamos, producimos y comercializamos fertilizantes biológicos, bioestimulantes y coadyuvantes con planta propia, exportando a Asia, Europa y África.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="rounded-full border border-lime-400/30 bg-lime-400/10 px-4 py-1.5 text-sm font-semibold text-lime-300">+30 años de trayectoria</span>
+            <span class="rounded-full border border-emerald-300/30 bg-emerald-300/10 px-4 py-1.5 text-sm font-semibold text-emerald-300">ISO 9001 certificada</span>
+            <span class="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-1.5 text-sm font-semibold text-cyan-300">Exportación global</span>
+          </div>
+        </div>
       </div>
       <div class="mt-10 w-full">
         <div class="relative w-full rounded-[2rem] border border-white/15 bg-white/5 p-6 backdrop-blur-sm sm:p-8">
