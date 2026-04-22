@@ -5,6 +5,11 @@ Sitio web estatico corporativo de Fragaria S.A., orientado a presentar empresa, 
 ## Contenido
 
 - `index.html`: landing principal.
+- `empresa.html`: pagina institucional de empresa.
+- `catalogo.html`: catalogo local con filtros y enlaces a fichas internas.
+- `productos/`: fichas HTML locales de cada producto.
+- `docs/`: hojas de seguridad descargadas desde las fichas originales.
+- `img/`: imagenes del catalogo y favicons.
 - `hero.mp4`: video del hero.
 - `fragaruua.webp`: logo principal.
 - `CNAME`: dominio personalizado.
@@ -16,6 +21,8 @@ Sitio web estatico corporativo de Fragaria S.A., orientado a presentar empresa, 
 - valores
 - compromiso con la sustentabilidad
 - feed / CTA de Instagram
+- catalogo de productos
+- fichas de producto locales
 - contacto
 
 ## Stack
@@ -46,4 +53,5 @@ Publicacion estatica simple. Mantener:
 
 ## Notas
 
-- Hoy el repositorio es una landing unica. Si se suman productos o fichas tecnicas, conviene organizar una estructura de paginas adicionales.
+- Las cards de `catalogo.html` apuntan a `productos/<slug>/`.
+- Cada ficha conserva la informacion migrada desde la pagina original y enlaza los documentos guardados en `docs/`.
