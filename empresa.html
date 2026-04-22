@@ -33,6 +33,7 @@
     html { scroll-behavior: smooth; }
     .dot-grid { background-image: radial-gradient(circle, #334155 1px, transparent 1px); background-size: 28px 28px; }
     .gradient-text { background: linear-gradient(135deg, #b8f36a 0%, #55d67b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .timeline-glow { box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2), 0 0 24px rgba(52, 211, 153, 0.45); }
   </style>
   <link rel="icon" href="img/favicon-32.png" sizes="32x32" />
   <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
@@ -83,8 +84,46 @@
           Nos fundamentamos en los inquebrantables conceptos de calidad, seriedad, eficiencia y honestidad. Asimismo, ponemos especial énfasis en la amigabilidad con el medio ambiente.
         </p>
       </div>
-      <div class="relative flex min-h-[320px] items-center justify-center lg:min-h-[760px]">
-        <img src="Historia.jpg" alt="Historia de Fragaria" class="h-auto w-full max-w-none object-contain object-right" />
+      <div class="relative flex min-h-[420px] items-center justify-center lg:min-h-[760px]">
+        <div class="relative w-full max-w-3xl rounded-[2rem] border border-white/15 bg-white/5 p-6 backdrop-blur-sm sm:p-8">
+          <div class="pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-br from-lime-400/10 via-emerald-300/5 to-cyan-300/10"></div>
+          <div class="relative">
+            <h2 class="text-2xl font-black text-white sm:text-3xl">Nuestra historia en evolución</h2>
+            <p class="mt-2 text-sm text-white/70 sm:text-base">Más de 30 años impulsando innovación científica y crecimiento sustentable.</p>
+          </div>
+
+          <div class="relative mt-8 space-y-6 pl-6 sm:pl-8">
+            <div class="absolute left-[10px] top-2 h-[calc(100%-0.5rem)] w-[3px] rounded-full bg-gradient-to-b from-lime-400 via-emerald-400 to-cyan-300 sm:left-[14px]"></div>
+
+            <article class="group relative rounded-2xl border border-white/15 bg-ink-900/60 p-4 transition hover:-translate-y-0.5 hover:border-lime-300/60 hover:bg-ink-900/80">
+              <span class="timeline-glow absolute -left-[22px] top-5 h-4 w-4 rounded-full bg-lime-400 sm:-left-[26px]"></span>
+              <p class="text-sm font-black tracking-wide text-lime-300">1989</p>
+              <p class="mt-1 text-sm text-white/85">Primer convenio con el INTA para desarrollo de inoculantes.</p>
+            </article>
+
+            <article class="group relative rounded-2xl border border-white/15 bg-ink-900/60 p-4 transition hover:-translate-y-0.5 hover:border-lime-300/60 hover:bg-ink-900/80">
+              <span class="timeline-glow absolute -left-[22px] top-5 h-4 w-4 rounded-full bg-emerald-300 sm:-left-[26px]"></span>
+              <p class="text-sm font-black tracking-wide text-lime-300">1994 · 2000 · 2003</p>
+              <p class="mt-1 text-sm text-white/85">Certificación ISO 9001, primer inoculante <em>Azospirillum brasilense</em> y coadyuvantes con tecnología disruptiva.</p>
+            </article>
+
+            <article class="group relative rounded-2xl border border-white/15 bg-ink-900/60 p-4 transition hover:-translate-y-0.5 hover:border-lime-300/60 hover:bg-ink-900/80">
+              <span class="timeline-glow absolute -left-[22px] top-5 h-4 w-4 rounded-full bg-emerald-300 sm:-left-[26px]"></span>
+              <p class="text-sm font-black tracking-wide text-lime-300">2015 · 2016 · 2018</p>
+              <p class="mt-1 text-sm text-white/85">Expansión global, incorporación de tecnologías TPS y liofilizado, y nuevos desarrollos de alto impacto.</p>
+            </article>
+
+            <article class="group relative rounded-2xl border border-white/15 bg-ink-900/60 p-4 transition hover:-translate-y-0.5 hover:border-lime-300/60 hover:bg-ink-900/80">
+              <span class="timeline-glow absolute -left-[22px] top-5 h-4 w-4 rounded-full bg-cyan-300 sm:-left-[26px]"></span>
+              <p class="text-sm font-black tracking-wide text-lime-300">2020 · 2021 · 2023</p>
+              <p class="mt-1 text-sm text-white/85">Expansión territorial, nuevo modelo comercial y desarrollo de consorcios microbianos.</p>
+            </article>
+          </div>
+
+          <div class="relative mt-7 rounded-2xl border border-emerald-200/30 bg-gradient-to-r from-emerald-400/20 to-cyan-300/20 p-4">
+            <p class="text-lg font-black leading-tight text-white sm:text-2xl">Fuerte presencia nacional e internacional.</p>
+          </div>
+        </div>
       </div>
     </div>
   </header>
