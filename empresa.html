@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
@@ -20,10 +20,10 @@
             ink: { 950: '#080c10', 900: '#0f172a', 800: '#1e293b', 700: '#334155' }
           },
           fontFamily: {
-            display: ['Playfair Display', 'serif'],
-            sans: ['Space Grotesk', 'sans-serif'],
-            body: ['Inter', 'sans-serif'],
-            lato: ['Lato', 'sans-serif']
+            display: ['Roboto', 'sans-serif'],
+            sans: ['Roboto', 'sans-serif'],
+            body: ['Roboto', 'sans-serif'],
+            lato: ['Roboto', 'sans-serif']
           }
         }
       }
@@ -61,7 +61,7 @@
   </nav>
 
   <header class="relative overflow-hidden pt-28 pb-20 bg-ink-950">
-    <img src="Historia.jpg" alt="Historia de Fragaria" class="absolute inset-0 h-full w-full object-cover" />
+    <img src="Historia.jpg" alt="Historia de Fragaria" class="absolute inset-0 h-full w-full object-contain object-center" />
     <div class="absolute inset-0 bg-ink-950/65"></div>
     <div class="dot-grid absolute inset-0 opacity-15"></div>
     <div class="absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-lime-500/10 blur-3xl"></div>
@@ -82,7 +82,7 @@
     </div>
   </header>
 
-  <main class="font-lato">
+  <main>
     <section id="mision" class="py-20">
       <div class="mx-auto grid max-w-7xl gap-8 px-6 lg:px-10 md:grid-cols-2">
         <article class="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-forest-900/10">
