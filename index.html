@@ -73,8 +73,8 @@
 
   <!-- HERO -->
   <header id="inicio" class="relative min-h-screen overflow-hidden pt-20">
-    <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline aria-hidden="true">
-      <source src="hero2.mp4" type="video/mp4" />
+    <video class="js-lazy-video absolute inset-0 h-full w-full object-cover" muted loop playsinline preload="none" poster="maiz2.png" aria-hidden="true">
+      <source data-src="hero2-optimized.mp4" type="video/mp4" />
     </video>
     <div class="absolute inset-0 bg-ink-950/65"></div>
     <div class="dot-grid absolute inset-0 opacity-30"></div>
@@ -389,6 +389,29 @@
   </a>
 
   <script>
+    function loadHeroVideos() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.connection?.saveData) {
+        return;
+      }
+
+      document.querySelectorAll('.js-lazy-video').forEach((video) => {
+        video.querySelectorAll('source[data-src]').forEach((source) => {
+          source.src = source.dataset.src;
+          source.removeAttribute('data-src');
+        });
+        video.load();
+        video.play().catch(() => {});
+      });
+    }
+
+    window.addEventListener('load', () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadHeroVideos, { timeout: 1600 });
+      } else {
+        setTimeout(loadHeroVideos, 600);
+      }
+    });
+
     function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button[type=submit]');
