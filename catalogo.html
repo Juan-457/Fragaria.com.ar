@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Fragaria S.A. | Catálogo de Productos</title>
-<meta content="Catálogo completo de soluciones agropecuarias Fragaria: coadyuvantes, fertilizantes, inoculantes, curasemillas, fungicidas e insecticidas." name="description"/>
+<meta content="Catálogo completo de soluciones agropecuarias Fragaria: coadyuvantes, tratamiento de semillas, bioestimulación y nutrición, e insecticidas." name="description"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -62,7 +62,7 @@
 </a>
 <div class="hidden items-center gap-3 md:flex">
 <a class="rounded-full border border-slate-900/10 bg-slate-900/5 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-slate-800/30 hover:bg-slate-900/10 hover:text-slate-900" href="#inicio">Inicio</a>
-<a class="rounded-full border border-slate-900/10 bg-slate-900/5 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-slate-800/30 hover:bg-slate-900/10 hover:text-slate-900" href="#filtros">Secciones</a>
+<a class="rounded-full border border-slate-900/10 bg-slate-900/5 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-slate-800/30 hover:bg-slate-900/10 hover:text-slate-900" href="#filtros">Categorías</a>
 <a class="rounded-full border border-slate-900/10 bg-slate-900/5 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-slate-800/30 hover:bg-slate-900/10 hover:text-slate-900" href="#product-grid">Productos</a>
 <a class="rounded-full border border-slate-900/10 bg-slate-900/5 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-slate-800/30 hover:bg-slate-900/10 hover:text-slate-900" href="index.html#contacto">Contacto</a>
 </div>
@@ -74,7 +74,7 @@
 <div class="mx-auto max-w-7xl px-6 lg:px-10">
 <p class="text-sm font-bold uppercase tracking-[0.14em] text-fragaria-200">Soluciones agropecuarias</p>
 <h1 class="mt-3 text-4xl font-extrabold sm:text-5xl">Catálogo de productos</h1>
-<p class="mt-4 max-w-2xl text-white/80">Filtrá por categoría para encontrar la solución que necesitás: desde coadyuvantes e inoculantes hasta insecticidas y fungicidas.</p>
+<p class="mt-4 max-w-2xl text-white/80">Filtrá por categoría para encontrar la solución que necesitás: coadyuvantes, tratamiento de semillas, bioestimulación y nutrición, u otras soluciones.</p>
 </div>
 </div>
 <main class="mx-auto my-10 max-w-7xl rounded-3xl border border-white/30 bg-white/90 px-6 py-12 shadow-soft backdrop-blur-sm lg:px-10">
@@ -90,20 +90,17 @@
 <button class="filter-btn active rounded-full border border-fragaria-700 px-4 py-2 text-sm font-semibold text-fragaria-700" data-filter="todos">
           Todos <span class="ml-1 text-xs opacity-70" id="count-todos"></span>
 </button>
-<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="plagas">
-          🐛 Plagas <span class="ml-1 text-xs opacity-60" id="count-plagas"></span>
-</button>
-<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="enfermedades">
-          🍄 Enfermedades <span class="ml-1 text-xs opacity-60" id="count-enfermedades"></span>
-</button>
-<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="nutricion">
-          🌱 Nutrición <span class="ml-1 text-xs opacity-60" id="count-nutricion"></span>
-</button>
-<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="inoculantes">
-          🧫 Inoculantes <span class="ml-1 text-xs opacity-60" id="count-inoculantes"></span>
-</button>
 <button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="coadyuvantes">
           ⚗️ Coadyuvantes <span class="ml-1 text-xs opacity-60" id="count-coadyuvantes"></span>
+</button>
+<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="tratamiento-semillas">
+          🌾 Trat. de Semillas <span class="ml-1 text-xs opacity-60" id="count-tratamiento-semillas"></span>
+</button>
+<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="bioestimulacion">
+          🌿 Bioestim. y Nutrición <span class="ml-1 text-xs opacity-60" id="count-bioestimulacion"></span>
+</button>
+<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="otras-soluciones">
+          🔬 Otras Soluciones <span class="ml-1 text-xs opacity-60" id="count-otras-soluciones"></span>
 </button>
 </div>
 </div>
@@ -112,13 +109,13 @@
 <!-- PRODUCT GRID -->
 <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="product-grid">
 <!-- ── INSECTICIDAS / PLAGAS ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="plagas" data-name="jumkan">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="jumkan">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="JUMKAN" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/jumkan.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">JK</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Plagas</span>
+<span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">JUMKAN</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">PROTEGE SU CULTIVO Y EL MEDIO AMBIENTE</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/jumkan/">
@@ -126,13 +123,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="plagas" data-name="aba 0.7">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="aba 0.7">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="ABA 0.7" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/aba-07.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ABA</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Plagas</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">ABA 0.7</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">INSECTICIDA ACARICIDA QUE CONTROLA INSECTOS EN SUS TRES ESTADIOS.</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/aba-0-7/">
@@ -140,13 +137,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="plagas" data-name="mirka bti">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirka bti">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Mirka BTI" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirka-bti.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BTI</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Plagas</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Mirka BTI</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Insecticida para larvas de mosquitos y jejenes</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/mirka-bti/">
@@ -155,13 +152,13 @@
 </div>
 </article>
 <!-- ── CURASEMILLAS / ENFERMEDADES ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="mirka">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirka">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="MIRKA" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirka.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">MK</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">MIRKA</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Excelente protección una vez que ponemos nuestras semillas en contacto con el suelo. Muy buena relación...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/mirka/">
@@ -169,13 +166,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="mirka 50%">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirka 50%">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="MIRKA 50%" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirka-50.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">50%</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">MIRKA 50%</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">CURASEMILLAS/FUNGICIDAS MIRKA CARBENZADIM 50%</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/mirka-50/">
@@ -183,13 +180,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="mirka metalaxil-m">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirka metalaxil-m">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="MIRKA METALAXIL-M" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirka-metalaxil-m.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">MTX</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">MIRKA METALAXIL-M</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Fungicida - curasemilla sistémico, formulado con Metalaxil-M (35%), especialmente indicado para el...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/mirka-metalaxil-m/">
@@ -197,13 +194,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="synergi">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="synergi">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="SYNERGI" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/synergi.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SYN</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">SYNERGI</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">TRIPLICA LA PROTECCIÓN SOBRE LA SEMILLA DE SOJA Azoxistrobin 1,25% Metiltiofanato 45% Metalaxil 4,2 FS...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/synergi/">
@@ -211,13 +208,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="better">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="better">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="BETTER" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/better.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BTR</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">BETTER</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">BETTER CURASEMILLAS CARBENDAZIM 15% + TIRAM 35%</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/better/">
@@ -225,13 +222,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="enlarger">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="enlarger">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="ENLARGER" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/enlarger.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ENL</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">ENLARGER</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Fungicida sistémico y de contacto, a partir de la combinación de Tebuconazole 20% y Azoxystrobin 12%...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/enlarger/">
@@ -239,13 +236,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="enfermedades" data-name="trichorium">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="trichorium">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="TRICHORIUM" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/trichorium.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">TRI</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-purple-700">Enfermedades</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">TRICHORIUM</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">POTENCIA TU RENDIMIENTO CON LA FORMULACIÓN ESPECIALIZADA</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/trichorium/">
@@ -254,13 +251,13 @@
 </div>
 </article>
 <!-- ── FERTILIZANTES / NUTRICIÓN ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="nutricion" data-name="inghol">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-name="inghol">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="INGHOL" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/inghol.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ING</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Nutrición</span>
+<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestim. &amp; Nutrición</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">INGHOL</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">BIOFERTILIZANTE FOLIAR DE FORMULACIÓN EXCLUSIVA</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/inghol/">
@@ -268,13 +265,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="nutricion" data-name="inghol pack">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-name="inghol pack">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="INGHOL PACK" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/inghol-pack.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ING</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Nutrición</span>
+<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestim. &amp; Nutrición</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">INGHOL PACK</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">BIOFERTILIZANTE FOLIAR + MACRO / MICRONUTRIENTES + COADYUVANTE PREMIUM Potencia el cultivo incrementando...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/inghol-pack/">
@@ -282,13 +279,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="nutricion" data-name="ferti bsp">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-name="ferti bsp">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Ferti BSP" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/ferti-bsp.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BSP</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Nutrición</span>
+<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestim. &amp; Nutrición</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Ferti BSP</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Elaborado a base de Pseudomonas rhodesiae , una de las bacterias promotoras de crecimiento (PGPR) más...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/ferti-bsp/">
@@ -296,13 +293,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="nutricion" data-name="maizazo">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="maizazo">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Maizazo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/maizazo.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">MZZ</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Nutrición</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Maizazo</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">El tratamiento de las semillas de maíz con Maizazo produce un desarrollo superior del cultivo...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/maizazo/">
@@ -310,13 +307,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="nutricion" data-name="n-fixer full">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="n-fixer full">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="N-Fixer Full" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/n-fixer-full.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">NFX</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Nutrición</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">N-Fixer Full</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">INOCULANTE BASE OLEOSA + CURASEMILLAS</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/n-fixer-full/">
@@ -325,13 +322,13 @@
 </div>
 </article>
 <!-- ── INOCULANTES ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua legumbres">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="acqua legumbres">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Legumbres" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-legumbres.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ACQ</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Legumbres</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">INOCULANTE PARA VICIA, ARVEJA Y LENTEJA</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-legumbres/">
@@ -339,13 +336,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua nod triple">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="acqua nod triple">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Nod Triple" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-nod-triple.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">NOD</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Nod Triple</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante líquido único en el mercado para semillas de soja a base de Bradyrhizobium japonicum...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-nod-triple/">
@@ -353,13 +350,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua pack">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="acqua pack">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Pack" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-pack.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">PKG</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Pack</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">INOCULANTE EN BASE ACUOSA + CURASEMILLAS.</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-pack/">
@@ -367,13 +364,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua protector">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="acqua protector">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Protector" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-protector.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">PRO</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Protector</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">PRE-INOCULANTE SIN PÉRDIDA DE VIABILIDAD</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-protector/">
@@ -381,13 +378,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua sensing">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="acqua sensing">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Sensing" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-sensing.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SNS</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Sensing</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante en base acuosa de alta concentración de bacterias Bradyrhizobium japonicum en cantidad no...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-sensing/">
@@ -395,13 +392,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="acqua synergi">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="acqua synergi">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Synergi" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-synergi.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SYN</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Synergi</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">La mejor combinación para los mejores resultados. INOCULANTE ACQUA SENSING y FUNGICIDA SYNERGI, para que...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-synergi/">
@@ -409,13 +406,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="biofertilizante acqua duo">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="biofertilizante acqua duo">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Biofertilizante Acqua Duo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-duo.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">DUO</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Biofertilizante Acqua Duo</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">POTENCIA TU RENDIMIENTO CON LA FORMULACIÓN ESPECIALIZADA</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/biofertilizante-acqua-duo/">
@@ -423,13 +420,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="biosilo">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-name="biosilo">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Biosilo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/biosilo.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BSL</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestim. &amp; Nutrición</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Biosilo</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Del aislamiento de tres bacterias ácido lácticas (BAL) autóctonas, Fragaria creó BIOSILO: el inoculante...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/biosilo/">
@@ -437,13 +434,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="synergi pack">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="synergi pack">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Synergi Pack" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/synergi-pack.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SPK</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Synergi Pack</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Seguridad y potencia en la implantación una mejor nodulación. Combinación de tres productos: ACQUA...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/synergi-pack/">
@@ -451,13 +448,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="inoculantes" data-name="trigalazo">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="trigalazo">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Trigalazo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/trigalazo.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">TRG</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-blue-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">Inoculantes</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Trigalazo</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante líquido, promotor del crecimiento vegetal, para semillas de trigo y otros cereales de...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/trigalazo/">
@@ -466,13 +463,13 @@
 </div>
 </article>
 <!-- ── COADYUVANTES ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="sap plus">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="sap plus">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="SAP PLUS" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/sap-plus.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SAP</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">SAP PLUS</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">LA EVOLUCIÓN EN CORRECCIÓN DE AGUAS</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/sap-plus/">
@@ -480,13 +477,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="sap 100">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="sap 100">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="SAP 100" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/sap-100.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">100</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">SAP 100</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Excelente disolución y poder acidificante. Fácil almacenaje, manipuleo, dosificación y vertido en el...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/sap-100/">
@@ -494,13 +491,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="sap 42">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="sap 42">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="SAP 42" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/sap-42.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">42</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">SAP 42</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Activador de herbicidas con el % de concentración más alto del mercado. Alto poder acidificante y máxima...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/sap-42/">
@@ -522,13 +519,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="mirka total cleaner">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirka total cleaner">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Mirka Total Cleaner" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirka-total-cleaner.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">TCL</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Mirka Total Cleaner</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">El limpiador y removedor que nos brinda todo lo que necesitamos para que el tanque, mangueras y picos de...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/mirka-total-cleaner/">
@@ -536,13 +533,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="mirk oil">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirk oil">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Mirk Oil" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirk-oil.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">OIL</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Mirk Oil</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">COADYUVANTE INDISPENSABLE PARA APLICACIONES EN CONDICIONES ADVERSAS</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/mirk-oil/">
@@ -578,13 +575,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="biomethil-max">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="biomethil-max">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="BIOMETHIL-MAX" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/biomethil-max.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BMX</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">BIOMETHIL-MAX</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Formulado con aceite vegetal metilado específico para el control de gramíneas. Coadyuvante de alta...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/biomethil-max-20l/">
@@ -673,6 +670,19 @@
 
     searchInput.addEventListener('input', applyFilters);
     applyFilters();
+
+    // Auto-filter via URL ?cat= parameter (usado desde el nav de index.html)
+    const urlCat = new URLSearchParams(location.search).get('cat');
+    if (urlCat) {
+      const targetBtn = document.querySelector(`[data-filter="${urlCat}"]`);
+      if (targetBtn) {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        targetBtn.classList.add('active');
+        activeFilter = urlCat;
+        applyFilters();
+        setTimeout(() => targetBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }), 200);
+      }
+    }
   </script>
 </body>
 </html>
