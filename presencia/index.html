@@ -33,6 +33,7 @@
     html { scroll-behavior: smooth; }
     .dot-grid { background-image: radial-gradient(circle, #334155 1px, transparent 1px); background-size: 28px 28px; }
     .gradient-text { background: linear-gradient(135deg, #b8f36a 0%, #55d67b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .clip-diagonal-rev { clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%); }
 
     /* Base province outline */
     .province {
@@ -301,8 +302,8 @@
     </section>
 
     <!-- ─── PRESENCIA INTERNACIONAL ─── -->
-    <section class="bg-ink-950 py-20">
-      <div class="dot-grid absolute pointer-events-none inset-0 opacity-10"></div>
+    <section class="clip-diagonal-rev bg-forest-900 py-32 text-white relative">
+      <div class="dot-grid absolute inset-0 opacity-30 pointer-events-none"></div>
       <div class="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div class="mb-12 text-center">
           <p class="text-sm font-semibold uppercase tracking-widest text-lime-400 mb-3">Presencia internacional</p>
