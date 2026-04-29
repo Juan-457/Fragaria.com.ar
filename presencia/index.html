@@ -493,7 +493,7 @@
       'Buenos Aires Norte': {
         color: '#10b981',
         colorDark: '#059669',
-        provinces: ['Buenos Aires','Ciudad Autónoma de Buenos Aires'],
+        provinces: ['Buenos Aires','Ciudad de Buenos Aires'],
         rep: {
           name: 'Maximiliano Arzani',
           role: 'Representante Zona Buenos Aires Norte',
@@ -546,7 +546,7 @@
     // ── D3 Map ────────────────────────────────────────────────────────
     let selectedZone = null;
 
-    const GEOJSON_URL = 'https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/argentina.geojson';
+    const GEOJSON_URL = './argentina.geojson';
 
     const container = document.querySelector('#argentina-map').parentElement;
     const svgEl = document.getElementById('argentina-map');
