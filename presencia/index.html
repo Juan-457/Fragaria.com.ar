@@ -493,7 +493,7 @@
       'Buenos Aires Norte': {
         color: '#10b981',
         colorDark: '#059669',
-        provinces: ['Buenos Aires','Ciudad de Buenos Aires'],
+        provinces: ['Ciudad de Buenos Aires'],
         rep: {
           name: 'Maximiliano Arzani',
           role: 'Representante Zona Buenos Aires Norte',
@@ -505,7 +505,7 @@
       'Buenos Aires Sur': {
         color: '#14b8a6',
         colorDark: '#0d9488',
-        provinces: ['La Pampa'],
+        provinces: [],
         rep: {
           name: 'Fragaria S.A.',
           role: 'Oficina Central — Zona Buenos Aires Sur',
@@ -516,15 +516,21 @@
       }
     };
 
-    // Build province → zone lookup
+    // Provinces split N/S at this latitude (roughly mid-BA and mid-La Pampa)
+    const SPLIT_LAT = -37.5;
+    // These two provinces are divided horizontally between Norte and Sur
+    const SPLIT_PROVINCES = new Set(['Buenos Aires', 'La Pampa']);
+
+    // Build province → zone lookup (split provinces excluded — handled separately)
     const PROVINCE_ZONE = {};
     Object.entries(ZONES).forEach(([zoneName, zone]) => {
-      zone.provinces.forEach(p => { PROVINCE_ZONE[p] = zoneName; });
+      zone.provinces.forEach(p => {
+        if (!SPLIT_PROVINCES.has(p)) PROVINCE_ZONE[p] = zoneName;
+      });
     });
 
     const UNCOVERED_COLOR = '#c8ddd7';
 
-    // Normalize GeoJSON property name differences
     function getProvinceName(props) {
       return props.name || props.NAME_1 || props.provincia || props.PROVINCIA || '';
     }
@@ -545,18 +551,27 @@
 
     // ── D3 Map ────────────────────────────────────────────────────────
     let selectedZone = null;
+    let splitY = 0; // set after projection is built
 
     const GEOJSON_URL = './argentina.geojson';
 
     const container = document.querySelector('#argentina-map').parentElement;
-    const svgEl = document.getElementById('argentina-map');
     const tooltip = document.getElementById('map-tooltip');
-
     const svg = d3.select('#argentina-map');
 
     function getColor(provinceName) {
       const zone = PROVINCE_ZONE[provinceName];
       return zone ? ZONES[zone].color : UNCOVERED_COLOR;
+    }
+
+    function showTooltip(event, provinceName, zoneName) {
+      tooltip.classList.remove('hidden');
+      tooltip.innerHTML = `<span class="font-bold">${provinceName}</span><br><span class="opacity-70 text-xs">${zoneName}</span>`;
+      const rect = container.getBoundingClientRect();
+      const x = event.clientX - rect.left + 12;
+      const y = event.clientY - rect.top - 10;
+      tooltip.style.left = Math.min(x, container.clientWidth - 170) + 'px';
+      tooltip.style.top = Math.max(y, 4) + 'px';
     }
 
     function drawMap(geoData) {
@@ -567,36 +582,87 @@
       const projection = d3.geoMercator().fitSize([W, H], geoData);
       const pathGen = d3.geoPath().projection(projection);
 
-      const provinces = svg.selectAll('path.province')
-        .data(geoData.features)
+      // Y coordinate of the horizontal split latitude
+      splitY = projection([0, SPLIT_LAT])[1];
+
+      // Clip paths: Norte = above splitY, Sur = below splitY
+      const defs = svg.append('defs');
+      defs.append('clipPath').attr('id', 'clip-norte')
+        .append('rect').attr('x', -5).attr('y', -5).attr('width', W + 10).attr('height', splitY + 5);
+      defs.append('clipPath').attr('id', 'clip-sur')
+        .append('rect').attr('x', -5).attr('y', splitY).attr('width', W + 10).attr('height', H - splitY + 5);
+
+      // Separate features
+      const normalFeatures = geoData.features.filter(f => !SPLIT_PROVINCES.has(getProvinceName(f.properties)));
+      const splitFeatures  = geoData.features.filter(f =>  SPLIT_PROVINCES.has(getProvinceName(f.properties)));
+
+      // ── Normal provinces ──
+      svg.selectAll('path.province')
+        .data(normalFeatures)
         .join('path')
         .attr('class', 'province')
         .attr('d', pathGen)
         .attr('fill', d => getColor(getProvinceName(d.properties)))
         .attr('data-province', d => getProvinceName(d.properties))
-        .attr('data-zone', d => PROVINCE_ZONE[getProvinceName(d.properties)] || '');
-
-      // Hover
-      provinces
         .on('mousemove', function(event, d) {
           const name = getProvinceName(d.properties);
-          const zone = PROVINCE_ZONE[name] || 'Sin cobertura directa';
-          tooltip.classList.remove('hidden');
-          tooltip.innerHTML = `<span class="font-bold">${name}</span><br><span class="opacity-70 text-xs">${zone}</span>`;
-          const rect = container.getBoundingClientRect();
-          const x = event.clientX - rect.left + 12;
-          const y = event.clientY - rect.top - 10;
-          tooltip.style.left = Math.min(x, container.clientWidth - 160) + 'px';
-          tooltip.style.top = Math.max(y, 4) + 'px';
+          showTooltip(event, name, PROVINCE_ZONE[name] || 'Sin cobertura directa');
         })
-        .on('mouseleave', function() {
-          tooltip.classList.add('hidden');
-        })
+        .on('mouseleave', () => tooltip.classList.add('hidden'))
         .on('click', function(event, d) {
-          const provinceName = getProvinceName(d.properties);
-          const zoneName = PROVINCE_ZONE[provinceName];
-          if (zoneName) selectZone(zoneName);
+          const z = PROVINCE_ZONE[getProvinceName(d.properties)];
+          if (z) selectZone(z);
         });
+
+      // ── Split provinces (Buenos Aires + La Pampa) ──
+      splitFeatures.forEach(feature => {
+        const name = getProvinceName(feature.properties);
+
+        // Norte half — rendered, no pointer events
+        svg.append('path')
+          .datum(feature).attr('d', pathGen)
+          .attr('class', 'province split-half')
+          .attr('data-province', name).attr('data-half', 'norte')
+          .attr('fill', ZONES['Buenos Aires Norte'].color)
+          .attr('clip-path', 'url(#clip-norte)')
+          .style('pointer-events', 'none');
+
+        // Sur half — rendered, no pointer events
+        svg.append('path')
+          .datum(feature).attr('d', pathGen)
+          .attr('class', 'province split-half')
+          .attr('data-province', name).attr('data-half', 'sur')
+          .attr('fill', ZONES['Buenos Aires Sur'].color)
+          .attr('clip-path', 'url(#clip-sur)')
+          .style('pointer-events', 'none');
+
+        // Divider stroke (white dashed line at splitY across the province bounding box)
+        const bounds = pathGen.bounds(feature);
+        svg.append('line')
+          .attr('class', 'split-divider')
+          .attr('x1', bounds[0][0]).attr('y1', splitY)
+          .attr('x2', bounds[1][0]).attr('y2', splitY)
+          .attr('stroke', 'white').attr('stroke-width', 1.5)
+          .attr('stroke-dasharray', '5,4').attr('opacity', 0.7)
+          .style('pointer-events', 'none');
+
+        // Invisible hit area — full province, detects click Y to decide Norte/Sur
+        svg.append('path')
+          .datum(feature).attr('d', pathGen)
+          .attr('fill', 'transparent').attr('stroke', 'none')
+          .attr('data-province', name)
+          .style('cursor', 'pointer')
+          .on('mousemove', function(event) {
+            const [, py] = d3.pointer(event, svg.node());
+            const zone = py < splitY ? 'Buenos Aires Norte' : 'Buenos Aires Sur';
+            showTooltip(event, name, zone);
+          })
+          .on('mouseleave', () => tooltip.classList.add('hidden'))
+          .on('click', function(event) {
+            const [, py] = d3.pointer(event, svg.node());
+            selectZone(py < splitY ? 'Buenos Aires Norte' : 'Buenos Aires Sur');
+          });
+      });
 
       document.getElementById('map-loading').style.display = 'none';
     }
@@ -604,43 +670,45 @@
     function selectZone(zoneName) {
       selectedZone = zoneName;
       const zone = ZONES[zoneName];
+      const isBAZone = zoneName === 'Buenos Aires Norte' || zoneName === 'Buenos Aires Sur';
 
-      // Update province colors
-      d3.selectAll('path.province')
-        .classed('dimmed', d => {
-          const name = getProvinceName(d.properties);
-          return PROVINCE_ZONE[name] !== zoneName;
-        })
-        .classed('selected', d => {
-          const name = getProvinceName(d.properties);
-          return PROVINCE_ZONE[name] === zoneName;
-        });
+      // Dim/highlight normal provinces
+      d3.selectAll('path.province:not(.split-half)')
+        .classed('dimmed', d => d && PROVINCE_ZONE[getProvinceName(d.properties)] !== zoneName)
+        .classed('selected', d => d && PROVINCE_ZONE[getProvinceName(d.properties)] === zoneName);
+
+      // Dim/highlight split halves
+      d3.selectAll('path.split-half').each(function() {
+        const el = d3.select(this);
+        const half = this.dataset.half; // 'norte' or 'sur'
+        const halfZone = half === 'norte' ? 'Buenos Aires Norte' : 'Buenos Aires Sur';
+        el.classed('dimmed', halfZone !== zoneName);
+        el.classed('selected', halfZone === zoneName);
+      });
 
       // Update legend pills
       document.querySelectorAll('.zone-pill').forEach(pill => {
         const isActive = pill.dataset.zone === zoneName;
         pill.classList.toggle('active', isActive);
-        if (isActive) {
-          pill.style.backgroundColor = zone.color + '30';
-          pill.style.borderColor = zone.color;
-        } else {
-          const z = ZONES[pill.dataset.zone];
-          pill.style.backgroundColor = z.color + '20';
-          pill.style.borderColor = z.color + '60';
-        }
+        const z = ZONES[pill.dataset.zone];
+        pill.style.backgroundColor = isActive ? z.color + '30' : z.color + '20';
+        pill.style.borderColor     = isActive ? z.color       : z.color + '60';
       });
+
+      // Build coverage label
+      const coverageLabel = [
+        ...zone.provinces,
+        ...(zoneName === 'Buenos Aires Norte' ? ['Norte de Buenos Aires', 'Norte de La Pampa'] : []),
+        ...(zoneName === 'Buenos Aires Sur'   ? ['Sur de Buenos Aires',  'Sur de La Pampa']   : [])
+      ].join(', ') || '—';
 
       // Show contact panel
       document.getElementById('panel-default').classList.add('hidden');
       const panelZone = document.getElementById('panel-zone');
       panelZone.classList.remove('hidden');
 
-      const hasName = zone.rep.name !== 'Fragaria S.A.';
-      const provincesLabel = zone.provinces.join(', ');
-
       panelZone.innerHTML = `
         <div class="panel-card rounded-2xl border bg-white shadow-lg overflow-hidden" style="border-color:${zone.color}40">
-          <!-- Zone header -->
           <div class="px-6 py-5" style="background:${zone.color}15; border-bottom:1px solid ${zone.color}30">
             <div class="flex items-center gap-3">
               <span class="h-4 w-4 rounded-full flex-shrink-0" style="background:${zone.color}"></span>
@@ -649,10 +717,9 @@
                 <h3 class="font-display text-xl font-bold text-forest-900">${zoneName}</h3>
               </div>
             </div>
-            <p class="mt-2 text-xs text-forest-800/50">${provincesLabel}</p>
+            <p class="mt-2 text-xs text-forest-800/50">${coverageLabel}</p>
           </div>
 
-          <!-- Rep info -->
           <div class="px-6 py-5">
             <div class="flex items-center gap-4 mb-5">
               <div class="h-14 w-14 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0" style="background:${zone.color}">
@@ -666,7 +733,7 @@
 
             <div class="space-y-3">
               <a href="mailto:${zone.rep.email}"
-                 class="flex items-center gap-3 rounded-xl bg-[#f5f8f7] p-3 transition hover:bg-[#eaf4ef] group">
+                 class="flex items-center gap-3 rounded-xl bg-[#f5f8f7] p-3 transition hover:bg-[#eaf4ef]">
                 <span class="flex h-9 w-9 items-center justify-center rounded-lg flex-shrink-0" style="background:${zone.color}20">
                   <svg class="h-4 w-4" style="color:${zone.colorDark}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -701,7 +768,6 @@
             </div>
           </div>
 
-          <!-- Reset button -->
           <div class="px-6 pb-5">
             <button onclick="resetMap()"
               class="w-full rounded-xl border border-forest-500/20 py-2.5 text-xs font-semibold text-forest-700 transition hover:bg-forest-500/5">
