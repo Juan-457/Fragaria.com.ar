@@ -582,8 +582,8 @@
       const projection = d3.geoMercator().fitSize([W, H], geoData);
       const pathGen = d3.geoPath().projection(projection);
 
-      // Y coordinate of the horizontal split latitude
-      splitY = projection([0, SPLIT_LAT])[1];
+      // Y coordinate of the horizontal split, shifted 12% upward
+      splitY = projection([0, SPLIT_LAT])[1] - 0.12 * H;
 
       // Clip paths: Norte = above splitY, Sur = below splitY
       const defs = svg.append('defs');
