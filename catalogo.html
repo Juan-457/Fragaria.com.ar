@@ -44,8 +44,8 @@
     .card-img-wrapper { aspect-ratio: 730/887; }
     .product-card { transition: transform .2s, box-shadow .2s; }
     .product-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -16px rgba(5,46,22,.25); }
-    .filter-btn { transition: background .15s, color .15s, border-color .15s; }
-    .filter-btn.active { background: #15803d; color: #fff; border-color: #15803d; }
+    .filter-btn, .adjuvant-btn { transition: background .15s, color .15s, border-color .15s; }
+    .filter-btn.active, .adjuvant-btn.active { background: #15803d; color: #fff; border-color: #15803d; }
     .hidden-card { display: none !important; }
   </style>
 <link href="img/favicon-32.png" rel="icon" sizes="32x32"/>
@@ -81,27 +81,50 @@
 <!-- SEARCH + FILTERS -->
 <div class="mb-10 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between" id="filtros">
 <!-- Search -->
-<div class="relative w-full max-w-sm">
+<div class="flex w-full flex-col gap-3 sm:max-w-sm">
+<div class="relative w-full">
 <svg class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 <input class="w-full rounded-full border border-slate-200 bg-slate-50 py-2.5 pl-9 pr-4 text-sm text-slate-800 focus:border-fragaria-500 focus:outline-none focus:ring-2 focus:ring-fragaria-200" id="search-input" placeholder="Buscar producto…" type="text"/>
 </div>
+<select class="w-full rounded-full border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-700 focus:border-fragaria-500 focus:outline-none focus:ring-2 focus:ring-fragaria-200" id="crop-filter">
+<option value="todos">Todos los cultivos</option>
+<option value="soja">Soja</option>
+<option value="maiz">Maíz</option>
+<option value="trigo">Trigo</option>
+<option value="cebada">Cebada</option>
+<option value="girasol">Girasol</option>
+<option value="sorgo">Sorgo</option>
+<option value="mani">Maní</option>
+<option value="algodon">Algodón</option>
+<option value="alfalfa">Alfalfa</option>
+<option value="arroz">Arroz</option>
+</select>
+</div>
 <!-- Filters -->
-<div aria-label="Filtrar por categoría" class="flex flex-wrap gap-2" id="filter-buttons" role="group">
+<div class="flex flex-col gap-3 lg:items-end">
+<div aria-label="Filtrar por categoría" class="flex flex-wrap gap-2 lg:justify-end" id="filter-buttons" role="group">
 <button class="filter-btn active rounded-full border border-fragaria-700 px-4 py-2 text-sm font-semibold text-fragaria-700" data-filter="todos">
           Todos <span class="ml-1 text-xs opacity-70" id="count-todos"></span>
+</button>
+<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="tratamiento-semillas">
+          🌾 Tratamiento de semilla <span class="ml-1 text-xs opacity-60" id="count-tratamiento-semillas"></span>
+</button>
+<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="bioestimulacion">
+          🌿 Bioestimulantes y nutrición <span class="ml-1 text-xs opacity-60" id="count-bioestimulacion"></span>
 </button>
 <button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="coadyuvantes">
           ⚗️ Coadyuvantes <span class="ml-1 text-xs opacity-60" id="count-coadyuvantes"></span>
 </button>
-<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="tratamiento-semillas">
-          🌾 Trat. de Semillas <span class="ml-1 text-xs opacity-60" id="count-tratamiento-semillas"></span>
-</button>
-<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="bioestimulacion">
-          🌿 Bioestim. y Nutrición <span class="ml-1 text-xs opacity-60" id="count-bioestimulacion"></span>
-</button>
 <button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="otras-soluciones">
           🔬 Otras Soluciones <span class="ml-1 text-xs opacity-60" id="count-otras-soluciones"></span>
 </button>
+</div>
+<div aria-label="Filtrar coadyuvantes por subsegmento" class="flex flex-wrap gap-2 lg:justify-end" id="adjuvant-buttons" role="group">
+<button class="adjuvant-btn active rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="todos">Todos los coadyuvantes</button>
+<button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-agua">Calidad de agua</button>
+<button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-aplicacion">Calidad de aplicación</button>
+<button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="adyuvantes-especificos">Adyuvantes específicos</button>
+</div>
 </div>
 </div>
 <!-- RESULT COUNT -->
@@ -109,7 +132,7 @@
 <!-- PRODUCT GRID -->
 <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="product-grid">
 <!-- ── INSECTICIDAS / PLAGAS ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="jumkan">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-adjuvant="adyuvantes-especificos" data-category="coadyuvantes" data-crops="todos" data-name="jumkan">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="JUMKAN" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/jumkan.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">JK</span></div>
@@ -123,7 +146,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="aba 0.7">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="todos" data-name="aba 0.7">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="ABA 0.7" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/aba-07.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ABA</span></div>
@@ -137,7 +160,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirka bti">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="todos" data-name="mirka bti">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Mirka BTI" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirka-bti.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BTI</span></div>
@@ -152,7 +175,7 @@
 </div>
 </article>
 <!-- ── CURASEMILLAS / ENFERMEDADES ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirka">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="soja maiz trigo cebada avena algodon mani arveja poroto cebadilla" data-name="mirka">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="MIRKA" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirka.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">MK</span></div>
@@ -166,7 +189,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirka 50%">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="todos" data-name="mirka 50%">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="MIRKA 50%" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirka-50.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">50%</span></div>
@@ -180,7 +203,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirka metalaxil-m">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="girasol maiz sorgo soja algodon alfalfa" data-name="mirka metalaxil-m">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="MIRKA METALAXIL-M" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirka-metalaxil-m.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">MTX</span></div>
@@ -194,7 +217,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="synergi">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="soja" data-name="synergi">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="SYNERGI" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/synergi.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SYN</span></div>
@@ -208,7 +231,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="better">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="soja maiz trigo cebada avena algodon mani cebadilla" data-name="better">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="BETTER" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/better.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BTR</span></div>
@@ -222,7 +245,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="enlarger">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="trigo cebada soja maiz girasol" data-name="enlarger">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="ENLARGER" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/enlarger.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ENL</span></div>
@@ -236,13 +259,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="trichorium">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="trigo soja maiz arroz" data-name="trichorium">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="TRICHORIUM" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/trichorium.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">TRI</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">TRICHORIUM</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">POTENCIA TU RENDIMIENTO CON LA FORMULACIÓN ESPECIALIZADA</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/trichorium/">
@@ -251,13 +274,13 @@
 </div>
 </article>
 <!-- ── FERTILIZANTES / NUTRICIÓN ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-name="inghol">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-crops="todos" data-name="inghol">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="INGHOL" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/inghol.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ING</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestim. &amp; Nutrición</span>
+<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestimulantes y nutrición</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">INGHOL</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">BIOFERTILIZANTE FOLIAR DE FORMULACIÓN EXCLUSIVA</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/inghol/">
@@ -265,13 +288,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-name="inghol pack">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-crops="todos" data-name="inghol pack">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="INGHOL PACK" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/inghol-pack.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ING</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestim. &amp; Nutrición</span>
+<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestimulantes y nutrición</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">INGHOL PACK</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">BIOFERTILIZANTE FOLIAR + MACRO / MICRONUTRIENTES + COADYUVANTE PREMIUM Potencia el cultivo incrementando...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/inghol-pack/">
@@ -279,13 +302,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-name="ferti bsp">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-crops="todos" data-name="ferti bsp">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Ferti BSP" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/ferti-bsp.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BSP</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestim. &amp; Nutrición</span>
+<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestimulantes y nutrición</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Ferti BSP</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Elaborado a base de Pseudomonas rhodesiae , una de las bacterias promotoras de crecimiento (PGPR) más...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/ferti-bsp/">
@@ -293,13 +316,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="maizazo">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="maiz" data-name="maizazo">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Maizazo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/maizazo.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">MZZ</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Maizazo</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">El tratamiento de las semillas de maíz con Maizazo produce un desarrollo superior del cultivo...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/maizazo/">
@@ -307,13 +330,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="n-fixer full">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="todos" data-name="n-fixer full">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="N-Fixer Full" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/n-fixer-full.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">NFX</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">N-Fixer Full</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">INOCULANTE BASE OLEOSA + CURASEMILLAS</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/n-fixer-full/">
@@ -322,7 +345,7 @@
 </div>
 </article>
 <!-- ── INOCULANTES ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="acqua legumbres">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="soja" data-name="acqua legumbres">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Legumbres" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-legumbres.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ACQ</span></div>
@@ -336,13 +359,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="acqua nod triple">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="acqua nod triple">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Nod Triple" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-nod-triple.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">NOD</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Nod Triple</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante líquido único en el mercado para semillas de soja a base de Bradyrhizobium japonicum...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-nod-triple/">
@@ -350,13 +373,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="acqua pack">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="acqua pack">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Pack" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-pack.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">PKG</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Pack</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">INOCULANTE EN BASE ACUOSA + CURASEMILLAS.</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-pack/">
@@ -364,7 +387,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="acqua protector">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="soja" data-name="acqua protector">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Protector" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-protector.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">PRO</span></div>
@@ -378,13 +401,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="acqua sensing">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="acqua sensing">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Sensing" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-sensing.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SNS</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Sensing</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante en base acuosa de alta concentración de bacterias Bradyrhizobium japonicum en cantidad no...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-sensing/">
@@ -392,7 +415,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="acqua synergi">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="soja" data-name="acqua synergi">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Synergi" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-synergi.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SYN</span></div>
@@ -406,13 +429,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="biofertilizante acqua duo">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="biofertilizante acqua duo">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Biofertilizante Acqua Duo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-duo.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">DUO</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Biofertilizante Acqua Duo</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">POTENCIA TU RENDIMIENTO CON LA FORMULACIÓN ESPECIALIZADA</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/biofertilizante-acqua-duo/">
@@ -420,13 +443,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-name="biosilo">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="bioestimulacion" data-crops="maiz sorgo alfalfa pasturas gramineas" data-name="biosilo">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Biosilo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/biosilo.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BSL</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestim. &amp; Nutrición</span>
+<span class="inline-block rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-emerald-700">Bioestimulantes y nutrición</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Biosilo</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Del aislamiento de tres bacterias ácido lácticas (BAL) autóctonas, Fragaria creó BIOSILO: el inoculante...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/biosilo/">
@@ -434,13 +457,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="synergi pack">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="synergi pack">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Synergi Pack" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/synergi-pack.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SPK</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Synergi Pack</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Seguridad y potencia en la implantación una mejor nodulación. Combinación de tres productos: ACQUA...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/synergi-pack/">
@@ -448,13 +471,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-name="trigalazo">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="trigo cebada avena" data-name="trigalazo">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Trigalazo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/trigalazo.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">TRG</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Trat. Semillas</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Trigalazo</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Inoculante líquido, promotor del crecimiento vegetal, para semillas de trigo y otros cereales de...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/trigalazo/">
@@ -463,7 +486,7 @@
 </div>
 </article>
 <!-- ── COADYUVANTES ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="sap plus">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="todos" data-name="sap plus">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="SAP PLUS" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/sap-plus.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SAP</span></div>
@@ -477,7 +500,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="sap 100">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="todos" data-name="sap 100">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="SAP 100" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/sap-100.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">100</span></div>
@@ -491,7 +514,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="sap 42">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="todos" data-name="sap 42">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="SAP 42" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/sap-42.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">42</span></div>
@@ -505,7 +528,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="ph4">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-adjuvant="calidad-agua" data-category="coadyuvantes" data-crops="todos" data-name="ph4">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="PH4" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/ph4.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">PH</span></div>
@@ -519,7 +542,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirka total cleaner">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="todos" data-name="mirka total cleaner">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Mirka Total Cleaner" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirka-total-cleaner.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">TCL</span></div>
@@ -533,7 +556,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="mirk oil">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="todos" data-name="mirk oil">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Mirk Oil" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirk-oil.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">OIL</span></div>
@@ -547,7 +570,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="lecithin silicon max">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-adjuvant="calidad-aplicacion" data-category="coadyuvantes" data-crops="todos" data-name="lecithin silicon max">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Lecithin Silicon Max" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/lecithin-silicon-max.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">LSM</span></div>
@@ -561,7 +584,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="bq-max">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-adjuvant="calidad-agua" data-category="coadyuvantes" data-crops="todos" data-name="bq-max">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="BQ-MAX" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/bq-max.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BQ</span></div>
@@ -575,7 +598,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-name="biomethil-max">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="todos" data-name="biomethil-max">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="BIOMETHIL-MAX" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/biomethil-max.jpg"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BMX</span></div>
@@ -589,7 +612,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="coadyuvantes" data-name="bioemag 76">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-adjuvant="calidad-aplicacion" data-category="coadyuvantes" data-crops="todos" data-name="bioemag 76">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="BIOEMAG 76" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/bioemag-76.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">B76</span></div>
@@ -683,11 +706,48 @@
 </footer>
 <script>
     const cards = Array.from(document.querySelectorAll('#product-grid .product-card'));
+    const productGrid = document.getElementById('product-grid');
     const filterBtns = document.querySelectorAll('.filter-btn');
+    const adjuvantBtns = document.querySelectorAll('.adjuvant-btn');
     const searchInput = document.getElementById('search-input');
+    const cropFilter = document.getElementById('crop-filter');
     const resultCount = document.getElementById('result-count');
     const emptyState = document.getElementById('empty-state');
     let activeFilter = 'todos';
+    let activeAdjuvant = 'todos';
+
+    const categoryOrder = {
+      'tratamiento-semillas': 1,
+      bioestimulacion: 2,
+      coadyuvantes: 3,
+      'otras-soluciones': 4
+    };
+    const adjuvantOrder = {
+      'calidad-agua': 1,
+      'calidad-aplicacion': 2,
+      'adyuvantes-especificos': 3
+    };
+    const productOrder = {
+      ph4: 1,
+      'bq-max': 2,
+      'bioemag 76': 3,
+      'lecithin silicon max': 4,
+      jumkan: 5
+    };
+
+    cards.forEach((card, index) => { card.dataset.initialOrder = index; });
+    cards
+      .slice()
+      .sort((a, b) => {
+        const categoryDiff = (categoryOrder[a.dataset.category] || 99) - (categoryOrder[b.dataset.category] || 99);
+        if (categoryDiff) return categoryDiff;
+        const adjuvantDiff = (adjuvantOrder[a.dataset.adjuvant] || 99) - (adjuvantOrder[b.dataset.adjuvant] || 99);
+        if (adjuvantDiff) return adjuvantDiff;
+        const productDiff = (productOrder[a.dataset.name] || 99) - (productOrder[b.dataset.name] || 99);
+        if (productDiff) return productDiff;
+        return Number(a.dataset.initialOrder) - Number(b.dataset.initialOrder);
+      })
+      .forEach(card => productGrid.appendChild(card));
 
     const categoryCounts = {};
     cards.forEach(c => {
@@ -702,11 +762,15 @@
 
     function applyFilters() {
       const query = searchInput.value.toLowerCase().trim();
+      const crop = cropFilter.value;
       let visible = 0;
       cards.forEach(card => {
         const catMatch = activeFilter === 'todos' || card.dataset.category === activeFilter;
-        const nameMatch = !query || card.dataset.name.includes(query) || card.querySelector('h2').textContent.toLowerCase().includes(query);
-        if (catMatch && nameMatch) {
+        const adjuvantMatch = activeAdjuvant === 'todos' || card.dataset.adjuvant === activeAdjuvant;
+        const cardCrops = (card.dataset.crops || '').split(/\s+/);
+        const cropMatch = crop === 'todos' || cardCrops.includes('todos') || cardCrops.includes(crop);
+        const textMatch = !query || card.dataset.name.includes(query) || card.querySelector('h2').textContent.toLowerCase().includes(query);
+        if (catMatch && adjuvantMatch && cropMatch && textMatch) {
           card.classList.remove('hidden-card');
           visible++;
         } else {
@@ -722,11 +786,27 @@
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeFilter = btn.dataset.filter;
+        if (activeFilter !== 'coadyuvantes') {
+          activeAdjuvant = 'todos';
+          adjuvantBtns.forEach(b => b.classList.toggle('active', b.dataset.adjuvant === 'todos'));
+        }
+        applyFilters();
+      });
+    });
+
+    adjuvantBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        adjuvantBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeAdjuvant = btn.dataset.adjuvant;
+        activeFilter = 'coadyuvantes';
+        filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === 'coadyuvantes'));
         applyFilters();
       });
     });
 
     searchInput.addEventListener('input', applyFilters);
+    cropFilter.addEventListener('change', applyFilters);
     applyFilters();
 
     // Auto-filter via URL ?cat= parameter (usado desde el nav de index.html)
