@@ -483,6 +483,9 @@
       const chevron = document.getElementById('productos-chevron');
       if (menu) { menu.classList.add('hidden'); if (chevron) chevron.style.transform = ''; }
     });
+    document.getElementById('productos-mega-menu')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
 
     // ── Zone data ─────────────────────────────────────────────────────
     const ZONES = {

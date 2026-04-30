@@ -572,6 +572,9 @@
       const chevron = document.getElementById('productos-chevron');
       if (menu) { menu.classList.add('hidden'); chevron.style.transform = ''; }
     });
+    document.getElementById('productos-mega-menu')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
 
     function loadHeroVideos() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.connection?.saveData) {
