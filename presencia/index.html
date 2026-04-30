@@ -188,13 +188,16 @@
             Contamos con representantes en las principales zonas agrícolas del país. Hacé click en tu provincia para conocer a la persona de tu zona.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
-            <div class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">
+            <a href="#mapa-argentina" class="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 transition hover:bg-white/20 hover:border-white/40 cursor-pointer">
               <span class="h-2 w-2 rounded-full bg-lime-400 animate-pulse"></span>
-              <span class="text-sm text-white/70">6 zonas en Argentina</span>
-            </div>
-            <div class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">
-              <span class="text-sm text-white/70">+13 países</span>
-            </div>
+              <span class="text-sm font-semibold text-white">6 zonas en Argentina</span>
+              <svg class="h-3.5 w-3.5 text-white/60" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </a>
+            <a href="#presencia-mundial" class="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 transition hover:bg-white/20 hover:border-white/40 cursor-pointer">
+              <span class="text-lg">🌍</span>
+              <span class="text-sm font-semibold text-white">+13 países</span>
+              <svg class="h-3.5 w-3.5 text-white/60" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </a>
           </div>
         </div>
         <div class="hidden lg:flex justify-end">
@@ -235,7 +238,7 @@
   <main>
 
     <!-- ─── MAPA ARGENTINA ─── -->
-    <section class="clip-diagonal-rev bg-[#faf3e0] py-32 text-forest-900 relative">
+    <section id="mapa-argentina" class="clip-diagonal-rev bg-[#faf3e0] py-32 text-forest-900 relative">
       <div class="dot-grid absolute inset-0 opacity-10 pointer-events-none"></div>
       <div class="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div class="mb-10 text-center">
@@ -303,7 +306,7 @@
     </section>
 
     <!-- ─── PRESENCIA INTERNACIONAL ─── -->
-    <section class="bg-forest-900 py-24 text-white">
+    <section id="presencia-mundial" class="bg-forest-900 py-24 text-white">
       <div class="mx-auto max-w-7xl px-6 lg:px-10">
         <div class="mb-12 text-center">
           <p class="text-sm font-semibold uppercase tracking-widest text-gold-400 mb-3">Presencia internacional</p>
