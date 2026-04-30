@@ -251,8 +251,9 @@
             <div id="zone-legend" class="flex flex-wrap gap-2 mb-5"></div>
 
             <!-- SVG container -->
-            <div class="relative rounded-2xl overflow-hidden shadow-xl bg-forest-800/50 border border-forest-500/30" style="min-height:460px">
-              <svg id="argentina-map" class="w-full h-auto block" style="max-height:680px"></svg>
+            <div class="relative rounded-2xl overflow-hidden shadow-xl border border-forest-500/30" style="min-height:460px; background-image:url('../soja.webp'); background-size:cover; background-position:center;">
+              <div class="absolute inset-0 bg-forest-900/70 pointer-events-none"></div>
+              <svg id="argentina-map" class="w-full h-auto block relative" style="max-height:680px"></svg>
               <!-- Tooltip -->
               <div id="map-tooltip" class="hidden absolute rounded-lg bg-ink-900 px-3 py-2 text-sm text-white shadow-lg"></div>
               <!-- Loading overlay -->
