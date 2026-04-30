@@ -388,13 +388,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="soja" data-name="acqua protector">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-adjuvant="calidad-semilla" data-category="coadyuvantes" data-crops="soja" data-name="acqua protector">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Protector" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-protector.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">PRO</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
+<span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Protector</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">PRE-INOCULANTE SIN PÉRDIDA DE VIABILIDAD</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-protector/">
@@ -741,11 +741,12 @@
       'coadyuvantes-especificos': 4
     };
     const productOrder = {
-      ph4: 1,
-      'bq-max': 2,
-      'bioemag 76': 3,
-      'lecithin silicon max': 4,
-      jumkan: 5
+      'acqua protector': 1,
+      ph4: 2,
+      'bq-max': 3,
+      'bioemag 76': 4,
+      'lecithin silicon max': 5,
+      jumkan: 6
     };
 
     cards.forEach((card, index) => { card.dataset.initialOrder = index; });
