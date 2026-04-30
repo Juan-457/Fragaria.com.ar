@@ -320,8 +320,8 @@
         </div>
 
         <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
-          <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-ink-900 shadow-xl" style="min-height:420px;">
-            <div class="absolute inset-0 bg-gradient-to-br from-ink-950 via-ink-900 to-forest-900/80"></div>
+          <div class="relative overflow-hidden rounded-2xl border border-forest-500/30 shadow-xl" style="min-height:420px; background-color:#faf3e0;">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#faf3e0] via-[#f0ead2] to-forest-100/50"></div>
             <svg id="world-map" class="relative block h-auto w-full" viewBox="0 0 960 500" role="img" aria-label="Mapa mundial con países de presencia internacional destacados"></svg>
             <div id="world-tooltip" class="hidden absolute rounded-lg bg-ink-900 px-3 py-2 text-sm text-white shadow-lg"></div>
           </div>
@@ -799,13 +799,13 @@
       worldSvg.append('path')
         .datum({ type: 'Sphere' })
         .attr('d', pathGen)
-        .attr('fill', 'rgba(255,255,255,0.04)');
+        .attr('fill', 'rgba(45,106,79,0.04)');
 
       worldSvg.append('path')
         .datum(d3.geoGraticule10())
         .attr('d', pathGen)
         .attr('fill', 'none')
-        .attr('stroke', 'rgba(255,255,255,0.08)')
+        .attr('stroke', 'rgba(45,106,79,0.12)')
         .attr('stroke-width', 0.7);
 
       function drawWorldMarkers() {
@@ -848,8 +848,8 @@
             .join('path')
             .attr('class', 'world-country')
             .attr('d', pathGen)
-            .attr('fill', 'rgba(255,255,255,0.12)')
-            .attr('stroke', 'rgba(255,255,255,0.22)')
+            .attr('fill', 'rgba(45,106,79,0.14)')
+            .attr('stroke', 'rgba(45,106,79,0.32)')
             .attr('stroke-width', 0.5);
         })
         .catch(() => {
@@ -857,7 +857,7 @@
             .attr('x', W / 2)
             .attr('y', H / 2)
             .attr('text-anchor', 'middle')
-            .attr('fill', 'rgba(255,255,255,0.65)')
+            .attr('fill', 'rgba(45,106,79,0.65)')
             .attr('font-size', 15)
             .text('No se pudo cargar el contorno del mapa');
         })
