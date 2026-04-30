@@ -110,7 +110,7 @@
           🌾 Tratamiento de semilla <span class="ml-1 text-xs opacity-60" id="count-tratamiento-semillas"></span>
 </button>
 <button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="bioestimulacion">
-          🌿 Bioestimulantes y nutrición <span class="ml-1 text-xs opacity-60" id="count-bioestimulacion"></span>
+          🌿 Bioestimulante <span class="ml-1 text-xs opacity-60" id="count-bioestimulacion"></span>
 </button>
 <button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="coadyuvantes">
           ⚗️ Coadyuvantes <span class="ml-1 text-xs opacity-60" id="count-coadyuvantes"></span>
@@ -121,9 +121,10 @@
 </div>
 <div aria-label="Filtrar coadyuvantes por subsegmento" class="flex flex-wrap gap-2 lg:justify-end" id="adjuvant-buttons" role="group">
 <button class="adjuvant-btn active rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="todos">Todos los coadyuvantes</button>
+<button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-semilla">Calidad de semilla</button>
 <button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-agua">Calidad de agua</button>
 <button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-aplicacion">Calidad de aplicación</button>
-<button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="adyuvantes-especificos">Adyuvantes específicos</button>
+<button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="coadyuvantes-especificos">Coadyuvantes específicos</button>
 </div>
 </div>
 </div>
@@ -132,7 +133,7 @@
 <!-- PRODUCT GRID -->
 <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="product-grid">
 <!-- ── INSECTICIDAS / PLAGAS ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-adjuvant="adyuvantes-especificos" data-category="coadyuvantes" data-crops="todos" data-name="jumkan">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-adjuvant="coadyuvantes-especificos" data-category="coadyuvantes" data-crops="todos" data-name="jumkan">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="JUMKAN" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/jumkan.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">JK</span></div>
@@ -734,9 +735,10 @@
       'otras-soluciones': 4
     };
     const adjuvantOrder = {
-      'calidad-agua': 1,
-      'calidad-aplicacion': 2,
-      'adyuvantes-especificos': 3
+      'calidad-semilla': 1,
+      'calidad-agua': 2,
+      'calidad-aplicacion': 3,
+      'coadyuvantes-especificos': 4
     };
     const productOrder = {
       ph4: 1,
@@ -820,14 +822,24 @@
     cropFilter.addEventListener('change', applyFilters);
     applyFilters();
 
-    // Auto-filter via URL ?cat= parameter (usado desde el nav de index.html)
-    const urlCat = new URLSearchParams(location.search).get('cat');
+    // Auto-filter via URL ?cat= and ?sub= parameters (usado desde el nav)
+    const params = new URLSearchParams(location.search);
+    const urlCat = params.get('cat');
+    const urlSub = params.get('sub');
     if (urlCat) {
       const targetBtn = document.querySelector(`[data-filter="${urlCat}"]`);
       if (targetBtn) {
         filterBtns.forEach(b => b.classList.remove('active'));
         targetBtn.classList.add('active');
         activeFilter = urlCat;
+        if (urlCat === 'coadyuvantes' && urlSub) {
+          const targetSub = document.querySelector(`[data-adjuvant="${urlSub}"]`);
+          if (targetSub) {
+            adjuvantBtns.forEach(b => b.classList.remove('active'));
+            targetSub.classList.add('active');
+            activeAdjuvant = urlSub;
+          }
+        }
         applyFilters();
         setTimeout(() => targetBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }), 200);
       }
