@@ -121,7 +121,6 @@
 </div>
 <div aria-label="Filtrar coadyuvantes por subsegmento" class="flex flex-wrap gap-2 lg:justify-end" id="adjuvant-buttons" role="group">
 <button class="adjuvant-btn active rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="todos">Todos los coadyuvantes</button>
-<button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-semilla">Calidad de semilla</button>
 <button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-agua">Calidad de agua</button>
 <button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-aplicacion">Calidad de aplicación</button>
 <button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="coadyuvantes-especificos">Coadyuvantes específicos</button>
@@ -388,13 +387,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-adjuvant="calidad-semilla" data-category="coadyuvantes" data-crops="soja" data-name="acqua protector">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="acqua protector">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Protector" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-protector.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">PRO</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Acqua Protector</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">PRE-INOCULANTE SIN PÉRDIDA DE VIABILIDAD</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-protector/">
@@ -735,10 +734,9 @@
       'otras-soluciones': 4
     };
     const adjuvantOrder = {
-      'calidad-semilla': 1,
-      'calidad-agua': 2,
-      'calidad-aplicacion': 3,
-      'coadyuvantes-especificos': 4
+      'calidad-agua': 1,
+      'calidad-aplicacion': 2,
+      'coadyuvantes-especificos': 3
     };
     const productOrder = {
       'acqua protector': 1,
