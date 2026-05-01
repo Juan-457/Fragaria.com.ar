@@ -42,6 +42,7 @@
       stroke-width: 0.5;
       fill: rgba(255,255,255,0.12);
       pointer-events: none;
+      transition: fill 0.35s ease;
     }
 
     /* Zone marker */
@@ -626,7 +627,8 @@
         .data(geoData.features)
         .join('path')
         .attr('class', 'province')
-        .attr('d', pathGen);
+        .attr('d', pathGen)
+        .attr('data-province', d => getProvinceName(d.properties));
 
       // ── Animated zone markers ──
       Object.entries(ZONES).forEach(([zoneName, zone]) => {
@@ -675,6 +677,24 @@
       d3.selectAll('.zone-marker-group')
         .classed('dimmed', function() { return this.dataset.zone !== zoneName; })
         .classed('active', function() { return this.dataset.zone === zoneName; });
+
+      // Highlight provinces belonging to this zone
+      const zoneProvinces = new Set([
+        ...zone.provinces,
+        ...(zoneName === 'Buenos Aires Norte' ? ['Buenos Aires', 'La Pampa'] : []),
+        ...(zoneName === 'Buenos Aires Sur'   ? ['Buenos Aires', 'La Pampa', 'Neuquén', 'Río Negro', 'Chubut', 'Santa Cruz', 'Tierra del Fuego'] : [])
+      ]);
+      d3.selectAll('path.province')
+        .style('fill', function() {
+          return zoneProvinces.has(this.getAttribute('data-province'))
+            ? zone.color + '55'
+            : 'rgba(255,255,255,0.06)';
+        })
+        .style('stroke', function() {
+          return zoneProvinces.has(this.getAttribute('data-province'))
+            ? zone.color
+            : 'rgba(255,255,255,0.5)';
+        });
 
       // Update legend pills
       document.querySelectorAll('.zone-pill').forEach(pill => {
@@ -770,6 +790,7 @@
     function resetMap() {
       selectedZone = null;
       d3.selectAll('.zone-marker-group').classed('dimmed', false).classed('active', false);
+      d3.selectAll('path.province').style('fill', null).style('stroke', null);
       document.querySelectorAll('.zone-pill').forEach(pill => {
         pill.classList.remove('active');
         const z = ZONES[pill.dataset.zone];
