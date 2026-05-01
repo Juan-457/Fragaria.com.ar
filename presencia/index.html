@@ -682,7 +682,7 @@
       const zoneProvinces = new Set([
         ...zone.provinces,
         ...(zoneName === 'Buenos Aires Norte' ? ['Buenos Aires', 'La Pampa'] : []),
-        ...(zoneName === 'Buenos Aires Sur'   ? ['Buenos Aires', 'La Pampa', 'Neuquén', 'Río Negro', 'Chubut', 'Santa Cruz', 'Tierra del Fuego'] : [])
+        ...(zoneName === 'Buenos Aires Sur'   ? ['Buenos Aires', 'La Pampa'] : [])
       ]);
       d3.selectAll('path.province')
         .style('fill', function() {
