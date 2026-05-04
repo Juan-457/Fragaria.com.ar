@@ -47,10 +47,22 @@
         <img src="fragaria transparente.png" alt="Fragaria transparente" class="h-[3.9rem] w-auto origin-left scale-[1.75] object-contain" />
       </a>
       <div class="hidden items-center gap-3 md:flex">
-        <a href="index.html" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">Inicio</a>
-        <a href="#mision" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">Visión y Misión</a>
-        <a href="#valores" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">Valores</a>
-        <a href="presencia/" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">Presencia</a>
+        <a href="index.html" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.inicio">Inicio</a>
+        <a href="#mision" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.vm">Visión y Misión</a>
+        <a href="#valores" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.valores">Valores</a>
+        <a href="presencia/" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.presencia">Presencia</a>
+        <span class="h-4 w-px bg-ink-900/20"></span>
+        <div class="flex items-center gap-1.5">
+          <button onclick="setLang('en')" id="lang-en" title="English" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
+            <img src="https://flagcdn.com/w40/us.png" width="28" alt="English" class="block h-full w-auto">
+          </button>
+          <button onclick="setLang('pt')" id="lang-pt" title="Português" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
+            <img src="https://flagcdn.com/w40/br.png" width="28" alt="Português" class="block h-full w-auto">
+          </button>
+          <button onclick="setLang('ru')" id="lang-ru" title="Русский" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
+            <img src="https://flagcdn.com/w40/ru.png" width="28" alt="Русский" class="block h-full w-auto">
+          </button>
+        </div>
       </div>
       <a href="https://wa.me/543462450100?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20Fragaria%20S.A."
          target="_blank"
@@ -67,14 +79,14 @@
       <div class="grid gap-8 lg:grid-cols-[2fr_3fr] lg:items-center">
         <!-- Izquierda: label + título + breadcrumb -->
         <div>
-          <p class="text-sm font-semibold tracking-[0.25em] text-forest-700 uppercase">Conocé</p>
-          <h1 class="mt-4 font-display text-5xl font-black leading-tight text-forest-900 sm:text-6xl">Nuestra <span class="gradient-text">Empresa</span></h1>
+          <p class="text-sm font-semibold tracking-[0.25em] text-forest-700 uppercase" data-i18n="ep.badge">Conocé</p>
+          <h1 class="mt-4 font-display text-5xl font-black leading-tight text-forest-900 sm:text-6xl"><span data-i18n="ep.h1a">Nuestra</span> <span class="gradient-text" data-i18n="ep.h1b">Empresa</span></h1>
           <p class="mt-4 text-xs text-forest-900/40 tracking-wide">Fragaria › Empresa › Nuestra Empresa</p>
         </div>
         <!-- Derecha: descripción condensada + badges -->
         <div>
           <p class="text-lg leading-8 text-forest-800">
-            Empresa argentina con más de 30 años en el mercado agropecuario. Desarrollamos, producimos y comercializamos fertilizantes biológicos, bioestimulantes y coadyuvantes con planta propia, exportando a Asia, Europa y África.
+            <span data-i18n="ep.desc">Empresa argentina con más de 30 años en el mercado agropecuario. Desarrollamos, producimos y comercializamos fertilizantes biológicos, bioestimulantes y coadyuvantes con planta propia, exportando a Asia, Europa y África.</span>
           </p>
           <div class="mt-6 flex flex-wrap gap-3">
             <span class="rounded-full border border-lime-600/30 bg-lime-50 px-4 py-1.5 text-sm font-semibold text-lime-700">+30 años de trayectoria</span>
@@ -87,8 +99,8 @@
         <div class="relative w-full rounded-[2rem] border border-forest-900/10 bg-forest-900 p-6 sm:p-8">
           <div class="pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-br from-lime-400/10 via-emerald-300/5 to-cyan-300/10"></div>
           <div class="relative">
-            <h2 class="text-2xl font-black text-white sm:text-3xl">Nuestra historia en evolución</h2>
-            <p class="mt-2 text-sm text-white/70 sm:text-base">Más de 30 años impulsando innovación científica y crecimiento sustentable.</p>
+            <h2 class="text-2xl font-black text-white sm:text-3xl" data-i18n="ep.hist.title">Nuestra historia en evolución</h2>
+            <p class="mt-2 text-sm text-white/70 sm:text-base" data-i18n="ep.hist.sub">Más de 30 años impulsando innovación científica y crecimiento sustentable.</p>
           </div>
 
           <div class="mt-8">
@@ -170,7 +182,7 @@
           </div>
 
           <div class="relative mt-7 rounded-2xl border border-emerald-200/30 bg-gradient-to-r from-emerald-400/20 to-cyan-300/20 p-4">
-            <p class="text-center text-lg font-black leading-tight text-white sm:text-2xl">Fuerte presencia nacional e internacional.</p>
+            <p class="text-center text-lg font-black leading-tight text-white sm:text-2xl" data-i18n="ep.hist.footer">Fuerte presencia nacional e internacional.</p>
           </div>
         </div>
       </div>
@@ -188,20 +200,20 @@
       <div class="mx-auto grid max-w-7xl gap-8 px-6 lg:px-10 md:grid-cols-2">
         <article class="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-forest-900/10">
           <p class="text-xs font-bold uppercase tracking-[0.2em] text-forest-700">ico_12</p>
-          <h2 class="mt-3 font-display text-4xl font-black text-forest-900">Misión</h2>
-          <p class="mt-5 text-base leading-8 text-forest-800/80">
+          <h2 class="mt-3 font-display text-4xl font-black text-forest-900" data-i18n="ep.mision.h2">Misión</h2>
+          <p class="mt-5 text-base leading-8 text-forest-800/80" data-i18n="ep.mision.p1">
             Somos una empresa proveedora de inoculantes, bioestimulantes, coadyuvantes y otras especialidades para el agro, en constante crecimiento.
           </p>
-          <p class="mt-4 text-base leading-8 text-forest-800/80">
+          <p class="mt-4 text-base leading-8 text-forest-800/80" data-i18n="ep.mision.p2">
             Trabajamos con estrictos niveles de calidad, alta tecnología y rentabilidad; en armonía con el medio ambiente y enfocados en nuestros clientes.
           </p>
-          <p class="mt-4 text-base font-semibold leading-8 text-forest-900">Somos nuestra gente.</p>
+          <p class="mt-4 text-base font-semibold leading-8 text-forest-900" data-i18n="ep.mision.p3">Somos nuestra gente.</p>
         </article>
 
         <article id="vision" class="rounded-3xl bg-forest-900 p-8 text-white shadow-sm ring-1 ring-forest-900/20">
           <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold-400">ico_13</p>
-          <h2 class="mt-3 font-display text-4xl font-black">Visión</h2>
-          <p class="mt-5 text-base leading-8 text-white/80">
+          <h2 class="mt-3 font-display text-4xl font-black" data-i18n="ep.vision.h2">Visión</h2>
+          <p class="mt-5 text-base leading-8 text-white/80" data-i18n="ep.vision.p">
             Nuestro marcado carácter innovador y constante esfuerzo en desarrollo será siempre uno de nuestros mayores activos y
             nos permitirá seguir penetrando en el mercado hasta afianzarnos como claros referentes.
             Fragaria será una empresa rentable, con fuerte liderazgo comercial, tecnológico y ambiental.
@@ -213,19 +225,19 @@
     <section id="valores" class="bg-forest-900 py-20 text-white">
       <div class="mx-auto max-w-7xl px-6 lg:px-10">
         <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold-400">ico_14</p>
-        <h2 class="mt-3 font-display text-4xl font-black sm:text-5xl">Nuestros Valores</h2>
+        <h2 class="mt-3 font-display text-4xl font-black sm:text-5xl" data-i18n="ep.val.h2">Nuestros Valores</h2>
         <div class="mt-10 grid gap-6 md:grid-cols-3">
           <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h3 class="text-lg font-bold">INTEGRIDAD</h3>
-            <p class="mt-3 text-sm leading-7 text-white/75">Nuestras conductas están siempre comprometidas con los valores morales. Las conductas y actitudes corporativas son coherentes con el comportamiento ético de las personas que la componen, siempre.</p>
+            <h3 class="text-lg font-bold" data-i18n="ep.val.v1.t">INTEGRIDAD</h3>
+            <p class="mt-3 text-sm leading-7 text-white/75" data-i18n="ep.val.v1.d">Nuestras conductas están siempre comprometidas con los valores morales. Las conductas y actitudes corporativas son coherentes con el comportamiento ético de las personas que la componen, siempre.</p>
           </article>
           <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h3 class="text-lg font-bold">PASIÓN</h3>
-            <p class="mt-3 text-sm leading-7 text-white/75">El entusiasmo y la creatividad, son la historia, presente y futuro del desarrollo de la empresa. La sinergia de su gente es el reaseguro del compromiso con el futuro.</p>
+            <h3 class="text-lg font-bold" data-i18n="ep.val.v2.t">PASIÓN</h3>
+            <p class="mt-3 text-sm leading-7 text-white/75" data-i18n="ep.val.v2.d">El entusiasmo y la creatividad, son la historia, presente y futuro del desarrollo de la empresa. La sinergia de su gente es el reaseguro del compromiso con el futuro.</p>
           </article>
           <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h3 class="text-lg font-bold">CARÁCTER HUMANO</h3>
-            <p class="mt-3 text-sm leading-7 text-white/75">Apoyamos e incentivamos todas las actividades y actitudes positivas de nuestra gente, sabiendo que esto es un factor estratégico para el crecimiento de la organización en todo sentido.</p>
+            <h3 class="text-lg font-bold" data-i18n="ep.val.v3.t">CARÁCTER HUMANO</h3>
+            <p class="mt-3 text-sm leading-7 text-white/75" data-i18n="ep.val.v3.d">Apoyamos e incentivamos todas las actividades y actitudes positivas de nuestra gente, sabiendo que esto es un factor estratégico para el crecimiento de la organización en todo sentido.</p>
           </article>
         </div>
       </div>
@@ -235,7 +247,7 @@
       <div class="mx-auto max-w-7xl px-6 lg:px-10">
         <div class="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-forest-900/10 lg:p-12">
           <p class="text-xs font-bold uppercase tracking-[0.2em] text-forest-700">ico_20</p>
-          <h2 class="mt-3 font-display text-4xl font-black text-forest-900 sm:text-5xl">Políticas de calidad</h2>
+          <h2 class="mt-3 font-display text-4xl font-black text-forest-900 sm:text-5xl" data-i18n="ep.cal.h2">Políticas de calidad</h2>
           <div class="mt-8 space-y-5 text-base leading-8 text-forest-800/80">
             <p>Proveer al mercado agropecuario productos de calidad, tecnología actualizada, con énfasis en la sustentabilidad y a precios competitivos, cumpliendo con los requisitos de nuestras partes interesadas y desarrollando estrategias comerciales que aseguren el crecimiento sostenible en el tiempo.</p>
             <p>Mantener un portfolio de productos de alta rentabilidad, que posibilite nuevos desarrollos y la mejora continua de los actuales.</p>
@@ -245,8 +257,8 @@
           <div class="mt-10 border-t border-forest-900/10 pt-8">
             <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center">
               <div>
-                <p class="text-xs font-bold uppercase tracking-[0.2em] text-forest-700">Certificación</p>
-                <h3 class="mt-3 text-2xl font-black text-forest-900">Sistema de Gestión de la Calidad certificado</h3>
+                <p class="text-xs font-bold uppercase tracking-[0.2em] text-forest-700" data-i18n="ep.cal.cert.label">Certificación</p>
+                <h3 class="mt-3 text-2xl font-black text-forest-900" data-i18n="ep.cal.cert.h3">Sistema de Gestión de la Calidad certificado</h3>
                 <p class="mt-4 text-base leading-8 text-forest-800/80">
                   Fragaria S.A. cuenta con certificación IRAM - ISO 9001:2015 para su Sistema de Gestión de la Calidad, registro RI 9000-1057, vigente hasta el 14/09/2027.
                 </p>
@@ -254,8 +266,8 @@
                   El sello se exhibe en esta página institucional y no debe interpretarse como certificación de conformidad de productos individuales, embalajes, etiquetas, informes o documentos técnicos.
                 </p>
                 <div class="mt-5 flex flex-wrap gap-3">
-                  <a href="ISO/FRAGARIA%20S.A%209001%20iram.pdf" target="_blank" rel="noopener noreferrer" class="rounded-full bg-forest-900 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-forest-800">Ver certificado IRAM</a>
-                  <a href="ISO/FRAGARIA%20S.A%209001%20iqnet.pdf" target="_blank" rel="noopener noreferrer" class="rounded-full border border-forest-900/20 px-5 py-2.5 text-sm font-bold text-forest-900 transition hover:border-forest-900/40 hover:bg-forest-900/5">Ver certificado IQNET</a>
+                  <a href="ISO/FRAGARIA%20S.A%209001%20iram.pdf" target="_blank" rel="noopener noreferrer" class="rounded-full bg-forest-900 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-forest-800" data-i18n="ep.cal.cert.btn1">Ver certificado IRAM</a>
+                  <a href="ISO/FRAGARIA%20S.A%209001%20iqnet.pdf" target="_blank" rel="noopener noreferrer" class="rounded-full border border-forest-900/20 px-5 py-2.5 text-sm font-bold text-forest-900 transition hover:border-forest-900/40 hover:bg-forest-900/5" data-i18n="ep.cal.cert.btn2">Ver certificado IQNET</a>
                 </div>
               </div>
               <div class="flex justify-start lg:justify-end">
@@ -344,7 +356,6 @@
     </div>
   </footer>
 
-  <script>
-  </script>
+  <script src="i18n.js"></script>
 </body>
 </html>
