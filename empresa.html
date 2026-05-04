@@ -34,6 +34,8 @@
     .dot-grid { background-image: radial-gradient(circle, #334155 1px, transparent 1px); background-size: 28px 28px; }
     .gradient-text { background: linear-gradient(135deg, #b8f36a 0%, #55d67b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .timeline-glow { box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2), 0 0 24px rgba(52, 211, 153, 0.45); }
+    @keyframes flag-wave { 0%,100%{transform:perspective(60px) rotateY(0deg)} 30%{transform:perspective(60px) rotateY(-10deg)} 70%{transform:perspective(60px) rotateY(10deg)} }
+    .flag-wave { animation: flag-wave 3s ease-in-out infinite; transform-origin: left center; }
   </style>
   <link rel="icon" href="img/favicon-32.png" sizes="32x32" />
   <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
@@ -51,28 +53,29 @@
         <a href="#mision" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.vm">Visión y Misión</a>
         <a href="#valores" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.valores">Valores</a>
         <a href="presencia/" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.presencia">Presencia</a>
-        <span class="h-4 w-px bg-ink-900/20"></span>
-        <div class="flex items-center gap-1.5">
-          <button onclick="setLang('es')" id="lang-es" title="Español" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
-            <img src="https://flagcdn.com/w40/ar.png" width="28" alt="Español" class="block h-full w-auto">
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1">
+          <button onclick="setLang('es')" id="lang-es" title="Español" class="lang-btn overflow-hidden rounded p-0.5 transition hover:scale-110 focus:outline-none">
+            <img src="https://flagcdn.com/w40/ar.png" width="22" alt="Español" class="flag-wave block" style="height:15px;width:auto;animation-delay:0s">
           </button>
-          <button onclick="setLang('en')" id="lang-en" title="English" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
-            <img src="https://flagcdn.com/w40/us.png" width="28" alt="English" class="block h-full w-auto">
+          <button onclick="setLang('en')" id="lang-en" title="English" class="lang-btn overflow-hidden rounded p-0.5 transition hover:scale-110 focus:outline-none">
+            <img src="https://flagcdn.com/w40/us.png" width="22" alt="English" class="flag-wave block" style="height:15px;width:auto;animation-delay:0.6s">
           </button>
-          <button onclick="setLang('pt')" id="lang-pt" title="Português" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
-            <img src="https://flagcdn.com/w40/br.png" width="28" alt="Português" class="block h-full w-auto">
+          <button onclick="setLang('pt')" id="lang-pt" title="Português" class="lang-btn overflow-hidden rounded p-0.5 transition hover:scale-110 focus:outline-none">
+            <img src="https://flagcdn.com/w40/br.png" width="22" alt="Português" class="flag-wave block" style="height:15px;width:auto;animation-delay:1.2s">
           </button>
-          <button onclick="setLang('ru')" id="lang-ru" title="Русский" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
-            <img src="https://flagcdn.com/w40/ru.png" width="28" alt="Русский" class="block h-full w-auto">
+          <button onclick="setLang('ru')" id="lang-ru" title="Русский" class="lang-btn overflow-hidden rounded p-0.5 transition hover:scale-110 focus:outline-none">
+            <img src="https://flagcdn.com/w40/ru.png" width="22" alt="Русский" class="flag-wave block" style="height:15px;width:auto;animation-delay:1.8s">
           </button>
         </div>
+        <a href="https://wa.me/543462450100?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20Fragaria%20S.A."
+           target="_blank"
+           rel="noopener noreferrer"
+           class="flex items-center gap-2 rounded-full bg-[#25d366] px-5 py-2 text-sm font-bold text-white transition hover:bg-[#1ebe57]">
+          WhatsApp
+        </a>
       </div>
-      <a href="https://wa.me/543462450100?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20Fragaria%20S.A."
-         target="_blank"
-         rel="noopener noreferrer"
-         class="flex items-center gap-2 rounded-full bg-[#25d366] px-5 py-2 text-sm font-bold text-white transition hover:bg-[#1ebe57]">
-        WhatsApp
-      </a>
     </div>
   </nav>
 
