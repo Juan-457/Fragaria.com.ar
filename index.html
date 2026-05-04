@@ -159,14 +159,19 @@
           </div>
         </div>
 
-        <a href="#valores" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.valores">Valores</a>
         <a href="presencia/" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.presencia">Presencia</a>
         <a href="#contacto" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.contacto">Contacto</a>
         <span class="h-4 w-px bg-ink-900/20"></span>
-        <div class="flex items-center gap-1">
-          <button onclick="setLang('en')" id="lang-en" title="English" class="lang-btn flex h-8 w-8 items-center justify-center rounded-full text-lg transition hover:scale-110 hover:bg-ink-900/10">🇺🇸</button>
-          <button onclick="setLang('pt')" id="lang-pt" title="Português" class="lang-btn flex h-8 w-8 items-center justify-center rounded-full text-lg transition hover:scale-110 hover:bg-ink-900/10">🇧🇷</button>
-          <button onclick="setLang('ru')" id="lang-ru" title="Русский" class="lang-btn flex h-8 w-8 items-center justify-center rounded-full text-lg transition hover:scale-110 hover:bg-ink-900/10">🇷🇺</button>
+        <div class="flex items-center gap-1.5">
+          <button onclick="setLang('en')" id="lang-en" title="English" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
+            <img src="https://flagcdn.com/w40/us.png" width="28" alt="English" class="block h-full w-auto">
+          </button>
+          <button onclick="setLang('pt')" id="lang-pt" title="Português" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
+            <img src="https://flagcdn.com/w40/br.png" width="28" alt="Português" class="block h-full w-auto">
+          </button>
+          <button onclick="setLang('ru')" id="lang-ru" title="Русский" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
+            <img src="https://flagcdn.com/w40/ru.png" width="28" alt="Русский" class="block h-full w-auto">
+          </button>
         </div>
       </div>
       <a href="https://wa.me/543462450100?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20sus%20productos."
@@ -654,132 +659,6 @@
   </script>
   <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
 
-  <script>
-    const i18n = {
-      es: {
-        'nav.empresa':'Nuestra Empresa','nav.productos':'Productos','nav.valores':'Valores','nav.presencia':'Presencia','nav.contacto':'Contacto',
-        'hero.badge':'Agro · Tecnología · Sustentabilidad','hero.h1.1':'Innovación','hero.h1.2':'para una','hero.h1.3':'agricultura','hero.h1.4':'eficiente',
-        'hero.desc':'Fragaria S.A. desarrolla, produce y comercializa fertilizantes biológicos, coadyuvantes y especialidades agropecuarias con más de 37 años de trayectoria.',
-        'hero.btn1':'Productos','hero.btn2':'Ver empresa',
-        'card.title':'Fragaria en cifras','card.tray':'Trayectoria','card.anos':'años','card.intl.label':'Presencia internacional','card.intl.val':'Comercio exterior','card.nat.label':'Presencia nacional',
-        'emp.label':'Empresa','emp.h2':'Una compañía argentina con evolución constante',
-        'emp.p1':'Desde hace más de 37 años participamos activamente del mercado agropecuario, brindando soluciones para mejorar rendimiento, eficiencia y sustentabilidad en campo.',
-        'emp.p2':'Nuestra propuesta combina desarrollo propio, producción y comercialización de insumos con foco técnico, respaldo comercial y cercanía con productores y distribuidores.',
-        'emp.item1.t':'Fertilizantes biológicos','emp.item1.d':'Productos para mejorar rendimiento con menor impacto ambiental.',
-        'emp.item2.t':'Coadyuvantes','emp.item2.d':'Optimizadores de aplicaciones para mayor eficacia.',
-        'emp.item3.t':'Especialidades agropecuarias','emp.item3.d':'Desarrollo con enfoque ambiental responsable.',
-        'val.label':'Nuestros productos','val.h2':'Soluciones para cada etapa del cultivo',
-        'val.c1.t':'Coadyuvantes','val.c1.d':'Optimizadores de mezclas y correctores de agua para aplicaciones más eficaces.','val.c1.l':'Ver productos →',
-        'val.c2.t':'Tratamiento de Semillas','val.c2.d':'Inoculantes y curasemillas para una implantación segura y mayor nodulación.','val.c2.l':'Ver productos →',
-        'val.c3.t':'Bioestimulación y Nutrición','val.c3.d':'Biofertilizantes y estimulantes para potenciar el crecimiento y rendimiento del cultivo.','val.c3.l':'Ver productos →',
-        'val.c4.t':'Otras Soluciones','val.c4.d':'Fungicidas, insecticidas y productos complementarios para el manejo integral del cultivo.','val.c4.l':'Ver productos →',
-        'lin.label':'Líneas de trabajo','lin.h2':'Nuestras especialidades','lin.wa':'Consultar por WhatsApp',
-        'ig.h2':'Novedades de Fragaria','ig.desc':'Seguinos para ver lanzamientos, ensayos y contenido técnico en tiempo real.','ig.btn':'Ver en Instagram',
-        'con.label':'Contacto','con.h2':'¿Querés trabajar con Fragaria?','con.desc':'Contactanos para recibir asesoramiento sobre nuestras especialidades agropecuarias. Te respondemos a la brevedad.',
-        'con.dir':'Dirección','con.form.h3':'Envianos un mensaje','con.form.sub':'Te respondemos en menos de 24 hs.',
-        'con.form.name.l':'Nombre completo','con.form.name.p':'Juan García','con.form.email.l':'Email','con.form.email.p':'juan@ejemplo.com',
-        'con.form.phone.l':'Teléfono (opcional)','con.form.phone.p':'+54 9 ...','con.form.msg.l':'Mensaje','con.form.msg.p':'Contanos en qué podemos ayudarte...','con.form.btn':'Enviar mensaje →','con.form.or':'O escribinos directo por',
-        'ft.nav':'Navegación','ft.inicio':'Inicio','ft.empresa':'Nuestra Empresa','ft.catalogo':'Catálogo de Productos','ft.presencia':'Presencia','ft.contacto':'Contacto','ft.dev':'Desarrollado por','ft.copy':'© 2026 Fragaria S.A. Todos los derechos reservados.'
-      },
-      en: {
-        'nav.empresa':'Our Company','nav.productos':'Products','nav.valores':'Values','nav.presencia':'Presence','nav.contacto':'Contact',
-        'hero.badge':'Agro · Technology · Sustainability','hero.h1.1':'Innovation','hero.h1.2':'for an','hero.h1.3':'efficient','hero.h1.4':'agriculture',
-        'hero.desc':'Fragaria S.A. develops, produces and markets biological fertilizers, adjuvants and agricultural specialties with over 37 years of experience.',
-        'hero.btn1':'Products','hero.btn2':'View Company',
-        'card.title':'Fragaria in numbers','card.tray':'Experience','card.anos':'years','card.intl.label':'International presence','card.intl.val':'Foreign trade','card.nat.label':'National presence',
-        'emp.label':'Company','emp.h2':'An Argentine company in constant evolution',
-        'emp.p1':'For more than 37 years we have actively participated in the agricultural market, providing solutions to improve yield, efficiency and sustainability in the field.',
-        'emp.p2':'Our proposal combines in-house development, production and marketing of inputs with a technical focus, commercial support and closeness to producers and distributors.',
-        'emp.item1.t':'Biological fertilizers','emp.item1.d':'Products to improve yield with lower environmental impact.',
-        'emp.item2.t':'Adjuvants','emp.item2.d':'Application optimizers for greater effectiveness.',
-        'emp.item3.t':'Agricultural specialties','emp.item3.d':'Development with a responsible environmental approach.',
-        'val.label':'Our products','val.h2':'Solutions for every stage of cultivation',
-        'val.c1.t':'Adjuvants','val.c1.d':'Mixture optimizers and water correctors for more effective applications.','val.c1.l':'View products →',
-        'val.c2.t':'Seed Treatment','val.c2.d':'Inoculants and seed treatments for safe establishment and greater nodulation.','val.c2.l':'View products →',
-        'val.c3.t':'Biostimulation and Nutrition','val.c3.d':'Biofertilizers and stimulants to boost crop growth and yield.','val.c3.l':'View products →',
-        'val.c4.t':'Other Solutions','val.c4.d':'Fungicides, insecticides and complementary products for integrated crop management.','val.c4.l':'View products →',
-        'lin.label':'Lines of work','lin.h2':'Our specialties','lin.wa':'Consult via WhatsApp',
-        'ig.h2':'Fragaria News','ig.desc':'Follow us to see launches, trials and technical content in real time.','ig.btn':'View on Instagram',
-        'con.label':'Contact','con.h2':'Want to work with Fragaria?','con.desc':'Contact us for advice on our agricultural specialties. We respond promptly.',
-        'con.dir':'Address','con.form.h3':'Send us a message','con.form.sub':'We respond within 24 hours.',
-        'con.form.name.l':'Full name','con.form.name.p':'John Smith','con.form.email.l':'Email','con.form.email.p':'john@example.com',
-        'con.form.phone.l':'Phone (optional)','con.form.phone.p':'+54 9 ...','con.form.msg.l':'Message','con.form.msg.p':'Tell us how we can help you...','con.form.btn':'Send message →','con.form.or':'Or write to us directly on',
-        'ft.nav':'Navigation','ft.inicio':'Home','ft.empresa':'Our Company','ft.catalogo':'Product Catalog','ft.presencia':'Presence','ft.contacto':'Contact','ft.dev':'Developed by','ft.copy':'© 2026 Fragaria S.A. All rights reserved.'
-      },
-      pt: {
-        'nav.empresa':'Nossa Empresa','nav.productos':'Produtos','nav.valores':'Valores','nav.presencia':'Presença','nav.contacto':'Contato',
-        'hero.badge':'Agro · Tecnologia · Sustentabilidade','hero.h1.1':'Inovação','hero.h1.2':'para uma','hero.h1.3':'agricultura','hero.h1.4':'eficiente',
-        'hero.desc':'Fragaria S.A. desenvolve, produz e comercializa fertilizantes biológicos, coadjuvantes e especialidades agropecuárias com mais de 37 anos de trajetória.',
-        'hero.btn1':'Produtos','hero.btn2':'Ver empresa',
-        'card.title':'Fragaria em números','card.tray':'Trajetória','card.anos':'anos','card.intl.label':'Presença internacional','card.intl.val':'Comércio exterior','card.nat.label':'Presença nacional',
-        'emp.label':'Empresa','emp.h2':'Uma empresa argentina em evolução constante',
-        'emp.p1':'Há mais de 37 anos participamos ativamente do mercado agropecuário, oferecendo soluções para melhorar rendimento, eficiência e sustentabilidade no campo.',
-        'emp.p2':'Nossa proposta combina desenvolvimento próprio, produção e comercialização de insumos com foco técnico, suporte comercial e proximidade com produtores e distribuidores.',
-        'emp.item1.t':'Fertilizantes biológicos','emp.item1.d':'Produtos para melhorar o rendimento com menor impacto ambiental.',
-        'emp.item2.t':'Coadjuvantes','emp.item2.d':'Otimizadores de aplicações para maior eficácia.',
-        'emp.item3.t':'Especialidades agropecuárias','emp.item3.d':'Desenvolvimento com foco ambiental responsável.',
-        'val.label':'Nossos produtos','val.h2':'Soluções para cada etapa do cultivo',
-        'val.c1.t':'Coadjuvantes','val.c1.d':'Otimizadores de misturas e corretores de água para aplicações mais eficazes.','val.c1.l':'Ver produtos →',
-        'val.c2.t':'Tratamento de Sementes','val.c2.d':'Inoculantes e curasementes para implantação segura e maior nodulação.','val.c2.l':'Ver produtos →',
-        'val.c3.t':'Bioestimulação e Nutrição','val.c3.d':'Biofertilizantes e estimulantes para potencializar o crescimento e rendimento da cultura.','val.c3.l':'Ver produtos →',
-        'val.c4.t':'Outras Soluções','val.c4.d':'Fungicidas, inseticidas e produtos complementares para o manejo integrado da cultura.','val.c4.l':'Ver produtos →',
-        'lin.label':'Linhas de trabalho','lin.h2':'Nossas especialidades','lin.wa':'Consultar pelo WhatsApp',
-        'ig.h2':'Novidades da Fragaria','ig.desc':'Siga-nos para ver lançamentos, ensaios e conteúdo técnico em tempo real.','ig.btn':'Ver no Instagram',
-        'con.label':'Contato','con.h2':'Quer trabalhar com Fragaria?','con.desc':'Entre em contato para receber consultoria sobre nossas especialidades agropecuárias. Respondemos em breve.',
-        'con.dir':'Endereço','con.form.h3':'Envie-nos uma mensagem','con.form.sub':'Respondemos em menos de 24h.',
-        'con.form.name.l':'Nome completo','con.form.name.p':'João Silva','con.form.email.l':'Email','con.form.email.p':'joao@exemplo.com',
-        'con.form.phone.l':'Telefone (opcional)','con.form.phone.p':'+55 ...','con.form.msg.l':'Mensagem','con.form.msg.p':'Diga-nos como podemos ajudá-lo...','con.form.btn':'Enviar mensagem →','con.form.or':'Ou escreva-nos diretamente pelo',
-        'ft.nav':'Navegação','ft.inicio':'Início','ft.empresa':'Nossa Empresa','ft.catalogo':'Catálogo de Produtos','ft.presencia':'Presença','ft.contacto':'Contato','ft.dev':'Desenvolvido por','ft.copy':'© 2026 Fragaria S.A. Todos os direitos reservados.'
-      },
-      ru: {
-        'nav.empresa':'Наша компания','nav.productos':'Продукты','nav.valores':'Ценности','nav.presencia':'Присутствие','nav.contacto':'Контакт',
-        'hero.badge':'Агро · Технологии · Устойчивость','hero.h1.1':'Инновации','hero.h1.2':'для','hero.h1.3':'эффективного','hero.h1.4':'сельского хозяйства',
-        'hero.desc':'Fragaria S.A. разрабатывает, производит и реализует биологические удобрения, адъюванты и сельскохозяйственные специальности с более чем 37-летним опытом.',
-        'hero.btn1':'Продукты','hero.btn2':'О компании',
-        'card.title':'Fragaria в цифрах','card.tray':'Опыт','card.anos':'лет','card.intl.label':'Международное присутствие','card.intl.val':'Внешняя торговля','card.nat.label':'Национальное присутствие',
-        'emp.label':'Компания','emp.h2':'Аргентинская компания в постоянном развитии',
-        'emp.p1':'Более 37 лет мы активно участвуем в сельскохозяйственном рынке, предлагая решения для улучшения урожайности, эффективности и устойчивости в полевых условиях.',
-        'emp.p2':'Наше предложение сочетает собственные разработки, производство и реализацию средств с техническим фокусом, коммерческой поддержкой и близостью к производителям и дистрибьюторам.',
-        'emp.item1.t':'Биологические удобрения','emp.item1.d':'Продукты для улучшения урожайности с меньшим воздействием на окружающую среду.',
-        'emp.item2.t':'Адъюванты','emp.item2.d':'Оптимизаторы применения для большей эффективности.',
-        'emp.item3.t':'Сельскохозяйственные специальности','emp.item3.d':'Разработка с ответственным экологическим подходом.',
-        'val.label':'Наши продукты','val.h2':'Решения для каждого этапа выращивания',
-        'val.c1.t':'Адъюванты','val.c1.d':'Оптимизаторы смесей и корректоры воды для более эффективного применения.','val.c1.l':'Смотреть продукты →',
-        'val.c2.t':'Обработка семян','val.c2.d':'Инокулянты и протравители семян для безопасного укоренения и большей нодуляции.','val.c2.l':'Смотреть продукты →',
-        'val.c3.t':'Биостимуляция и питание','val.c3.d':'Биоудобрения и стимуляторы для повышения роста и урожайности культуры.','val.c3.l':'Смотреть продукты →',
-        'val.c4.t':'Другие решения','val.c4.d':'Фунгициды, инсектициды и дополнительные продукты для комплексного управления культурой.','val.c4.l':'Смотреть продукты →',
-        'lin.label':'Направления работы','lin.h2':'Наши специальности','lin.wa':'Консультация в WhatsApp',
-        'ig.h2':'Новости Fragaria','ig.desc':'Следите за нами, чтобы видеть запуски, испытания и технический контент в реальном времени.','ig.btn':'Смотреть в Instagram',
-        'con.label':'Контакт','con.h2':'Хотите работать с Fragaria?','con.desc':'Свяжитесь с нами для консультации по нашим сельскохозяйственным специальностям. Ответим быстро.',
-        'con.dir':'Адрес','con.form.h3':'Отправьте нам сообщение','con.form.sub':'Ответим менее чем за 24 часа.',
-        'con.form.name.l':'Полное имя','con.form.name.p':'Иван Иванов','con.form.email.l':'Email','con.form.email.p':'ivan@primer.ru',
-        'con.form.phone.l':'Телефон (необязательно)','con.form.phone.p':'+7 ...','con.form.msg.l':'Сообщение','con.form.msg.p':'Расскажите, чем мы можем вам помочь...','con.form.btn':'Отправить сообщение →','con.form.or':'Или напишите нам напрямую в',
-        'ft.nav':'Навигация','ft.inicio':'Главная','ft.empresa':'Наша компания','ft.catalogo':'Каталог продуктов','ft.presencia':'Присутствие','ft.contacto':'Контакт','ft.dev':'Разработано','ft.copy':'© 2026 Fragaria S.A. Все права защищены.'
-      }
-    };
-
-    function setLang(lang) {
-      const t = i18n[lang] || i18n.es;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const k = el.getAttribute('data-i18n');
-        if (t[k] !== undefined) el.textContent = t[k];
-      });
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const k = el.getAttribute('data-i18n-placeholder');
-        if (t[k] !== undefined) el.placeholder = t[k];
-      });
-      const langMap = { en: 'en', pt: 'pt', ru: 'ru', es: 'es' };
-      document.documentElement.lang = langMap[lang] || 'es';
-      document.querySelectorAll('.lang-btn').forEach(b => b.style.outline = '');
-      const btn = document.getElementById('lang-' + lang);
-      if (btn) btn.style.outline = '2px solid #334155';
-      localStorage.setItem('fragaria-lang', lang);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('fragaria-lang');
-      if (saved && saved !== 'es') setLang(saved);
-    });
-  </script>
+  <script src="i18n.js"></script>
 </body>
 </html>
