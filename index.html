@@ -41,6 +41,8 @@
     .hero-soft-green { font-weight: 600; letter-spacing: 0.01em; text-shadow: 0 0 14px rgba(120, 235, 160, 0.22); }
     .hero-soft-green-solid { color: #3f8f67; font-weight: 600; letter-spacing: 0.01em; text-shadow: 0 0 10px rgba(90, 180, 130, 0.18); }
     .dot-grid { background-image: radial-gradient(circle, #334155 1px, transparent 1px); background-size: 28px 28px; }
+    @keyframes flag-wave { 0%,100%{transform:perspective(60px) rotateY(0deg)} 30%{transform:perspective(60px) rotateY(-10deg)} 70%{transform:perspective(60px) rotateY(10deg)} }
+    .flag-wave { animation: flag-wave 3s ease-in-out infinite; transform-origin: left center; }
   </style>
   <link rel="icon" href="img/favicon-32.png" sizes="32x32" />
   <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
@@ -161,29 +163,30 @@
 
         <a href="presencia/" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.presencia">Presencia</a>
         <a href="#contacto" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.contacto">Contacto</a>
-        <span class="h-4 w-px bg-ink-900/20"></span>
-        <div class="flex items-center gap-1.5">
-          <button onclick="setLang('es')" id="lang-es" title="Español" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
-            <img src="https://flagcdn.com/w40/ar.png" width="28" alt="Español" class="block h-full w-auto">
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1">
+          <button onclick="setLang('es')" id="lang-es" title="Español" class="lang-btn overflow-hidden rounded p-0.5 transition hover:scale-110 focus:outline-none">
+            <img src="https://flagcdn.com/w40/ar.png" width="22" alt="Español" class="flag-wave block" style="height:15px;width:auto;animation-delay:0s">
           </button>
-          <button onclick="setLang('en')" id="lang-en" title="English" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
-            <img src="https://flagcdn.com/w40/us.png" width="28" alt="English" class="block h-full w-auto">
+          <button onclick="setLang('en')" id="lang-en" title="English" class="lang-btn overflow-hidden rounded p-0.5 transition hover:scale-110 focus:outline-none">
+            <img src="https://flagcdn.com/w40/us.png" width="22" alt="English" class="flag-wave block" style="height:15px;width:auto;animation-delay:0.6s">
           </button>
-          <button onclick="setLang('pt')" id="lang-pt" title="Português" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
-            <img src="https://flagcdn.com/w40/br.png" width="28" alt="Português" class="block h-full w-auto">
+          <button onclick="setLang('pt')" id="lang-pt" title="Português" class="lang-btn overflow-hidden rounded p-0.5 transition hover:scale-110 focus:outline-none">
+            <img src="https://flagcdn.com/w40/br.png" width="22" alt="Português" class="flag-wave block" style="height:15px;width:auto;animation-delay:1.2s">
           </button>
-          <button onclick="setLang('ru')" id="lang-ru" title="Русский" class="lang-btn h-7 overflow-hidden rounded transition hover:scale-110 hover:opacity-90 focus:outline-none">
-            <img src="https://flagcdn.com/w40/ru.png" width="28" alt="Русский" class="block h-full w-auto">
+          <button onclick="setLang('ru')" id="lang-ru" title="Русский" class="lang-btn overflow-hidden rounded p-0.5 transition hover:scale-110 focus:outline-none">
+            <img src="https://flagcdn.com/w40/ru.png" width="22" alt="Русский" class="flag-wave block" style="height:15px;width:auto;animation-delay:1.8s">
           </button>
         </div>
-      </div>
-      <a href="https://wa.me/543462450100?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20sus%20productos."
-         target="_blank"
-         rel="noopener noreferrer"
-         class="flex items-center gap-2 rounded-full bg-[#25d366] px-5 py-2 text-sm font-bold text-white transition hover:bg-[#1ebe57]">
+        <a href="https://wa.me/543462450100?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20sus%20productos."
+           target="_blank"
+           rel="noopener noreferrer"
+           class="flex items-center gap-2 rounded-full bg-[#25d366] px-5 py-2 text-sm font-bold text-white transition hover:bg-[#1ebe57]">
         <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.104 1.522 5.826L.057 23.882a.75.75 0 0 0 .93.93l6.056-1.465A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 0 1-5.12-1.408l-.368-.217-3.816.924.943-3.816-.238-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
         WhatsApp
-      </a>
+        </a>
+      </div>
     </div>
   </nav>
 
