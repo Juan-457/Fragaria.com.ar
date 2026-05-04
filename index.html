@@ -60,10 +60,12 @@
 
         <!-- Productos mega-dropdown -->
         <div class="relative" id="nav-productos-wrapper">
-          <button id="nav-productos-btn" onclick="toggleProductosNav(event)" class="flex items-center gap-1.5 rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">
-            Productos
-            <svg id="productos-chevron" class="h-3.5 w-3.5 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </button>
+          <div class="flex items-center overflow-hidden rounded-full border border-ink-900/10 bg-ink-900/5">
+            <a href="catalogo.html" class="px-4 py-2 text-sm font-semibold text-ink-800 transition hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.productos">Productos</a>
+            <button id="nav-productos-btn" onclick="toggleProductosNav(event)" class="flex items-center border-l border-ink-900/15 px-2 py-2 text-ink-800 transition hover:bg-ink-900/10 hover:text-ink-900">
+              <svg id="productos-chevron" class="h-3.5 w-3.5 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </div>
           <div id="productos-mega-menu" class="hidden absolute top-full right-0 pt-3 z-50" style="min-width:700px">
             <div class="rounded-2xl border border-black/10 bg-white shadow-2xl p-6">
               <div class="grid grid-cols-4 gap-6">
@@ -157,9 +159,15 @@
           </div>
         </div>
 
-        <a href="#valores" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">Valores</a>
-        <a href="presencia/" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">Presencia</a>
-        <a href="#contacto" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900">Contacto</a>
+        <a href="#valores" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.valores">Valores</a>
+        <a href="presencia/" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.presencia">Presencia</a>
+        <a href="#contacto" class="rounded-full border border-ink-900/10 bg-ink-900/5 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-800/30 hover:bg-ink-900/10 hover:text-ink-900" data-i18n="nav.contacto">Contacto</a>
+        <span class="h-4 w-px bg-ink-900/20"></span>
+        <div class="flex items-center gap-1">
+          <button onclick="setLang('en')" id="lang-en" title="English" class="lang-btn flex h-8 w-8 items-center justify-center rounded-full text-lg transition hover:scale-110 hover:bg-ink-900/10">🇺🇸</button>
+          <button onclick="setLang('pt')" id="lang-pt" title="Português" class="lang-btn flex h-8 w-8 items-center justify-center rounded-full text-lg transition hover:scale-110 hover:bg-ink-900/10">🇧🇷</button>
+          <button onclick="setLang('ru')" id="lang-ru" title="Русский" class="lang-btn flex h-8 w-8 items-center justify-center rounded-full text-lg transition hover:scale-110 hover:bg-ink-900/10">🇷🇺</button>
+        </div>
       </div>
       <a href="https://wa.me/543462450100?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20sus%20productos."
          target="_blank"
@@ -188,23 +196,24 @@
         <div>
           <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-lime-500/30 bg-lime-500/10 px-4 py-1.5">
             <span class="h-2 w-2 rounded-full bg-lime-500 animate-pulse"></span>
-            <span class="text-xs font-semibold text-lime-400 tracking-wider uppercase">Agro · Tecnología · Sustentabilidad</span>
+            <span class="text-xs font-semibold text-lime-400 tracking-wider uppercase" data-i18n="hero.badge">Agro · Tecnología · Sustentabilidad</span>
           </div>
           <h1 class="text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Innovación<br/>
-            para una<br/>
-            <span class="gradient-text hero-soft-green">agricultura</span><br/>
-            <span class="text-white">eficiente</span>
+            <span data-i18n="hero.h1.1">Innovación</span><br/>
+            <span data-i18n="hero.h1.2">para una</span><br/>
+            <span class="gradient-text hero-soft-green" data-i18n="hero.h1.3">agricultura</span><br/>
+            <span class="text-white" data-i18n="hero.h1.4">eficiente</span>
           </h1>
-          <p class="mt-8 max-w-lg text-lg text-white/60 font-roboto leading-relaxed">
+          <p class="mt-8 max-w-lg text-lg text-white/60 font-roboto leading-relaxed" data-i18n="hero.desc">
             Fragaria S.A. desarrolla, produce y comercializa fertilizantes biológicos, coadyuvantes y especialidades agropecuarias con más de 37 años de trayectoria.
           </p>
           <div class="mt-10 flex flex-wrap gap-4">
             <a href="catalogo.html"
-               class="flex items-center gap-2.5 rounded-xl bg-[#25d366] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#25d366]/20 transition hover:bg-[#1ebe57] hover:shadow-[#25d366]/40">
-              Soluciones
+               class="flex items-center gap-2.5 rounded-xl bg-[#25d366] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#25d366]/20 transition hover:bg-[#1ebe57] hover:shadow-[#25d366]/40"
+               data-i18n="hero.btn1">
+              Productos
             </a>
-            <a href="empresa.html" class="rounded-xl bg-gold-500 px-7 py-3.5 text-sm font-semibold text-forest-900 transition hover:bg-gold-400">
+            <a href="empresa.html" class="rounded-xl bg-gold-500 px-7 py-3.5 text-sm font-semibold text-forest-900 transition hover:bg-gold-400" data-i18n="hero.btn2">
               Ver empresa
             </a>
           </div>
@@ -214,15 +223,15 @@
         <div class="float relative">
           <div class="rounded-3xl border border-white/10 bg-ink-900/80 p-8 backdrop-blur-xl shadow-2xl">
             <div class="mb-6 flex items-center justify-between">
-              <p class="text-sm font-semibold text-white/60">Fragaria en cifras</p>
+              <p class="text-sm font-semibold text-white/60" data-i18n="card.title">Fragaria en cifras</p>
               <span class="rounded-full bg-lime-500/20 px-3 py-1 text-xs font-bold text-lime-400">2026</span>
             </div>
             <div class="space-y-5">
               <a href="empresa.html" class="flex items-center justify-between rounded-xl bg-white/5 p-4 transition hover:bg-white/10 cursor-pointer">
                 <div>
-                  <p class="text-xs text-white">Trayectoria</p>
+                  <p class="text-xs text-white" data-i18n="card.tray">Trayectoria</p>
                   <p class="text-2xl font-bold text-white">
-                    <span class="js-counter" data-target="37" data-prefix="+">+0</span> años
+                    <span class="js-counter" data-target="37" data-prefix="+">+0</span> <span data-i18n="card.anos">años</span>
                   </p>
                 </div>
                 <div class="h-10 w-10 rounded-xl bg-lime-500/20 flex items-center justify-center">
@@ -231,8 +240,8 @@
               </a>
               <a href="presencia/#presencia-mundial" class="flex items-center justify-between rounded-xl bg-white/5 p-4 transition hover:bg-white/10 cursor-pointer">
                 <div>
-                  <p class="text-xs text-white">Presencia internacional</p>
-                  <p class="text-2xl font-bold text-white">Comercio exterior</p>
+                  <p class="text-xs text-white" data-i18n="card.intl.label">Presencia internacional</p>
+                  <p class="text-2xl font-bold text-white" data-i18n="card.intl.val">Comercio exterior</p>
                 </div>
                 <div class="h-10 w-10 rounded-xl bg-lime-500/20 flex items-center justify-center">
                   <svg class="h-5 w-5 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -240,7 +249,7 @@
               </a>
               <a href="presencia/#mapa-argentina" class="flex items-center justify-between rounded-xl bg-lime-500/10 border border-lime-500/20 p-4 transition hover:bg-lime-500/20 cursor-pointer">
                 <div>
-                  <p class="text-xs text-white">Presencia nacional</p>
+                  <p class="text-xs text-white" data-i18n="card.nat.label">Presencia nacional</p>
                   <p class="text-2xl font-bold text-white">Argentina</p>
                 </div>
                 <div class="h-10 w-10 rounded-xl bg-lime-500/30 flex items-center justify-center">
@@ -260,14 +269,14 @@
       <div class="mx-auto max-w-7xl px-6 lg:px-10">
         <div class="grid gap-16 lg:grid-cols-2 items-center">
           <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-forest-700">Empresa</p>
-            <h2 class="mt-4 font-display text-4xl font-black text-forest-900 sm:text-5xl leading-tight">
+            <p class="text-xs font-bold uppercase tracking-widest text-forest-700" data-i18n="emp.label">Empresa</p>
+            <h2 class="mt-4 font-display text-4xl font-black text-forest-900 sm:text-5xl leading-tight" data-i18n="emp.h2">
               Una compañía argentina con evolución constante
             </h2>
-            <p class="mt-6 text-base leading-8 text-forest-800/70">
+            <p class="mt-6 text-base leading-8 text-forest-800/70" data-i18n="emp.p1">
               Desde hace más de 37 años participamos activamente del mercado agropecuario, brindando soluciones para mejorar rendimiento, eficiencia y sustentabilidad en campo.
             </p>
-            <p class="mt-4 text-base leading-8 text-forest-800/70">
+            <p class="mt-4 text-base leading-8 text-forest-800/70" data-i18n="emp.p2">
               Nuestra propuesta combina desarrollo propio, producción y comercialización de insumos con foco técnico, respaldo comercial y cercanía con productores y distribuidores.
             </p>
           </div>
@@ -275,22 +284,22 @@
             <div class="flex items-start gap-4 rounded-2xl bg-forest-900 p-6 text-white">
               <span class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold-500 text-forest-900 font-black text-sm">1</span>
               <div>
-                <h3 class="font-bold">Fertilizantes biológicos</h3>
-                <p class="mt-1 text-sm text-white/70">Productos para mejorar rendimiento con menor impacto ambiental.</p>
+                <h3 class="font-bold" data-i18n="emp.item1.t">Fertilizantes biológicos</h3>
+                <p class="mt-1 text-sm text-white/70" data-i18n="emp.item1.d">Productos para mejorar rendimiento con menor impacto ambiental.</p>
               </div>
             </div>
             <div class="flex items-start gap-4 rounded-2xl bg-forest-800 p-6 text-white">
               <span class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold-500 text-forest-900 font-black text-sm">2</span>
               <div>
-                <h3 class="font-bold">Coadyuvantes</h3>
-                <p class="mt-1 text-sm text-white/70">Optimizadores de aplicaciones para mayor eficacia.</p>
+                <h3 class="font-bold" data-i18n="emp.item2.t">Coadyuvantes</h3>
+                <p class="mt-1 text-sm text-white/70" data-i18n="emp.item2.d">Optimizadores de aplicaciones para mayor eficacia.</p>
               </div>
             </div>
             <div class="flex items-start gap-4 rounded-2xl bg-forest-700 p-6 text-white">
               <span class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold-500 text-forest-900 font-black text-sm">3</span>
               <div>
-                <h3 class="font-bold">Especialidades agropecuarias</h3>
-                <p class="mt-1 text-sm text-white/70">Desarrollo con enfoque ambiental responsable.</p>
+                <h3 class="font-bold" data-i18n="emp.item3.t">Especialidades agropecuarias</h3>
+                <p class="mt-1 text-sm text-white/70" data-i18n="emp.item3.d">Desarrollo con enfoque ambiental responsable.</p>
               </div>
             </div>
           </div>
@@ -302,33 +311,33 @@
     <section id="valores" class="clip-diagonal-rev bg-forest-900 py-32 text-white">
       <div class="mx-auto max-w-7xl px-6 lg:px-10">
         <div class="text-center mb-14">
-          <p class="text-xs font-bold uppercase tracking-widest text-gold-400">Nuestros productos</p>
-          <h2 class="mt-4 font-display text-4xl font-black sm:text-5xl">Soluciones para cada etapa del cultivo</h2>
+          <p class="text-xs font-bold uppercase tracking-widest text-gold-400" data-i18n="val.label">Nuestros productos</p>
+          <h2 class="mt-4 font-display text-4xl font-black sm:text-5xl" data-i18n="val.h2">Soluciones para cada etapa del cultivo</h2>
         </div>
         <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           <a href="catalogo.html?cat=coadyuvantes" class="group rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:border-gold-500/50 hover:bg-white/10">
             <div class="mb-4 text-3xl">⚗️</div>
-            <h3 class="font-bold text-lg">Coadyuvantes</h3>
-            <p class="mt-3 text-sm text-white/65 leading-6">Optimizadores de mezclas y correctores de agua para aplicaciones más eficaces.</p>
-            <span class="mt-5 inline-block text-xs font-semibold text-gold-400 group-hover:text-gold-300">Ver productos →</span>
+            <h3 class="font-bold text-lg" data-i18n="val.c1.t">Coadyuvantes</h3>
+            <p class="mt-3 text-sm text-white/65 leading-6" data-i18n="val.c1.d">Optimizadores de mezclas y correctores de agua para aplicaciones más eficaces.</p>
+            <span class="mt-5 inline-block text-xs font-semibold text-gold-400 group-hover:text-gold-300" data-i18n="val.c1.l">Ver productos →</span>
           </a>
           <a href="catalogo.html?cat=tratamiento-semillas" class="group rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:border-gold-500/50 hover:bg-white/10">
             <div class="mb-4 text-3xl">🌾</div>
-            <h3 class="font-bold text-lg">Tratamiento de Semillas</h3>
-            <p class="mt-3 text-sm text-white/65 leading-6">Inoculantes y curasemillas para una implantación segura y mayor nodulación.</p>
-            <span class="mt-5 inline-block text-xs font-semibold text-gold-400 group-hover:text-gold-300">Ver productos →</span>
+            <h3 class="font-bold text-lg" data-i18n="val.c2.t">Tratamiento de Semillas</h3>
+            <p class="mt-3 text-sm text-white/65 leading-6" data-i18n="val.c2.d">Inoculantes y curasemillas para una implantación segura y mayor nodulación.</p>
+            <span class="mt-5 inline-block text-xs font-semibold text-gold-400 group-hover:text-gold-300" data-i18n="val.c2.l">Ver productos →</span>
           </a>
           <a href="catalogo.html?cat=bioestimulacion" class="group rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:border-gold-500/50 hover:bg-white/10">
             <div class="mb-4 text-3xl">🌿</div>
-            <h3 class="font-bold text-lg">Bioestimulación y Nutrición</h3>
-            <p class="mt-3 text-sm text-white/65 leading-6">Biofertilizantes y estimulantes para potenciar el crecimiento y rendimiento del cultivo.</p>
-            <span class="mt-5 inline-block text-xs font-semibold text-gold-400 group-hover:text-gold-300">Ver productos →</span>
+            <h3 class="font-bold text-lg" data-i18n="val.c3.t">Bioestimulación y Nutrición</h3>
+            <p class="mt-3 text-sm text-white/65 leading-6" data-i18n="val.c3.d">Biofertilizantes y estimulantes para potenciar el crecimiento y rendimiento del cultivo.</p>
+            <span class="mt-5 inline-block text-xs font-semibold text-gold-400 group-hover:text-gold-300" data-i18n="val.c3.l">Ver productos →</span>
           </a>
           <a href="catalogo.html?cat=otras-soluciones" class="group rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:border-gold-500/50 hover:bg-white/10">
             <div class="mb-4 text-3xl">🔬</div>
-            <h3 class="font-bold text-lg">Otras Soluciones</h3>
-            <p class="mt-3 text-sm text-white/65 leading-6">Fungicidas, insecticidas y productos complementarios para el manejo integral del cultivo.</p>
-            <span class="mt-5 inline-block text-xs font-semibold text-gold-400 group-hover:text-gold-300">Ver productos →</span>
+            <h3 class="font-bold text-lg" data-i18n="val.c4.t">Otras Soluciones</h3>
+            <p class="mt-3 text-sm text-white/65 leading-6" data-i18n="val.c4.d">Fungicidas, insecticidas y productos complementarios para el manejo integral del cultivo.</p>
+            <span class="mt-5 inline-block text-xs font-semibold text-gold-400 group-hover:text-gold-300" data-i18n="val.c4.l">Ver productos →</span>
           </a>
         </div>
       </div>
@@ -339,13 +348,13 @@
       <div class="mx-auto max-w-7xl px-6 lg:px-10">
         <div class="mb-14 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-forest-700">Líneas de trabajo</p>
-            <h2 class="mt-4 font-display text-4xl font-black text-forest-900 sm:text-5xl">Nuestras especialidades</h2>
+            <p class="text-xs font-bold uppercase tracking-widest text-forest-700" data-i18n="lin.label">Líneas de trabajo</p>
+            <h2 class="mt-4 font-display text-4xl font-black text-forest-900 sm:text-5xl" data-i18n="lin.h2">Nuestras especialidades</h2>
           </div>
           <a href="https://wa.me/543462450100?text=Hola%2C%20quiero%20info%20sobre%20los%20productos%20de%20Fragaria." target="_blank"
              class="flex shrink-0 items-center gap-2 rounded-full bg-[#25d366] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#1ebe57]">
             <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.104 1.522 5.826L.057 23.882a.75.75 0 0 0 .93.93l6.056-1.465A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 0 1-5.12-1.408l-.368-.217-3.816.924.943-3.816-.238-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-            Consultar por WhatsApp
+            <span data-i18n="lin.wa">Consultar por WhatsApp</span>
           </a>
         </div>
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -382,8 +391,8 @@
       <div class="mx-auto max-w-7xl px-6 lg:px-10">
         <div class="mb-10 text-center">
           <p class="text-xs font-bold uppercase tracking-widest text-gold-400">Instagram</p>
-          <h2 class="mt-4 font-display text-4xl font-black sm:text-5xl">Novedades de Fragaria</h2>
-          <p class="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/70">
+          <h2 class="mt-4 font-display text-4xl font-black sm:text-5xl" data-i18n="ig.h2">Novedades de Fragaria</h2>
+          <p class="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/70" data-i18n="ig.desc">
             Seguinos para ver lanzamientos, ensayos y contenido técnico en tiempo real.
           </p>
         </div>
@@ -395,7 +404,7 @@
              class="flex items-center gap-2.5 rounded-full px-7 py-3 text-sm font-bold text-white shadow-lg transition hover:opacity-90 hover:shadow-xl"
              style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);">
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            Ver en Instagram
+            <span data-i18n="ig.btn">Ver en Instagram</span>
           </a>
         </div>
       </div>
@@ -407,9 +416,9 @@
         <div class="grid gap-16 lg:grid-cols-2">
           <!-- Info -->
           <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-gold-400">Contacto</p>
-            <h2 class="mt-4 font-display text-4xl font-black sm:text-5xl">¿Querés trabajar con Fragaria?</h2>
-            <p class="mt-6 text-lg text-forest-800/75 leading-relaxed">Contactanos para recibir asesoramiento sobre nuestras especialidades agropecuarias. Te respondemos a la brevedad.</p>
+            <p class="text-xs font-bold uppercase tracking-widest text-gold-400" data-i18n="con.label">Contacto</p>
+            <h2 class="mt-4 font-display text-4xl font-black sm:text-5xl" data-i18n="con.h2">¿Querés trabajar con Fragaria?</h2>
+            <p class="mt-6 text-lg text-forest-800/75 leading-relaxed" data-i18n="con.desc">Contactanos para recibir asesoramiento sobre nuestras especialidades agropecuarias. Te respondemos a la brevedad.</p>
             <div class="mt-10 space-y-4">
               <a href="https://wa.me/543462450100" target="_blank" class="flex items-center gap-4 rounded-2xl bg-[#25d366]/10 border border-[#25d366]/30 p-5 transition hover:bg-[#25d366]/20">
                 <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#25d366]">
@@ -434,7 +443,7 @@
                   <svg class="h-6 w-6 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 </div>
                 <div>
-                  <p class="font-semibold">Dirección</p>
+                  <p class="font-semibold" data-i18n="con.dir">Dirección</p>
                   <p class="text-sm text-forest-800/70">Calle 57 esq. 40, Villa Cañas, Argentina</p>
                 </div>
               </div>
@@ -443,29 +452,29 @@
 
           <!-- Form -->
           <form class="rounded-3xl bg-white/85 border border-forest-900/10 p-8 backdrop-blur" onsubmit="handleSubmit(event)">
-            <h3 class="font-display text-2xl font-black">Envianos un mensaje</h3>
-            <p class="mt-2 text-sm text-forest-800/70">Te respondemos en menos de 24 hs.</p>
+            <h3 class="font-display text-2xl font-black" data-i18n="con.form.h3">Envianos un mensaje</h3>
+            <p class="mt-2 text-sm text-forest-800/70" data-i18n="con.form.sub">Te respondemos en menos de 24 hs.</p>
             <div class="mt-8 space-y-5">
               <div>
-                <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400">Nombre completo</label>
-                <input type="text" required placeholder="Juan García" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
+                <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400" data-i18n="con.form.name.l">Nombre completo</label>
+                <input type="text" required placeholder="Juan García" data-i18n-placeholder="con.form.name.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
               </div>
               <div>
-                <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400">Email</label>
-                <input type="email" required placeholder="juan@ejemplo.com" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
+                <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400" data-i18n="con.form.email.l">Email</label>
+                <input type="email" required placeholder="juan@ejemplo.com" data-i18n-placeholder="con.form.email.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
               </div>
               <div>
-                <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400">Teléfono (opcional)</label>
-                <input type="tel" placeholder="+54 9 ..." class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
+                <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400" data-i18n="con.form.phone.l">Teléfono (opcional)</label>
+                <input type="tel" placeholder="+54 9 ..." data-i18n-placeholder="con.form.phone.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
               </div>
               <div>
-                <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400">Mensaje</label>
-                <textarea required rows="4" placeholder="Contanos en qué podemos ayudarte..." class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition resize-none"></textarea>
+                <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400" data-i18n="con.form.msg.l">Mensaje</label>
+                <textarea required rows="4" placeholder="Contanos en qué podemos ayudarte..." data-i18n-placeholder="con.form.msg.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition resize-none"></textarea>
               </div>
-              <button type="submit" class="w-full rounded-xl bg-gold-500 py-4 text-sm font-bold text-forest-900 transition hover:bg-gold-400 active:scale-95">
+              <button type="submit" class="w-full rounded-xl bg-gold-500 py-4 text-sm font-bold text-forest-900 transition hover:bg-gold-400 active:scale-95" data-i18n="con.form.btn">
                 Enviar mensaje →
               </button>
-              <p class="text-center text-xs text-forest-800/65">O escribinos directo por
+              <p class="text-center text-xs text-forest-800/65"><span data-i18n="con.form.or">O escribinos directo por</span>
                 <a href="https://wa.me/543462450100" target="_blank" class="text-[#25d366] underline">WhatsApp</a>
               </p>
             </div>
@@ -506,13 +515,13 @@
 
         <!-- Navegación -->
         <div>
-          <p class="mb-5 text-xs font-bold uppercase tracking-widest text-white/30">Navegación</p>
+          <p class="mb-5 text-xs font-bold uppercase tracking-widest text-white/30" data-i18n="ft.nav">Navegación</p>
           <ul class="space-y-3">
-            <li><a href="index.html#inicio" class="text-sm text-white/55 transition hover:text-white">Inicio</a></li>
-            <li><a href="empresa.html" class="text-sm text-white/55 transition hover:text-white">Nuestra Empresa</a></li>
-            <li><a href="catalogo.html" class="text-sm text-white/55 transition hover:text-white">Catálogo de Productos</a></li>
-            <li><a href="presencia/" class="text-sm text-white/55 transition hover:text-white">Presencia</a></li>
-            <li><a href="index.html#contacto" class="text-sm text-white/55 transition hover:text-white">Contacto</a></li>
+            <li><a href="index.html#inicio" class="text-sm text-white/55 transition hover:text-white" data-i18n="ft.inicio">Inicio</a></li>
+            <li><a href="empresa.html" class="text-sm text-white/55 transition hover:text-white" data-i18n="ft.empresa">Nuestra Empresa</a></li>
+            <li><a href="catalogo.html" class="text-sm text-white/55 transition hover:text-white" data-i18n="ft.catalogo">Catálogo de Productos</a></li>
+            <li><a href="presencia/" class="text-sm text-white/55 transition hover:text-white" data-i18n="ft.presencia">Presencia</a></li>
+            <li><a href="index.html#contacto" class="text-sm text-white/55 transition hover:text-white" data-i18n="ft.contacto">Contacto</a></li>
           </ul>
         </div>
 
@@ -541,10 +550,10 @@
     <!-- Barra inferior -->
     <div class="border-t border-white/5">
       <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-5 sm:flex-row lg:px-10">
-        <p class="text-xs text-white/30">© 2026 Fragaria S.A. Todos los derechos reservados.</p>
+        <p class="text-xs text-white/30" data-i18n="ft.copy">© 2026 Fragaria S.A. Todos los derechos reservados.</p>
         <a href="https://umanoai.com.ar" target="_blank" rel="noopener noreferrer"
            class="flex items-center gap-2 opacity-40 transition hover:opacity-75">
-          <span class="text-xs text-white/60">Desarrollado por</span>
+          <span class="text-xs text-white/60" data-i18n="ft.dev">Desarrollado por</span>
           <img src="img/umanoai.png" alt="UmanoAI" class="h-6 w-auto" />
         </a>
       </div>
@@ -644,5 +653,133 @@
     });
   </script>
   <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+
+  <script>
+    const i18n = {
+      es: {
+        'nav.empresa':'Nuestra Empresa','nav.productos':'Productos','nav.valores':'Valores','nav.presencia':'Presencia','nav.contacto':'Contacto',
+        'hero.badge':'Agro · Tecnología · Sustentabilidad','hero.h1.1':'Innovación','hero.h1.2':'para una','hero.h1.3':'agricultura','hero.h1.4':'eficiente',
+        'hero.desc':'Fragaria S.A. desarrolla, produce y comercializa fertilizantes biológicos, coadyuvantes y especialidades agropecuarias con más de 37 años de trayectoria.',
+        'hero.btn1':'Productos','hero.btn2':'Ver empresa',
+        'card.title':'Fragaria en cifras','card.tray':'Trayectoria','card.anos':'años','card.intl.label':'Presencia internacional','card.intl.val':'Comercio exterior','card.nat.label':'Presencia nacional',
+        'emp.label':'Empresa','emp.h2':'Una compañía argentina con evolución constante',
+        'emp.p1':'Desde hace más de 37 años participamos activamente del mercado agropecuario, brindando soluciones para mejorar rendimiento, eficiencia y sustentabilidad en campo.',
+        'emp.p2':'Nuestra propuesta combina desarrollo propio, producción y comercialización de insumos con foco técnico, respaldo comercial y cercanía con productores y distribuidores.',
+        'emp.item1.t':'Fertilizantes biológicos','emp.item1.d':'Productos para mejorar rendimiento con menor impacto ambiental.',
+        'emp.item2.t':'Coadyuvantes','emp.item2.d':'Optimizadores de aplicaciones para mayor eficacia.',
+        'emp.item3.t':'Especialidades agropecuarias','emp.item3.d':'Desarrollo con enfoque ambiental responsable.',
+        'val.label':'Nuestros productos','val.h2':'Soluciones para cada etapa del cultivo',
+        'val.c1.t':'Coadyuvantes','val.c1.d':'Optimizadores de mezclas y correctores de agua para aplicaciones más eficaces.','val.c1.l':'Ver productos →',
+        'val.c2.t':'Tratamiento de Semillas','val.c2.d':'Inoculantes y curasemillas para una implantación segura y mayor nodulación.','val.c2.l':'Ver productos →',
+        'val.c3.t':'Bioestimulación y Nutrición','val.c3.d':'Biofertilizantes y estimulantes para potenciar el crecimiento y rendimiento del cultivo.','val.c3.l':'Ver productos →',
+        'val.c4.t':'Otras Soluciones','val.c4.d':'Fungicidas, insecticidas y productos complementarios para el manejo integral del cultivo.','val.c4.l':'Ver productos →',
+        'lin.label':'Líneas de trabajo','lin.h2':'Nuestras especialidades','lin.wa':'Consultar por WhatsApp',
+        'ig.h2':'Novedades de Fragaria','ig.desc':'Seguinos para ver lanzamientos, ensayos y contenido técnico en tiempo real.','ig.btn':'Ver en Instagram',
+        'con.label':'Contacto','con.h2':'¿Querés trabajar con Fragaria?','con.desc':'Contactanos para recibir asesoramiento sobre nuestras especialidades agropecuarias. Te respondemos a la brevedad.',
+        'con.dir':'Dirección','con.form.h3':'Envianos un mensaje','con.form.sub':'Te respondemos en menos de 24 hs.',
+        'con.form.name.l':'Nombre completo','con.form.name.p':'Juan García','con.form.email.l':'Email','con.form.email.p':'juan@ejemplo.com',
+        'con.form.phone.l':'Teléfono (opcional)','con.form.phone.p':'+54 9 ...','con.form.msg.l':'Mensaje','con.form.msg.p':'Contanos en qué podemos ayudarte...','con.form.btn':'Enviar mensaje →','con.form.or':'O escribinos directo por',
+        'ft.nav':'Navegación','ft.inicio':'Inicio','ft.empresa':'Nuestra Empresa','ft.catalogo':'Catálogo de Productos','ft.presencia':'Presencia','ft.contacto':'Contacto','ft.dev':'Desarrollado por','ft.copy':'© 2026 Fragaria S.A. Todos los derechos reservados.'
+      },
+      en: {
+        'nav.empresa':'Our Company','nav.productos':'Products','nav.valores':'Values','nav.presencia':'Presence','nav.contacto':'Contact',
+        'hero.badge':'Agro · Technology · Sustainability','hero.h1.1':'Innovation','hero.h1.2':'for an','hero.h1.3':'efficient','hero.h1.4':'agriculture',
+        'hero.desc':'Fragaria S.A. develops, produces and markets biological fertilizers, adjuvants and agricultural specialties with over 37 years of experience.',
+        'hero.btn1':'Products','hero.btn2':'View Company',
+        'card.title':'Fragaria in numbers','card.tray':'Experience','card.anos':'years','card.intl.label':'International presence','card.intl.val':'Foreign trade','card.nat.label':'National presence',
+        'emp.label':'Company','emp.h2':'An Argentine company in constant evolution',
+        'emp.p1':'For more than 37 years we have actively participated in the agricultural market, providing solutions to improve yield, efficiency and sustainability in the field.',
+        'emp.p2':'Our proposal combines in-house development, production and marketing of inputs with a technical focus, commercial support and closeness to producers and distributors.',
+        'emp.item1.t':'Biological fertilizers','emp.item1.d':'Products to improve yield with lower environmental impact.',
+        'emp.item2.t':'Adjuvants','emp.item2.d':'Application optimizers for greater effectiveness.',
+        'emp.item3.t':'Agricultural specialties','emp.item3.d':'Development with a responsible environmental approach.',
+        'val.label':'Our products','val.h2':'Solutions for every stage of cultivation',
+        'val.c1.t':'Adjuvants','val.c1.d':'Mixture optimizers and water correctors for more effective applications.','val.c1.l':'View products →',
+        'val.c2.t':'Seed Treatment','val.c2.d':'Inoculants and seed treatments for safe establishment and greater nodulation.','val.c2.l':'View products →',
+        'val.c3.t':'Biostimulation and Nutrition','val.c3.d':'Biofertilizers and stimulants to boost crop growth and yield.','val.c3.l':'View products →',
+        'val.c4.t':'Other Solutions','val.c4.d':'Fungicides, insecticides and complementary products for integrated crop management.','val.c4.l':'View products →',
+        'lin.label':'Lines of work','lin.h2':'Our specialties','lin.wa':'Consult via WhatsApp',
+        'ig.h2':'Fragaria News','ig.desc':'Follow us to see launches, trials and technical content in real time.','ig.btn':'View on Instagram',
+        'con.label':'Contact','con.h2':'Want to work with Fragaria?','con.desc':'Contact us for advice on our agricultural specialties. We respond promptly.',
+        'con.dir':'Address','con.form.h3':'Send us a message','con.form.sub':'We respond within 24 hours.',
+        'con.form.name.l':'Full name','con.form.name.p':'John Smith','con.form.email.l':'Email','con.form.email.p':'john@example.com',
+        'con.form.phone.l':'Phone (optional)','con.form.phone.p':'+54 9 ...','con.form.msg.l':'Message','con.form.msg.p':'Tell us how we can help you...','con.form.btn':'Send message →','con.form.or':'Or write to us directly on',
+        'ft.nav':'Navigation','ft.inicio':'Home','ft.empresa':'Our Company','ft.catalogo':'Product Catalog','ft.presencia':'Presence','ft.contacto':'Contact','ft.dev':'Developed by','ft.copy':'© 2026 Fragaria S.A. All rights reserved.'
+      },
+      pt: {
+        'nav.empresa':'Nossa Empresa','nav.productos':'Produtos','nav.valores':'Valores','nav.presencia':'Presença','nav.contacto':'Contato',
+        'hero.badge':'Agro · Tecnologia · Sustentabilidade','hero.h1.1':'Inovação','hero.h1.2':'para uma','hero.h1.3':'agricultura','hero.h1.4':'eficiente',
+        'hero.desc':'Fragaria S.A. desenvolve, produz e comercializa fertilizantes biológicos, coadjuvantes e especialidades agropecuárias com mais de 37 anos de trajetória.',
+        'hero.btn1':'Produtos','hero.btn2':'Ver empresa',
+        'card.title':'Fragaria em números','card.tray':'Trajetória','card.anos':'anos','card.intl.label':'Presença internacional','card.intl.val':'Comércio exterior','card.nat.label':'Presença nacional',
+        'emp.label':'Empresa','emp.h2':'Uma empresa argentina em evolução constante',
+        'emp.p1':'Há mais de 37 anos participamos ativamente do mercado agropecuário, oferecendo soluções para melhorar rendimento, eficiência e sustentabilidade no campo.',
+        'emp.p2':'Nossa proposta combina desenvolvimento próprio, produção e comercialização de insumos com foco técnico, suporte comercial e proximidade com produtores e distribuidores.',
+        'emp.item1.t':'Fertilizantes biológicos','emp.item1.d':'Produtos para melhorar o rendimento com menor impacto ambiental.',
+        'emp.item2.t':'Coadjuvantes','emp.item2.d':'Otimizadores de aplicações para maior eficácia.',
+        'emp.item3.t':'Especialidades agropecuárias','emp.item3.d':'Desenvolvimento com foco ambiental responsável.',
+        'val.label':'Nossos produtos','val.h2':'Soluções para cada etapa do cultivo',
+        'val.c1.t':'Coadjuvantes','val.c1.d':'Otimizadores de misturas e corretores de água para aplicações mais eficazes.','val.c1.l':'Ver produtos →',
+        'val.c2.t':'Tratamento de Sementes','val.c2.d':'Inoculantes e curasementes para implantação segura e maior nodulação.','val.c2.l':'Ver produtos →',
+        'val.c3.t':'Bioestimulação e Nutrição','val.c3.d':'Biofertilizantes e estimulantes para potencializar o crescimento e rendimento da cultura.','val.c3.l':'Ver produtos →',
+        'val.c4.t':'Outras Soluções','val.c4.d':'Fungicidas, inseticidas e produtos complementares para o manejo integrado da cultura.','val.c4.l':'Ver produtos →',
+        'lin.label':'Linhas de trabalho','lin.h2':'Nossas especialidades','lin.wa':'Consultar pelo WhatsApp',
+        'ig.h2':'Novidades da Fragaria','ig.desc':'Siga-nos para ver lançamentos, ensaios e conteúdo técnico em tempo real.','ig.btn':'Ver no Instagram',
+        'con.label':'Contato','con.h2':'Quer trabalhar com Fragaria?','con.desc':'Entre em contato para receber consultoria sobre nossas especialidades agropecuárias. Respondemos em breve.',
+        'con.dir':'Endereço','con.form.h3':'Envie-nos uma mensagem','con.form.sub':'Respondemos em menos de 24h.',
+        'con.form.name.l':'Nome completo','con.form.name.p':'João Silva','con.form.email.l':'Email','con.form.email.p':'joao@exemplo.com',
+        'con.form.phone.l':'Telefone (opcional)','con.form.phone.p':'+55 ...','con.form.msg.l':'Mensagem','con.form.msg.p':'Diga-nos como podemos ajudá-lo...','con.form.btn':'Enviar mensagem →','con.form.or':'Ou escreva-nos diretamente pelo',
+        'ft.nav':'Navegação','ft.inicio':'Início','ft.empresa':'Nossa Empresa','ft.catalogo':'Catálogo de Produtos','ft.presencia':'Presença','ft.contacto':'Contato','ft.dev':'Desenvolvido por','ft.copy':'© 2026 Fragaria S.A. Todos os direitos reservados.'
+      },
+      ru: {
+        'nav.empresa':'Наша компания','nav.productos':'Продукты','nav.valores':'Ценности','nav.presencia':'Присутствие','nav.contacto':'Контакт',
+        'hero.badge':'Агро · Технологии · Устойчивость','hero.h1.1':'Инновации','hero.h1.2':'для','hero.h1.3':'эффективного','hero.h1.4':'сельского хозяйства',
+        'hero.desc':'Fragaria S.A. разрабатывает, производит и реализует биологические удобрения, адъюванты и сельскохозяйственные специальности с более чем 37-летним опытом.',
+        'hero.btn1':'Продукты','hero.btn2':'О компании',
+        'card.title':'Fragaria в цифрах','card.tray':'Опыт','card.anos':'лет','card.intl.label':'Международное присутствие','card.intl.val':'Внешняя торговля','card.nat.label':'Национальное присутствие',
+        'emp.label':'Компания','emp.h2':'Аргентинская компания в постоянном развитии',
+        'emp.p1':'Более 37 лет мы активно участвуем в сельскохозяйственном рынке, предлагая решения для улучшения урожайности, эффективности и устойчивости в полевых условиях.',
+        'emp.p2':'Наше предложение сочетает собственные разработки, производство и реализацию средств с техническим фокусом, коммерческой поддержкой и близостью к производителям и дистрибьюторам.',
+        'emp.item1.t':'Биологические удобрения','emp.item1.d':'Продукты для улучшения урожайности с меньшим воздействием на окружающую среду.',
+        'emp.item2.t':'Адъюванты','emp.item2.d':'Оптимизаторы применения для большей эффективности.',
+        'emp.item3.t':'Сельскохозяйственные специальности','emp.item3.d':'Разработка с ответственным экологическим подходом.',
+        'val.label':'Наши продукты','val.h2':'Решения для каждого этапа выращивания',
+        'val.c1.t':'Адъюванты','val.c1.d':'Оптимизаторы смесей и корректоры воды для более эффективного применения.','val.c1.l':'Смотреть продукты →',
+        'val.c2.t':'Обработка семян','val.c2.d':'Инокулянты и протравители семян для безопасного укоренения и большей нодуляции.','val.c2.l':'Смотреть продукты →',
+        'val.c3.t':'Биостимуляция и питание','val.c3.d':'Биоудобрения и стимуляторы для повышения роста и урожайности культуры.','val.c3.l':'Смотреть продукты →',
+        'val.c4.t':'Другие решения','val.c4.d':'Фунгициды, инсектициды и дополнительные продукты для комплексного управления культурой.','val.c4.l':'Смотреть продукты →',
+        'lin.label':'Направления работы','lin.h2':'Наши специальности','lin.wa':'Консультация в WhatsApp',
+        'ig.h2':'Новости Fragaria','ig.desc':'Следите за нами, чтобы видеть запуски, испытания и технический контент в реальном времени.','ig.btn':'Смотреть в Instagram',
+        'con.label':'Контакт','con.h2':'Хотите работать с Fragaria?','con.desc':'Свяжитесь с нами для консультации по нашим сельскохозяйственным специальностям. Ответим быстро.',
+        'con.dir':'Адрес','con.form.h3':'Отправьте нам сообщение','con.form.sub':'Ответим менее чем за 24 часа.',
+        'con.form.name.l':'Полное имя','con.form.name.p':'Иван Иванов','con.form.email.l':'Email','con.form.email.p':'ivan@primer.ru',
+        'con.form.phone.l':'Телефон (необязательно)','con.form.phone.p':'+7 ...','con.form.msg.l':'Сообщение','con.form.msg.p':'Расскажите, чем мы можем вам помочь...','con.form.btn':'Отправить сообщение →','con.form.or':'Или напишите нам напрямую в',
+        'ft.nav':'Навигация','ft.inicio':'Главная','ft.empresa':'Наша компания','ft.catalogo':'Каталог продуктов','ft.presencia':'Присутствие','ft.contacto':'Контакт','ft.dev':'Разработано','ft.copy':'© 2026 Fragaria S.A. Все права защищены.'
+      }
+    };
+
+    function setLang(lang) {
+      const t = i18n[lang] || i18n.es;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        if (t[k] !== undefined) el.textContent = t[k];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const k = el.getAttribute('data-i18n-placeholder');
+        if (t[k] !== undefined) el.placeholder = t[k];
+      });
+      const langMap = { en: 'en', pt: 'pt', ru: 'ru', es: 'es' };
+      document.documentElement.lang = langMap[lang] || 'es';
+      document.querySelectorAll('.lang-btn').forEach(b => b.style.outline = '');
+      const btn = document.getElementById('lang-' + lang);
+      if (btn) btn.style.outline = '2px solid #334155';
+      localStorage.setItem('fragaria-lang', lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('fragaria-lang');
+      if (saved && saved !== 'es') setLang(saved);
+    });
+  </script>
 </body>
 </html>
