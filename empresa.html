@@ -36,6 +36,74 @@
     .timeline-glow { box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2), 0 0 24px rgba(52, 211, 153, 0.45); }
     @keyframes flag-wave { 0%,100%{transform:perspective(60px) rotateY(0deg)} 30%{transform:perspective(60px) rotateY(-10deg)} 70%{transform:perspective(60px) rotateY(10deg)} }
     .flag-wave { animation: flag-wave 3s ease-in-out infinite; transform-origin: left center; }
+
+    /* ===== Diagrama animado del significado del logo ===== */
+    .logo-head { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+    .logo-on .logo-head { opacity: 1; transform: none; }
+
+    .logo-diagram { position: relative; width: 980px; max-width: 100%; height: 540px; margin: 0 auto; }
+    .logo-emblem {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%) scale(.85);
+      width: 250px; height: 250px; display: grid; place-items: center;
+      background: #fff; border-radius: 9999px; padding: 26px;
+      box-shadow: 0 22px 60px rgba(0,0,0,.4), 0 0 0 6px rgba(255,255,255,.06);
+      opacity: 0; transition: opacity .8s ease, transform .8s cubic-bezier(.18,.9,.32,1.2);
+    }
+    .logo-on .logo-emblem { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+    .logo-on .logo-emblem img { animation: emblem-breathe 7s ease-in-out 1.2s infinite; }
+    .logo-emblem img { width: 100%; height: 100%; object-fit: contain; }
+    @keyframes emblem-breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.035)} }
+
+    .logo-arrows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+    .logo-arrows path { fill: none; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 620; stroke-dashoffset: 620; transition: stroke-dashoffset 1s ease; }
+    .logo-arrows marker path { stroke-dasharray: none; stroke-dashoffset: 0; }
+    .logo-arrows .ar-head { opacity: 0; transition: opacity .35s ease; }
+    .logo-on .logo-arrows .a-etica   { transition-delay: .35s; }
+    .logo-on .logo-arrows .a-empresa { transition-delay: .75s; }
+    .logo-on .logo-arrows .a-dios    { transition-delay: 1.15s; }
+    .logo-on .logo-arrows .a-ley     { transition-delay: 1.55s; }
+    .logo-on .logo-arrows path { stroke-dashoffset: 0; }
+    .logo-on .logo-arrows .ar-head { opacity: 1; }
+    .logo-on .logo-arrows .h-etica   { transition-delay: 1.25s; }
+    .logo-on .logo-arrows .h-empresa { transition-delay: 1.65s; }
+    .logo-on .logo-arrows .h-dios    { transition-delay: 2.05s; }
+    .logo-on .logo-arrows .h-ley     { transition-delay: 2.45s; }
+
+    .logo-card {
+      position: absolute; width: 300px; padding: 18px 20px;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14);
+      border-radius: 18px; backdrop-filter: blur(6px);
+      opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease;
+    }
+    .logo-card h3 { font-weight: 900; letter-spacing: .12em; text-transform: uppercase; font-size: .95rem; }
+    .logo-card p  { margin-top: .5rem; font-size: .9rem; line-height: 1.55; color: rgba(255,255,255,.82); }
+    .c-etica   h3 { color:#7fe3a3; } .c-ley h3 { color:#7fe3a3; }
+    .c-empresa h3 { color:#ffffff; } .c-dios h3 { color:#ff6f64; }
+    .logo-on .logo-card { opacity: 1; transform: none; }
+    .logo-on .c-etica   { transition-delay: .8s; }
+    .logo-on .c-empresa { transition-delay: 1.2s; }
+    .logo-on .c-dios    { transition-delay: 1.6s; }
+    .logo-on .c-ley     { transition-delay: 2.0s; }
+
+    .c-etica   { left: 0;  top: 28px;    text-align: right; }
+    .c-empresa { right: 0; top: 28px;    text-align: left;  }
+    .c-dios    { left: 0;  bottom: 28px; text-align: right; }
+    .c-ley     { right: 0; bottom: 28px; text-align: left;  }
+
+    @media (max-width: 1023px) {
+      .logo-diagram { width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+      .logo-arrows { display: none; }
+      .logo-emblem { position: static; transform: scale(.85); width: 220px; height: 220px; }
+      .logo-on .logo-emblem { transform: scale(1); }
+      .logo-card { position: static; width: 100%; max-width: 420px; text-align: center !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-head, .logo-emblem, .logo-card { opacity: 1 !important; transform: none !important; transition: none; }
+      .logo-arrows path { stroke-dashoffset: 0 !important; transition: none; }
+      .logo-arrows .ar-head { opacity: 1 !important; }
+      .logo-on .logo-emblem img { animation: none; }
+    }
   </style>
   <link rel="icon" href="img/favicon-32.png" sizes="32x32" />
   <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
@@ -199,9 +267,49 @@
     </div>
   </header>
 
-  <section class="bg-forest-900 py-20">
-    <div class="mx-auto max-w-4xl px-6 lg:px-10">
-      <img src="LogoSignificado.webp" alt="Significado del logo Fragaria" class="mx-auto w-full rounded-2xl shadow-2xl" loading="lazy" />
+  <section id="logo-significado" class="bg-forest-900 py-20 overflow-hidden">
+    <div class="mx-auto max-w-6xl px-6 lg:px-10">
+      <div class="logo-head text-center">
+        <h2 class="font-display text-3xl font-black text-white sm:text-4xl" data-i18n="ep.logo.title">El significado de nuestro logo</h2>
+        <p class="mx-auto mt-3 max-w-2xl text-white/70" data-i18n="ep.logo.sub">Cada elemento representa un pilar de nuestra identidad.</p>
+      </div>
+
+      <div class="logo-diagram mt-12">
+        <svg class="logo-arrows" viewBox="0 0 980 540" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <!-- conectores que se dibujan -->
+          <path class="a-etica"   d="M 410 210 Q 358 152 307 122" stroke="#2f9e57"/>
+          <path class="a-empresa" d="M 570 210 Q 622 152 673 122" stroke="#cfe3d6"/>
+          <path class="a-dios"    d="M 410 330 Q 358 398 307 424" stroke="#e23b2e"/>
+          <path class="a-ley"     d="M 570 330 Q 622 398 673 424" stroke="#2f9e57"/>
+          <!-- puntas de flecha -->
+          <path class="ar-head h-etica"   d="M 307 122 L 326 124 M 307 122 L 312 141" stroke="#2f9e57"/>
+          <path class="ar-head h-empresa" d="M 673 122 L 654 124 M 673 122 L 668 141" stroke="#cfe3d6"/>
+          <path class="ar-head h-dios"    d="M 307 424 L 326 422 M 307 424 L 312 405" stroke="#e23b2e"/>
+          <path class="ar-head h-ley"     d="M 673 424 L 654 422 M 673 424 L 668 405" stroke="#2f9e57"/>
+        </svg>
+
+        <article class="logo-card c-etica">
+          <h3 data-i18n="ep.logo.etica.t">La Ética</h3>
+          <p data-i18n="ep.logo.etica.d">Nunca permite quebrar la ley, pero la complementa y la humaniza, por eso es más importante.</p>
+        </article>
+        <article class="logo-card c-empresa">
+          <h3 data-i18n="ep.logo.empresa.t">Nuestra Empresa</h3>
+          <p data-i18n="ep.logo.empresa.d">Representada por una conífera, crece lento pero incesantemente y con una velocidad creciente de desarrollo, soportando todos los climas.</p>
+        </article>
+
+        <div class="logo-emblem">
+          <img src="logo-emblema.png" alt="Emblema Fragaria: conífera dentro de un círculo" loading="lazy" />
+        </div>
+
+        <article class="logo-card c-dios">
+          <h3 data-i18n="ep.logo.dios.t">Dios</h3>
+          <p data-i18n="ep.logo.dios.d">Todo lo crea y alimenta, es nuestra raíz, nuestro sustento.</p>
+        </article>
+        <article class="logo-card c-ley">
+          <h3 data-i18n="ep.logo.ley.t">La Ley</h3>
+          <p data-i18n="ep.logo.ley.d">Muy importante, permite interpretaciones, la ética no.</p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -367,5 +475,19 @@
   </footer>
 
   <script src="i18n.js"></script>
+  <script>
+    // Reveal por capas del significado del logo
+    (function () {
+      var sec = document.getElementById('logo-significado');
+      if (!sec) return;
+      if (!('IntersectionObserver' in window)) { sec.classList.add('logo-on'); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { sec.classList.add('logo-on'); io.disconnect(); }
+        });
+      }, { threshold: 0.3 });
+      io.observe(sec);
+    })();
+  </script>
 </body>
 </html>
