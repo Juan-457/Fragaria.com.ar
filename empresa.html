@@ -83,20 +83,24 @@
     <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
       <source src="Productos_images/camion.mp4" type="video/mp4" />
     </video>
-    <div class="absolute inset-0 bg-gradient-to-r from-white/70 via-white/55 to-white/35"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-      <!-- Burbuja justificada a la derecha sobre el video -->
-      <div class="ml-auto max-w-2xl rounded-[2rem] border border-white/60 bg-white/75 p-6 text-right shadow-xl backdrop-blur-md sm:p-8">
-        <p class="text-sm font-semibold tracking-[0.25em] text-forest-700 uppercase" data-i18n="ep.badge">Conocé</p>
-        <h1 class="mt-4 font-display text-5xl font-black leading-tight text-forest-900 sm:text-6xl"><span data-i18n="ep.h1a">Nuestra</span> <span class="gradient-text" data-i18n="ep.h1b">Empresa</span></h1>
-        <p class="mt-2 text-xs text-forest-900/50 tracking-wide">Fragaria › Empresa › Nuestra Empresa</p>
-        <p class="mt-5 text-lg leading-8 text-forest-800">
-          <span data-i18n="ep.desc">Empresa argentina con más de 30 años en el mercado agropecuario. Desarrollamos, producimos y comercializamos fertilizantes biológicos, bioestimulantes y coadyuvantes con planta propia, exportando a Asia, Europa y África.</span>
-        </p>
-        <div class="mt-6 flex flex-wrap justify-end gap-3">
-          <span class="rounded-full border border-lime-600/30 bg-lime-50 px-4 py-1.5 text-sm font-semibold text-lime-700">+30 años de trayectoria</span>
-          <a href="#calidad" class="rounded-full border border-emerald-600/30 bg-emerald-50 px-4 py-1.5 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100">ISO 9001 certificada</a>
-          <a href="presencia/#presencia-mundial" class="rounded-full border border-cyan-600/30 bg-cyan-50 px-4 py-1.5 text-sm font-semibold text-cyan-700 transition hover:bg-cyan-100">Comercio exterior</a>
+      <div class="grid gap-8 lg:grid-cols-[2fr_3fr] lg:items-center">
+        <!-- Izquierda: label + título + breadcrumb -->
+        <div>
+          <p class="text-sm font-semibold tracking-[0.25em] text-forest-700 uppercase" data-i18n="ep.badge">Conocé</p>
+          <h1 class="mt-4 font-display text-5xl font-black leading-tight text-forest-900 sm:text-6xl"><span data-i18n="ep.h1a">Nuestra</span> <span class="gradient-text" data-i18n="ep.h1b">Empresa</span></h1>
+          <p class="mt-4 text-xs text-forest-900/40 tracking-wide">Fragaria › Empresa › Nuestra Empresa</p>
+        </div>
+        <!-- Derecha: descripción condensada + badges -->
+        <div>
+          <p class="text-lg leading-8 text-forest-800">
+            <span data-i18n="ep.desc">Empresa argentina con más de 30 años en el mercado agropecuario. Desarrollamos, producimos y comercializamos fertilizantes biológicos, bioestimulantes y coadyuvantes con planta propia, exportando a Asia, Europa y África.</span>
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="rounded-full border border-lime-600/30 bg-lime-50 px-4 py-1.5 text-sm font-semibold text-lime-700">+30 años de trayectoria</span>
+            <a href="#calidad" class="rounded-full border border-emerald-600/30 bg-emerald-50 px-4 py-1.5 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100">ISO 9001 certificada</a>
+            <a href="presencia/#presencia-mundial" class="rounded-full border border-cyan-600/30 bg-cyan-50 px-4 py-1.5 text-sm font-semibold text-cyan-700 transition hover:bg-cyan-100">Comercio exterior</a>
+          </div>
         </div>
       </div>
       <div class="mt-10 w-full">
