@@ -54,7 +54,9 @@
     .logo-emblem img { width: 100%; height: 100%; object-fit: contain; }
     @keyframes emblem-breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.035)} }
 
-    .logo-arrows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+    .logo-emblem { z-index: 1; }
+    .logo-card { z-index: 2; }
+    .logo-arrows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 3; }
     .logo-arrows path { fill: none; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 620; stroke-dashoffset: 620; transition: stroke-dashoffset 1s ease; }
     .logo-arrows marker path { stroke-dasharray: none; stroke-dashoffset: 0; }
     .logo-arrows .ar-head { opacity: 0; transition: opacity .35s ease; }
@@ -277,10 +279,10 @@
       <div class="logo-diagram mt-12">
         <svg class="logo-arrows" viewBox="0 0 980 540" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <!-- conectores que se dibujan -->
-          <path class="a-etica"   d="M 410 210 Q 358 152 307 122" stroke="#2f9e57"/>
-          <path class="a-empresa" d="M 570 210 Q 622 152 673 122" stroke="#cfe3d6"/>
-          <path class="a-dios"    d="M 410 330 Q 358 398 307 424" stroke="#e23b2e"/>
-          <path class="a-ley"     d="M 570 330 Q 622 398 673 424" stroke="#2f9e57"/>
+          <path class="a-etica"   d="M 423 205 Q 358 152 307 122" stroke="#2f9e57"/>
+          <path class="a-empresa" d="M 498 182 Q 605 150 673 122" stroke="#cfe3d6"/>
+          <path class="a-dios"    d="M 482 338 Q 380 405 307 424" stroke="#e23b2e"/>
+          <path class="a-ley"     d="M 557 335 Q 632 392 673 424" stroke="#2f9e57"/>
           <!-- puntas de flecha -->
           <path class="ar-head h-etica"   d="M 307 122 L 326 124 M 307 122 L 312 141" stroke="#2f9e57"/>
           <path class="ar-head h-empresa" d="M 673 122 L 654 124 M 673 122 L 668 141" stroke="#cfe3d6"/>
@@ -474,7 +476,7 @@
     </div>
   </footer>
 
-  <script src="i18n.js"></script>
+  <script src="i18n.js?v=2"></script>
   <script>
     // Reveal por capas del significado del logo
     (function () {
