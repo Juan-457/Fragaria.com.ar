@@ -604,15 +604,16 @@
       tooltip.style.top = Math.max(y, 4) + 'px';
     }
 
-    // state: 'default' | 'active' | 'dim'
-    function polyStyle(poly, zone, state) {
-      const op = state === 'active' ? 0.62 : (state === 'dim' ? 0.08 : 0.32);
+    // Todas las zonas quedan cubiertas con su color (mismo look);
+    // el puntito que late marca cual esta realmente seleccionada.
+    let zoneCentroids = {};
+    function polyStyle(poly, zone) {
       poly.style.fill = zone.color;
-      poly.style.fillOpacity = op;
+      poly.style.fillOpacity = 0.5;
       poly.style.stroke = zone.colorDark;
-      poly.style.strokeWidth = state === 'active' ? '3' : '1.5';
+      poly.style.strokeWidth = '1.5';
       poly.style.cursor = 'pointer';
-      poly.style.transition = 'fill-opacity .25s ease, stroke-width .25s ease';
+      poly.style.transition = 'fill-opacity .25s ease';
     }
 
     function eachPoly(cb) {
@@ -634,12 +635,41 @@
         if (!zoneName) return;
         const zone = ZONES[zoneName];
         poly.setAttribute('data-zone', zoneName);
-        polyStyle(poly, zone, 'default');
-        poly.addEventListener('mouseenter', (e) => { if (selectedZone !== zoneName) poly.style.fillOpacity = 0.5; showTooltip(e, zoneName); });
+        polyStyle(poly, zone);
+        poly.addEventListener('mouseenter', (e) => { poly.style.fillOpacity = 0.72; showTooltip(e, zoneName); });
         poly.addEventListener('mousemove', (e) => showTooltip(e, zoneName));
-        poly.addEventListener('mouseleave', () => { if (selectedZone !== zoneName) polyStyle(poly, zone, selectedZone ? 'dim' : 'default'); tooltip.classList.add('hidden'); });
+        poly.addEventListener('mouseleave', () => { poly.style.fillOpacity = 0.5; tooltip.classList.add('hidden'); });
         poly.addEventListener('click', () => selectZone(zoneName));
       });
+
+      // Centroide de cada zona (en coordenadas del viewBox del SVG)
+      const NS = 'http://www.w3.org/2000/svg';
+      zoneCentroids = {};
+      svgEl.querySelectorAll('polygon[data-zone]').forEach(poly => {
+        const nums = poly.getAttribute('points').trim().split(/[\s,]+/).map(Number);
+        let sx = 0, sy = 0, n = 0;
+        for (let i = 0; i + 1 < nums.length; i += 2) { sx += nums[i]; sy += nums[i + 1]; n++; }
+        zoneCentroids[poly.getAttribute('data-zone')] = [sx / n, sy / n];
+      });
+
+      // Marcador que "late" en el centro de la zona seleccionada
+      const pulse = document.createElementNS(NS, 'g');
+      pulse.setAttribute('id', 'zone-pulse');
+      pulse.style.display = 'none';
+      pulse.style.pointerEvents = 'none';
+      pulse.innerHTML =
+        '<circle r="7" fill="none" stroke="#ffffff" stroke-width="3">' +
+          '<animate attributeName="r" values="7;26" dur="1.6s" repeatCount="indefinite"/>' +
+          '<animate attributeName="opacity" values="0.95;0" dur="1.6s" repeatCount="indefinite"/>' +
+        '</circle>' +
+        '<circle r="7" fill="none" stroke="#ffffff" stroke-width="2">' +
+          '<animate attributeName="r" values="7;26" dur="1.6s" begin="0.55s" repeatCount="indefinite"/>' +
+          '<animate attributeName="opacity" values="0.7;0" dur="1.6s" begin="0.55s" repeatCount="indefinite"/>' +
+        '</circle>' +
+        '<circle id="zone-pulse-dot" r="9" fill="#111111" stroke="#ffffff" stroke-width="2.5"/>' +
+        '<circle r="3.5" fill="#ffffff"/>';
+      svgEl.appendChild(pulse);
+
       document.getElementById('map-loading').style.display = 'none';
     }
 
@@ -647,11 +677,15 @@
       selectedZone = zoneName;
       const zone = ZONES[zoneName];
 
-      // Resaltar el poligono de la zona, atenuar los demas
-      eachPoly(poly => {
-        const zn = poly.getAttribute('data-zone');
-        polyStyle(poly, ZONES[zn], zn === zoneName ? 'active' : 'dim');
-      });
+      // Mover el puntito que late al centro de la zona seleccionada
+      const pulse = document.getElementById('zone-pulse');
+      const c = zoneCentroids[zoneName];
+      if (pulse && c) {
+        pulse.setAttribute('transform', `translate(${c[0]},${c[1]})`);
+        const dot = document.getElementById('zone-pulse-dot');
+        if (dot) dot.setAttribute('fill', zone.colorDark);
+        pulse.style.display = '';
+      }
 
       // Update legend pills
       document.querySelectorAll('.zone-pill').forEach(pill => {
@@ -739,7 +773,9 @@
 
     function resetMap() {
       selectedZone = null;
-      eachPoly(poly => polyStyle(poly, ZONES[poly.getAttribute('data-zone')], 'default'));
+      const pulse = document.getElementById('zone-pulse');
+      if (pulse) pulse.style.display = 'none';
+      eachPoly(poly => polyStyle(poly, ZONES[poly.getAttribute('data-zone')]));
       document.querySelectorAll('.zone-pill').forEach(pill => {
         pill.classList.remove('active');
         const z = ZONES[pill.dataset.zone];
