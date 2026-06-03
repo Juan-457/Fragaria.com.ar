@@ -234,7 +234,7 @@
             <span data-i18n="pres.h1a">Argentina</span> <span class="gradient-text" data-i18n="pres.h1b">y el mundo</span>
           </h1>
           <p class="mt-6 text-lg text-white/55 leading-relaxed max-w-lg" data-i18n="pres.desc">
-            Contamos con representantes en las principales zonas agrícolas del país. Hacé click en tu provincia para conocer a la persona de tu zona.
+            Contamos con representantes en las principales zonas agrícolas del país. Hacé click en tu zona para conocer a la persona que te atiende.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
             <a href="#mapa-argentina" class="flex items-center gap-2 rounded-full border border-lime-400/60 bg-lime-500 px-4 py-2 transition hover:bg-lime-400 cursor-pointer shadow-lg shadow-lime-900/30">
@@ -252,28 +252,24 @@
         <div class="hidden lg:flex justify-end">
           <div class="rounded-2xl border border-white/10 bg-ink-900/60 p-6 backdrop-blur-sm">
             <div class="space-y-1">
-              <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Zona Norte'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
-                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#f59e0b"></span>
-                <span class="text-sm text-white/80">Zona Norte</span>
-              </button>
-              <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Entre Ríos'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
-                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#3b82f6"></span>
-                <span class="text-sm text-white/80">Entre Ríos</span>
-              </button>
               <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Sancor Norte'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
-                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#84cc16"></span>
+                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#22c55e"></span>
                 <span class="text-sm text-white/80">Sancor Norte</span>
               </button>
               <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Sancor Sur'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
-                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#22c55e"></span>
+                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#3b82f6"></span>
                 <span class="text-sm text-white/80">Sancor Sur</span>
               </button>
+              <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Entre Ríos'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
+                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#a855f7"></span>
+                <span class="text-sm text-white/80">Entre Ríos</span>
+              </button>
               <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Buenos Aires Norte'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
-                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#10b981"></span>
+                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#ef4444"></span>
                 <span class="text-sm text-white/80">Buenos Aires Norte</span>
               </button>
               <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Buenos Aires Sur'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
-                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#14b8a6"></span>
+                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#f59e0b"></span>
                 <span class="text-sm text-white/80">Buenos Aires Sur</span>
               </button>
             </div>
@@ -291,7 +287,7 @@
       <div class="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div class="mb-10 text-center">
           <h2 class="font-display text-3xl font-bold text-forest-900 sm:text-4xl">Fragaria en Argentina</h2>
-          <p class="mt-3 text-forest-800/65 max-w-xl mx-auto">Seleccioná tu provincia o zona para conocer al representante que te va a atender.</p>
+          <p class="mt-3 text-forest-800/65 max-w-xl mx-auto">Seleccioná tu zona para conocer al representante que te va a atender.</p>
         </div>
 
         <div class="grid gap-8 lg:grid-cols-[1fr_380px] items-start">
@@ -302,23 +298,22 @@
             <div id="zone-legend" class="flex flex-wrap gap-2 mb-5"></div>
 
             <!-- SVG container -->
-            <div class="relative rounded-2xl overflow-hidden shadow-xl border border-forest-500/30" style="min-height:460px; background-image:url('../soja.webp'); background-size:cover; background-position:center;">
-              <div class="absolute inset-0 bg-forest-900/70 pointer-events-none"></div>
-              <svg id="argentina-map" class="w-full h-auto block relative" style="max-height:680px"></svg>
+            <div class="relative rounded-2xl overflow-hidden shadow-xl border border-forest-500/20 bg-white" style="min-height:460px;">
+              <div id="argentina-map" class="w-full block relative px-4 py-6" style="max-height:700px"></div>
               <!-- Tooltip -->
-              <div id="map-tooltip" class="hidden absolute rounded-lg bg-ink-900 px-3 py-2 text-sm text-white shadow-lg"></div>
+              <div id="map-tooltip" class="hidden absolute rounded-lg bg-ink-900 px-3 py-2 text-sm text-white shadow-lg z-10"></div>
               <!-- Loading overlay -->
-              <div id="map-loading" class="absolute inset-0 flex items-center justify-center bg-forest-800/50">
+              <div id="map-loading" class="absolute inset-0 flex items-center justify-center bg-white/70">
                 <div class="text-center">
-                  <svg class="mx-auto h-8 w-8 animate-spin text-white/70" fill="none" viewBox="0 0 24 24">
+                  <svg class="mx-auto h-8 w-8 animate-spin text-forest-700/70" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
                   </svg>
-                  <p class="mt-3 text-sm text-white/50">Cargando mapa...</p>
+                  <p class="mt-3 text-sm text-forest-700/60">Cargando mapa...</p>
                 </div>
               </div>
             </div>
-            <p class="mt-3 text-center text-xs text-forest-800/50">Hacé click en una provincia para ver el contacto de tu zona</p>
+            <p class="mt-3 text-center text-xs text-forest-800/50">Hacé click en una zona para ver el contacto del representante</p>
           </div>
 
           <!-- PANEL -->
@@ -506,35 +501,13 @@
     });
 
     // ── Zone data ─────────────────────────────────────────────────────
+    // Cada zona mapeada al id de su poligono en zonas.svg (1..5)
     const ZONES = {
-      'Zona Norte': {
-        color: '#f59e0b',
-        colorDark: '#d97706',
-        provinces: ['Tucumán','Santiago del Estero','Jujuy','Salta','Formosa'],
-        rep: {
-          name: 'Fragaria S.A.',
-          role: 'Oficina Central — Zona Norte',
-          email: 'info@fragaria.com.ar',
-          phone: '+54 3462 450100',
-          whatsapp: '543462450100'
-        }
-      },
-      'Entre Ríos': {
-        color: '#3b82f6',
-        colorDark: '#2563eb',
-        provinces: ['Entre Ríos'],
-        rep: {
-          name: 'Juan Pablo Gainza',
-          role: 'Representante Zona Entre Ríos',
-          email: 'juanpablo.gainza@fragaria.com.ar',
-          phone: '3462 60-3708',
-          whatsapp: '543462603708'
-        }
-      },
       'Sancor Norte': {
-        color: '#84cc16',
-        colorDark: '#65a30d',
-        provinces: ['Córdoba','Santa Fe'],
+        polyId: '1',
+        color: '#22c55e',
+        colorDark: '#16a34a',
+        coverage: 'Córdoba y Santa Fe (norte)',
         rep: {
           name: 'Luis Bagur',
           role: 'Representante Zona Sancor Norte',
@@ -544,9 +517,10 @@
         }
       },
       'Sancor Sur': {
-        color: '#22c55e',
-        colorDark: '#16a34a',
-        provinces: ['Córdoba','Santa Fe'],
+        polyId: '2',
+        color: '#3b82f6',
+        colorDark: '#2563eb',
+        coverage: 'Córdoba y Santa Fe (sur)',
         rep: {
           name: 'Rafael Stocco',
           role: 'Representante Zona Sancor Sur',
@@ -555,10 +529,24 @@
           whatsapp: '543462545627'
         }
       },
+      'Entre Ríos': {
+        polyId: '5',
+        color: '#a855f7',
+        colorDark: '#9333ea',
+        coverage: 'Entre Ríos',
+        rep: {
+          name: 'Juan Pablo Gainza',
+          role: 'Representante Zona Entre Ríos',
+          email: 'juanpablo.gainza@fragaria.com.ar',
+          phone: '3462 60-3708',
+          whatsapp: '543462603708'
+        }
+      },
       'Buenos Aires Norte': {
-        color: '#10b981',
-        colorDark: '#059669',
-        provinces: ['Ciudad de Buenos Aires'],
+        polyId: '4',
+        color: '#ef4444',
+        colorDark: '#dc2626',
+        coverage: 'Norte de Buenos Aires',
         rep: {
           name: 'Maximiliano Arzani',
           role: 'Representante Zona Buenos Aires Norte',
@@ -568,9 +556,10 @@
         }
       },
       'Buenos Aires Sur': {
-        color: '#14b8a6',
-        colorDark: '#0d9488',
-        provinces: [],
+        polyId: '3',
+        color: '#f59e0b',
+        colorDark: '#d97706',
+        coverage: 'Sur de Buenos Aires',
         rep: {
           name: 'Fragaria S.A.',
           role: 'Oficina Central — Zona Buenos Aires Sur',
@@ -581,19 +570,9 @@
       }
     };
 
-    // Geographic center [lon, lat] for each zone marker
-    const ZONE_CENTERS = {
-      'Zona Norte':         [-63.5, -25.5],
-      'Entre Ríos':         [-59.0, -32.0],
-      'Sancor Norte':       [-63.5, -31.0],
-      'Sancor Sur':         [-63.5, -33.5],
-      'Buenos Aires Norte': [-59.5, -34.5],
-      'Buenos Aires Sur':   [-60.5, -37.5],
-    };
-
-    function getProvinceName(props) {
-      return props.name || props.NAME_1 || props.provincia || props.PROVINCIA || '';
-    }
+    // poligono id -> nombre de zona
+    const POLY_TO_ZONE = {};
+    Object.entries(ZONES).forEach(([name, z]) => { POLY_TO_ZONE[z.polyId] = name; });
 
     // ── Build legend ──────────────────────────────────────────────────
     const legend = document.getElementById('zone-legend');
@@ -609,14 +588,11 @@
       legend.appendChild(pill);
     });
 
-    // ── D3 Map ────────────────────────────────────────────────────────
+    // ── Mapa de zonas (zonas.svg) ─────────────────────────────────────
     let selectedZone = null;
-
-    const GEOJSON_URL = './argentina.geojson';
 
     const container = document.querySelector('#argentina-map').parentElement;
     const tooltip = document.getElementById('map-tooltip');
-    const svg = d3.select('#argentina-map');
 
     function showTooltip(event, zoneName) {
       tooltip.classList.remove('hidden');
@@ -628,58 +604,42 @@
       tooltip.style.top = Math.max(y, 4) + 'px';
     }
 
-    function drawMap(geoData) {
-      const W = container.clientWidth || 500;
-      const H = Math.min(W * 1.35, 680);
-      svg.attr('viewBox', `0 0 ${W} ${H}`).attr('width', W).attr('height', H);
+    // state: 'default' | 'active' | 'dim'
+    function polyStyle(poly, zone, state) {
+      const op = state === 'active' ? 0.85 : (state === 'dim' ? 0.12 : 0.5);
+      poly.style.fill = zone.color;
+      poly.style.fillOpacity = op;
+      poly.style.stroke = zone.colorDark;
+      poly.style.strokeWidth = state === 'active' ? '3' : '1.5';
+      poly.style.cursor = 'pointer';
+      poly.style.transition = 'fill-opacity .25s ease, stroke-width .25s ease';
+    }
 
-      const projection = d3.geoMercator().fitSize([W, H], geoData);
-      const pathGen = d3.geoPath().projection(projection);
+    function eachPoly(cb) {
+      const svgEl = document.getElementById('zonas-svg');
+      if (!svgEl) return;
+      svgEl.querySelectorAll('polygon[data-zone]').forEach(cb);
+    }
 
-      // ── Neutral province outlines ──
-      svg.selectAll('path.province')
-        .data(geoData.features)
-        .join('path')
-        .attr('class', 'province')
-        .attr('d', pathGen)
-        .attr('data-province', d => getProvinceName(d.properties));
-
-      // ── Animated zone markers ──
-      Object.entries(ZONES).forEach(([zoneName, zone]) => {
-        const center = ZONE_CENTERS[zoneName];
-        if (!center) return;
-        const [px, py] = projection(center);
-
-        const g = svg.append('g')
-          .attr('class', 'zone-marker-group')
-          .attr('data-zone', zoneName)
-          .attr('transform', `translate(${px},${py})`);
-
-        // Pulse ring 1
-        const r1 = g.append('circle').attr('r', 9).attr('fill', 'none')
-          .attr('stroke', zone.color).attr('stroke-width', 1.5).attr('opacity', 0);
-        r1.append('animate').attr('attributeName', 'r').attr('from', 9).attr('to', 32).attr('dur', '2.4s').attr('repeatCount', 'indefinite');
-        r1.append('animate').attr('attributeName', 'opacity').attr('from', 0.75).attr('to', 0).attr('dur', '2.4s').attr('repeatCount', 'indefinite');
-
-        // Pulse ring 2 (delayed)
-        const r2 = g.append('circle').attr('r', 9).attr('fill', 'none')
-          .attr('stroke', zone.color).attr('stroke-width', 1).attr('opacity', 0);
-        r2.append('animate').attr('attributeName', 'r').attr('from', 9).attr('to', 32).attr('dur', '2.4s').attr('begin', '0.8s').attr('repeatCount', 'indefinite');
-        r2.append('animate').attr('attributeName', 'opacity').attr('from', 0.5).attr('to', 0).attr('dur', '2.4s').attr('begin', '0.8s').attr('repeatCount', 'indefinite');
-
-        // Center dot
-        g.append('circle').attr('class', 'marker-dot').attr('r', 9)
-          .attr('fill', zone.color).attr('stroke', 'white').attr('stroke-width', 2.5);
-
-        // Inner white dot
-        g.append('circle').attr('r', 3.5).attr('fill', 'white').attr('opacity', 0.85);
-
-        g.on('mouseover', (e) => showTooltip(e, zoneName))
-         .on('mousemove', (e) => showTooltip(e, zoneName))
-         .on('mouseleave', () => tooltip.classList.add('hidden'))
-         .on('click', () => selectZone(zoneName));
+    function initZonesMap(svgEl) {
+      svgEl.setAttribute('id', 'zonas-svg');
+      svgEl.removeAttribute('width');
+      svgEl.removeAttribute('height');
+      svgEl.style.width = '100%';
+      svgEl.style.height = 'auto';
+      svgEl.style.display = 'block';
+      svgEl.style.maxHeight = '660px';
+      svgEl.querySelectorAll('polygon').forEach(poly => {
+        const zoneName = POLY_TO_ZONE[poly.getAttribute('id')];
+        if (!zoneName) return;
+        const zone = ZONES[zoneName];
+        poly.setAttribute('data-zone', zoneName);
+        polyStyle(poly, zone, 'default');
+        poly.addEventListener('mouseenter', (e) => { if (selectedZone !== zoneName) poly.style.fillOpacity = 0.72; showTooltip(e, zoneName); });
+        poly.addEventListener('mousemove', (e) => showTooltip(e, zoneName));
+        poly.addEventListener('mouseleave', () => { if (selectedZone !== zoneName) polyStyle(poly, zone, selectedZone ? 'dim' : 'default'); tooltip.classList.add('hidden'); });
+        poly.addEventListener('click', () => selectZone(zoneName));
       });
-
       document.getElementById('map-loading').style.display = 'none';
     }
 
@@ -687,28 +647,11 @@
       selectedZone = zoneName;
       const zone = ZONES[zoneName];
 
-      // Dim all markers except the selected one
-      d3.selectAll('.zone-marker-group')
-        .classed('dimmed', function() { return this.dataset.zone !== zoneName; })
-        .classed('active', function() { return this.dataset.zone === zoneName; });
-
-      // Highlight provinces belonging to this zone
-      const zoneProvinces = new Set([
-        ...zone.provinces,
-        ...(zoneName === 'Buenos Aires Norte' ? ['Buenos Aires', 'La Pampa'] : []),
-        ...(zoneName === 'Buenos Aires Sur'   ? ['Buenos Aires', 'La Pampa'] : [])
-      ]);
-      d3.selectAll('path.province')
-        .style('fill', function() {
-          return zoneProvinces.has(this.getAttribute('data-province'))
-            ? zone.color + '55'
-            : 'rgba(255,255,255,0.06)';
-        })
-        .style('stroke', function() {
-          return zoneProvinces.has(this.getAttribute('data-province'))
-            ? zone.color
-            : 'rgba(255,255,255,0.5)';
-        });
+      // Resaltar el poligono de la zona, atenuar los demas
+      eachPoly(poly => {
+        const zn = poly.getAttribute('data-zone');
+        polyStyle(poly, ZONES[zn], zn === zoneName ? 'active' : 'dim');
+      });
 
       // Update legend pills
       document.querySelectorAll('.zone-pill').forEach(pill => {
@@ -718,13 +661,6 @@
         pill.style.backgroundColor = isActive ? z.color + '30' : z.color + '20';
         pill.style.borderColor     = isActive ? z.color       : z.color + '60';
       });
-
-      // Build coverage label
-      const coverageLabel = [
-        ...zone.provinces,
-        ...(zoneName === 'Buenos Aires Norte' ? ['Norte de Buenos Aires', 'Norte de La Pampa'] : []),
-        ...(zoneName === 'Buenos Aires Sur'   ? ['Sur de Buenos Aires',  'Sur de La Pampa']   : [])
-      ].join(', ') || '—';
 
       // Show contact panel
       document.getElementById('direct-contact-card').classList.add('hidden');
@@ -741,7 +677,7 @@
                 <h3 class="font-display text-xl font-bold text-forest-900">${zoneName}</h3>
               </div>
             </div>
-            <p class="mt-2 text-xs text-forest-800/50">${coverageLabel}</p>
+            <p class="mt-2 text-xs text-forest-800/50">${zone.coverage}</p>
           </div>
 
           <div class="px-6 py-5">
@@ -803,8 +739,7 @@
 
     function resetMap() {
       selectedZone = null;
-      d3.selectAll('.zone-marker-group').classed('dimmed', false).classed('active', false);
-      d3.selectAll('path.province').style('fill', null).style('stroke', null);
+      eachPoly(poly => polyStyle(poly, ZONES[poly.getAttribute('data-zone')], 'default'));
       document.querySelectorAll('.zone-pill').forEach(pill => {
         pill.classList.remove('active');
         const z = ZONES[pill.dataset.zone];
@@ -815,9 +750,15 @@
       document.getElementById('direct-contact-card').classList.remove('hidden');
     }
 
-    // Load GeoJSON and render
-    d3.json(GEOJSON_URL)
-      .then(data => drawMap(data))
+    // Cargar zonas.svg e inicializar
+    fetch('./zonas.svg')
+      .then(r => r.text())
+      .then(txt => {
+        const holder = document.getElementById('argentina-map');
+        holder.innerHTML = txt;
+        const svgEl = holder.querySelector('svg');
+        if (svgEl) initZonesMap(svgEl);
+      })
       .catch(() => {
         document.getElementById('map-loading').innerHTML = `
           <div class="text-center p-8">
