@@ -606,7 +606,7 @@
 
     // state: 'default' | 'active' | 'dim'
     function polyStyle(poly, zone, state) {
-      const op = state === 'active' ? 0.85 : (state === 'dim' ? 0.12 : 0.5);
+      const op = state === 'active' ? 0.62 : (state === 'dim' ? 0.08 : 0.32);
       poly.style.fill = zone.color;
       poly.style.fillOpacity = op;
       poly.style.stroke = zone.colorDark;
@@ -635,7 +635,7 @@
         const zone = ZONES[zoneName];
         poly.setAttribute('data-zone', zoneName);
         polyStyle(poly, zone, 'default');
-        poly.addEventListener('mouseenter', (e) => { if (selectedZone !== zoneName) poly.style.fillOpacity = 0.72; showTooltip(e, zoneName); });
+        poly.addEventListener('mouseenter', (e) => { if (selectedZone !== zoneName) poly.style.fillOpacity = 0.5; showTooltip(e, zoneName); });
         poly.addEventListener('mousemove', (e) => showTooltip(e, zoneName));
         poly.addEventListener('mouseleave', () => { if (selectedZone !== zoneName) polyStyle(poly, zone, selectedZone ? 'dim' : 'default'); tooltip.classList.add('hidden'); });
         poly.addEventListener('click', () => selectZone(zoneName));
