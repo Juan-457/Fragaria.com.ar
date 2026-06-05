@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zonas Comerciales 2026 — preview</title>
+<style>
+  :root { --forest:#14532d; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:#faf3e0; color:#14532d; }
+  .wrap { max-width:1100px; margin:0 auto; padding:32px 20px 80px; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  .sub { color:#4d6b52; margin:0 0 24px; font-size:14px; }
+  .grid { display:grid; grid-template-columns:1.3fr .9fr; gap:28px; align-items:start; }
+  @media (max-width:820px) { .grid { grid-template-columns:1fr; } }
+  .mapbox { position:relative; background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08); padding:8px; }
+  #zonas2026 { width:100%; height:auto; display:block; }
+  .zona { fill:transparent; stroke:transparent; stroke-width:2.5; cursor:pointer; transition:fill-opacity .2s, fill .2s; fill-opacity:0; }
+  .zona:hover { fill-opacity:.45; }
+  .zona.sel { fill-opacity:.6; stroke:#fff; }
+  .legend { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+  .pill { display:inline-flex; align-items:center; gap:7px; border:1px solid #cdebd6; background:#fff; border-radius:999px; padding:6px 12px; font-size:12px; font-weight:600; cursor:pointer; }
+  .pill .dot { width:11px; height:11px; border-radius:50%; }
+  .card { background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08); padding:20px; }
+  .card h3 { margin:0 0 2px; font-size:18px; }
+  .muted { color:#6b8a72; font-size:13px; }
+  .tt { position:absolute; pointer-events:none; background:#14532d; color:#fff; font-size:12px; padding:6px 9px; border-radius:8px; transform:translate(-50%,-130%); white-space:nowrap; opacity:0; transition:opacity .12s; }
+</style></head>
+<body><div class="wrap">
+  <h1>Nuestras Zonas Comerciales — preview interactivo</h1>
+  <p class="sub">Calco del mapa 2026 · 10 zonas trazadas como SVG · datos de contacto = placeholder</p>
+  <div class="legend" id="legend"></div>
+  <div class="grid">
+    <div class="mapbox">
+      <div id="svgholder"></div>
+      <div class="tt" id="tt"></div>
+    </div>
+    <div class="card" id="info">
+      <h3 id="i-name">Elegí una zona</h3>
+      <p class="muted" id="i-desc">Pasá el mouse o tocá una zona del mapa.</p>
+      <div id="i-contact" style="margin-top:12px;font-size:14px;line-height:1.7"></div>
+    </div>
+  </div>
+</div>
+<script>
+  const ZONES = [
+      {id:1, name:'Zona 1', color:'#c4bb6e'},
+      {id:2, name:'Zona 2', color:'#445c40'},
+      {id:3, name:'Zona 3', color:'#046734'},
+      {id:4, name:'Zona 4', color:'#627663'},
+      {id:5, name:'Zona 5', color:'#517248'},
+      {id:6, name:'Zona 6', color:'#459862'},
+      {id:7, name:'Zona 7', color:'#d4d7aa'},
+      {id:8, name:'Zona 8', color:'#89a28d'},
+      {id:9, name:'Zona 9', color:'#8ea462'},
+      {id:10, name:'Zona 10', color:'#c1cd80'}
+  ];
+  const byId = Object.fromEntries(ZONES.map(z=>[z.id,z]));
+  const holder = document.getElementById('svgholder');
+  const tt = document.getElementById('tt');
+  let sel = null;
+
+  fetch('./zonas-2026.svg').then(r=>r.text()).then(t=>{
+    holder.innerHTML = t;
+    const svg = holder.querySelector('svg');
+    svg.querySelectorAll('.zona').forEach(p=>{
+      const z = byId[+p.id.slice(1)];
+      p.style.fill = z.color;
+      p.addEventListener('mousemove', e=>showTT(e, z));
+      p.addEventListener('mouseleave', ()=> tt.style.opacity=0);
+      p.addEventListener('click', ()=> select(z.id));
+    });
+    const h = parseInt(location.hash.replace('#z',''));
+    if (h) select(h);
+  });
+
+  function showTT(e, z){
+    const box = holder.getBoundingClientRect();
+    tt.textContent = z.name;
+    tt.style.left = (e.clientX - box.left) + 'px';
+    tt.style.top  = (e.clientY - box.top) + 'px';
+    tt.style.opacity = 1;
+  }
+  function select(id){
+    sel = id; const z = byId[id];
+    document.querySelectorAll('.zona').forEach(p=> p.classList.toggle('sel', p.id==='z'+id));
+    document.getElementById('i-name').textContent = z.name;
+    document.getElementById('i-desc').textContent = 'Color de zona ' + z.color;
+    document.getElementById('i-contact').innerHTML =
+      '<div class="muted">Representante: <b>(placeholder)</b></div>'+
+      '<div class="muted">Email · Teléfono · WhatsApp por completar</div>';
+  }
+  // legend
+  const lg = document.getElementById('legend');
+  ZONES.forEach(z=>{
+    const b = document.createElement('button');
+    b.className='pill';
+    b.innerHTML = `<span class="dot" style="background:${z.color}"></span>${z.name}`;
+    b.onclick = ()=> select(z.id);
+    lg.appendChild(b);
+  });
+</script>
+</body></html>
