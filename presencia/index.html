@@ -496,7 +496,7 @@
     const ZONES = {
       'Cuyo':           mkZone('z1',  'Cuyo',          '#c9a227', '#a07e16', 'La Rioja · San Juan · oeste'),
       'Noroeste':       mkZone('z2',  'Noroeste',      '#2f6b3a', '#1f4a27', 'Salta · Jujuy'),
-      'La Pampa':       mkZone('z3',  'La Pampa',      '#d83b3b', '#b02a2a', 'La Pampa · sur'),
+      'Río Negro':      mkZone('z3',  'Río Negro',     '#d83b3b', '#b02a2a', 'Río Negro'),
       'Norte':          mkZone('z4',  'Norte',         '#57a07a', '#3c7d59', 'Chaco · Santiago del Estero (norte)'),
       'Centro':         mkZone('z5',  'Centro',        '#7a9a36', '#5c7626', 'Centro del país'),
       'Buenos Aires':   mkZone('z6',  'Buenos Aires',  '#34a853', '#228b3e', 'Buenos Aires · Entre Ríos'),
@@ -581,6 +581,9 @@
       svgEl.style.height = 'auto';
       svgEl.style.display = 'block';
       svgEl.style.maxHeight = '660px';
+      // País gris tenue: atenuar la imagen base para que el contorno gris pese menos.
+      const bg = svgEl.querySelector('image');
+      if (bg) bg.style.opacity = '0.4';
       svgEl.querySelectorAll('polygon').forEach(poly => {
         const zoneName = POLY_TO_ZONE[poly.getAttribute('id')];
         if (!zoneName) return;
