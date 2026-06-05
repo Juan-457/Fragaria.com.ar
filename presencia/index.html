@@ -560,26 +560,24 @@
     }
 
     // Maps/zonas.svg trae la zona real como imagen y marcadores vectoriales
-    // pequenos. Los marcadores se transforman en targets amplios y visibles.
+    // pequenos. Se usan solo para ubicar puntos circulares limpios.
     let zoneCentroids = {};
-    function polyStyle(el, zone, active = false) {
+    function markerStyle(el, zone, active = false) {
       el.style.fill = zone.color;
-      el.style.fillOpacity = active ? 1 : 0.92;
-      el.style.stroke = active ? '#111111' : '#ffffff';
-      el.style.strokeWidth = active ? '9' : '5';
+      el.style.fillOpacity = active ? 1 : 0.96;
+      el.style.stroke = '#ffffff';
+      el.style.strokeWidth = active ? '10' : '7';
       el.style.cursor = 'pointer';
-      el.style.transition = 'filter .2s ease, opacity .2s ease, transform .2s ease';
-      el.style.transformBox = 'fill-box';
-      el.style.transformOrigin = 'center';
-      el.style.transform = active ? 'scale(1.9)' : 'scale(1.28)';
+      el.style.transition = 'filter .2s ease, opacity .2s ease';
       el.style.vectorEffect = 'non-scaling-stroke';
-      el.style.filter = active ? 'drop-shadow(0 8px 12px rgba(0,0,0,.34))' : 'drop-shadow(0 3px 5px rgba(0,0,0,.24))';
+      el.style.filter = active ? 'drop-shadow(0 10px 16px rgba(0,0,0,.38))' : 'drop-shadow(0 4px 7px rgba(0,0,0,.26))';
+      el.setAttribute('r', active ? '42' : '18');
     }
 
-    function eachPoly(cb) {
+    function eachMarker(cb) {
       const svgEl = document.getElementById('zonas-svg');
       if (!svgEl) return;
-      svgEl.querySelectorAll('.zone-shape').forEach(cb);
+      svgEl.querySelectorAll('.zone-marker').forEach(cb);
     }
 
     function initZonesMap(svgEl) {
@@ -594,22 +592,30 @@
 
       const NS = 'http://www.w3.org/2000/svg';
       zoneCentroids = {};
+      const markerLayer = document.createElementNS(NS, 'g');
+      markerLayer.setAttribute('id', 'zone-marker-layer');
       const hitLayer = document.createElementNS(NS, 'g');
       hitLayer.setAttribute('id', 'zone-hit-layer');
 
       svgEl.querySelectorAll('polygon[id]').forEach(el => {
         const zoneName = POLY_TO_ZONE[el.getAttribute('id')];
         if (!zoneName) return;
-        el.setAttribute('data-zone', zoneName);
-        el.classList.add('zone-shape');
         const zone = ZONES[zoneName];
         if (!zone) return;
-        polyStyle(el, zone);
 
         let b; try { b = el.getBBox(); } catch (e) { return; }
         const cx = b.x + b.width / 2;
         const cy = b.y + b.height / 2;
         zoneCentroids[zoneName] = [cx, cy];
+        el.style.display = 'none';
+
+        const marker = document.createElementNS(NS, 'circle');
+        marker.setAttribute('class', 'zone-marker');
+        marker.setAttribute('data-zone', zoneName);
+        marker.setAttribute('cx', cx);
+        marker.setAttribute('cy', cy);
+        markerStyle(marker, zone);
+        markerLayer.appendChild(marker);
 
         const hit = document.createElementNS(NS, 'circle');
         hit.setAttribute('class', 'zone-hit');
@@ -622,19 +628,23 @@
         hit.style.pointerEvents = 'all';
         hitLayer.appendChild(hit);
       });
+      svgEl.appendChild(markerLayer);
       svgEl.appendChild(hitLayer);
 
-      svgEl.querySelectorAll('.zone-shape, .zone-hit').forEach(el => {
+      svgEl.querySelectorAll('.zone-marker, .zone-hit').forEach(el => {
         const zoneName = el.getAttribute('data-zone');
         el.addEventListener('mouseenter', (e) => {
-          const marker = svgEl.querySelector(`.zone-shape[data-zone="${zoneName}"]`);
-          if (marker && selectedZone !== zoneName) marker.style.filter = 'drop-shadow(0 7px 10px rgba(0,0,0,.32)) brightness(1.12)';
+          const marker = svgEl.querySelector(`.zone-marker[data-zone="${zoneName}"]`);
+          if (marker && selectedZone !== zoneName) {
+            marker.setAttribute('r', '26');
+            marker.style.filter = 'drop-shadow(0 8px 12px rgba(0,0,0,.34)) brightness(1.12)';
+          }
           showTooltip(e, zoneName);
         });
         el.addEventListener('mousemove', (e) => showTooltip(e, zoneName));
         el.addEventListener('mouseleave', () => {
-          const marker = svgEl.querySelector(`.zone-shape[data-zone="${zoneName}"]`);
-          if (marker && selectedZone !== zoneName) polyStyle(marker, ZONES[zoneName]);
+          const marker = svgEl.querySelector(`.zone-marker[data-zone="${zoneName}"]`);
+          if (marker && selectedZone !== zoneName) markerStyle(marker, ZONES[zoneName]);
           tooltip.classList.add('hidden');
         });
         el.addEventListener('click', () => selectZone(zoneName));
@@ -680,7 +690,7 @@
         pulse.style.display = '';
       }
 
-      eachPoly(poly => polyStyle(poly, ZONES[poly.getAttribute('data-zone')], poly.getAttribute('data-zone') === zoneName));
+      eachMarker(marker => markerStyle(marker, ZONES[marker.getAttribute('data-zone')], marker.getAttribute('data-zone') === zoneName));
 
       // Update legend pills
       document.querySelectorAll('.zone-pill').forEach(pill => {
@@ -770,7 +780,7 @@
       selectedZone = null;
       const pulse = document.getElementById('zone-pulse');
       if (pulse) pulse.style.display = 'none';
-      eachPoly(poly => polyStyle(poly, ZONES[poly.getAttribute('data-zone')], false));
+      eachMarker(marker => markerStyle(marker, ZONES[marker.getAttribute('data-zone')], false));
       document.querySelectorAll('.zone-pill').forEach(pill => {
         pill.classList.remove('active');
         const z = ZONES[pill.dataset.zone];
