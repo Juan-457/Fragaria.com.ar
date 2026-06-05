@@ -280,8 +280,8 @@
             <div class="relative rounded-2xl overflow-hidden shadow-xl border border-forest-500/20 bg-white" style="min-height:460px;">
               <!-- Marca de agua: emblema Fragaria detrás del mapa -->
               <img src="../logo-emblema.png" alt="" aria-hidden="true"
-                   class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[78%] max-w-[460px]"
-                   style="opacity:0.06; z-index:0;" />
+                   class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[72%] max-w-[430px]"
+                   style="opacity:0.04; z-index:0;" />
               <div id="argentina-map" class="relative w-full block px-4 py-6" style="max-height:700px; z-index:1;"></div>
               <!-- Tooltip -->
               <div id="map-tooltip" class="hidden absolute rounded-lg bg-ink-900 px-3 py-2 text-sm text-white shadow-lg z-10"></div>
@@ -501,7 +501,7 @@
       'Cuyo':           mkZone('z1',  'Cuyo',          '#c9a227', '#a07e16', 'La Rioja · San Juan · oeste'),
       'Noroeste':       mkZone('z2',  'Noroeste',      '#2f6b3a', '#1f4a27', 'Salta · Jujuy'),
       'Río Negro':      mkZone('z3',  'Río Negro',     '#d83b3b', '#b02a2a', 'Río Negro'),
-      'Norte':          mkZone('z4',  'Norte',         '#57a07a', '#3c7d59', 'Chaco · Santiago del Estero (norte)'),
+      'NEA':            mkZone('z4',  'NEA',           '#a7adb3', '#777d83', 'Chaco · NEA'),
       'Centro':         mkZone('z5',  'Centro',        '#7a9a36', '#5c7626', 'Centro del país'),
       'Buenos Aires':   mkZone('z6',  'Buenos Aires',  '#34a853', '#228b3e', 'Buenos Aires · Entre Ríos'),
       'Santa Fe':       mkZone('z7',  'Santa Fe',      '#b0bf5c', '#8a9a3e', 'Santa Fe'),
@@ -562,19 +562,19 @@
     // Todas las zonas quedan cubiertas con su color (mismo look);
     // el puntito que late marca cual esta realmente seleccionada.
     let zoneCentroids = {};
-    function polyStyle(poly, zone) {
-      poly.style.fill = zone.color;
-      poly.style.fillOpacity = 0.82;
-      poly.style.stroke = zone.colorDark;
-      poly.style.strokeWidth = '2';
-      poly.style.cursor = 'pointer';
-      poly.style.transition = 'fill-opacity .25s ease';
+    function polyStyle(el, zone) {
+      el.style.fill = zone.color;
+      el.style.fillOpacity = 1;
+      el.style.stroke = '#ffffff';
+      el.style.strokeWidth = '1.2';
+      el.style.cursor = 'pointer';
+      el.style.transition = 'filter .2s ease, fill-opacity .2s ease';
     }
 
     function eachPoly(cb) {
       const svgEl = document.getElementById('zonas-svg');
       if (!svgEl) return;
-      svgEl.querySelectorAll('polygon[data-zone]').forEach(cb);
+      svgEl.querySelectorAll('[data-zone]').forEach(cb);
     }
 
     function initZonesMap(svgEl) {
@@ -584,31 +584,31 @@
       svgEl.style.width = '100%';
       svgEl.style.height = 'auto';
       svgEl.style.display = 'block';
-      svgEl.style.maxHeight = '660px';
-      // País gris tenue: atenuar la imagen base para que el contorno gris pese menos.
-      const bg = svgEl.querySelector('image');
-      if (bg) bg.style.opacity = '0.4';
-      svgEl.querySelectorAll('polygon').forEach(poly => {
-        const zoneName = POLY_TO_ZONE[poly.getAttribute('id')];
-        if (!zoneName) return;
+      svgEl.style.maxHeight = '700px';
+      svgEl.querySelectorAll('[data-zone]').forEach(el => {
+        const zoneName = el.getAttribute('data-zone');
         const zone = ZONES[zoneName];
-        poly.setAttribute('data-zone', zoneName);
-        polyStyle(poly, zone);
-        poly.addEventListener('mouseenter', (e) => { poly.style.fillOpacity = 0.97; showTooltip(e, zoneName); });
-        poly.addEventListener('mousemove', (e) => showTooltip(e, zoneName));
-        poly.addEventListener('mouseleave', () => { poly.style.fillOpacity = 0.82; tooltip.classList.add('hidden'); });
-        poly.addEventListener('click', () => selectZone(zoneName));
+        if (!zone) return;
+        polyStyle(el, zone);
+        el.addEventListener('mouseenter', (e) => { el.style.filter = 'brightness(1.12)'; showTooltip(e, zoneName); });
+        el.addEventListener('mousemove', (e) => showTooltip(e, zoneName));
+        el.addEventListener('mouseleave', () => { el.style.filter = ''; tooltip.classList.add('hidden'); });
+        el.addEventListener('click', () => selectZone(zoneName));
       });
 
-      // Centroide de cada zona (en coordenadas del viewBox del SVG)
+      // Centroide de cada zona (área-ponderado por bounding box de sus provincias)
       const NS = 'http://www.w3.org/2000/svg';
       zoneCentroids = {};
-      svgEl.querySelectorAll('polygon[data-zone]').forEach(poly => {
-        const nums = poly.getAttribute('points').trim().split(/[\s,]+/).map(Number);
-        let sx = 0, sy = 0, n = 0;
-        for (let i = 0; i + 1 < nums.length; i += 2) { sx += nums[i]; sy += nums[i + 1]; n++; }
-        zoneCentroids[poly.getAttribute('data-zone')] = [sx / n, sy / n];
+      const acc = {};
+      svgEl.querySelectorAll('[data-zone]').forEach(el => {
+        const z = el.getAttribute('data-zone');
+        let b; try { b = el.getBBox(); } catch (e) { return; }
+        const a = Math.max(b.width * b.height, 1);
+        const cx = b.x + b.width / 2, cy = b.y + b.height / 2;
+        if (!acc[z]) acc[z] = [0, 0, 0];
+        acc[z][0] += cx * a; acc[z][1] += cy * a; acc[z][2] += a;
       });
+      Object.keys(acc).forEach(z => { zoneCentroids[z] = [acc[z][0] / acc[z][2], acc[z][1] / acc[z][2]]; });
 
       // Marcador que "late" en el centro de la zona seleccionada
       const pulse = document.createElementNS(NS, 'g');
