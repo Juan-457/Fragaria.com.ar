@@ -251,28 +251,7 @@
         </div>
         <div class="hidden lg:flex justify-end">
           <div class="rounded-2xl border border-white/10 bg-ink-900/60 p-6 backdrop-blur-sm">
-            <div class="space-y-1">
-              <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Sancor Norte'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
-                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#22c55e"></span>
-                <span class="text-sm text-white/80">Sancor Norte</span>
-              </button>
-              <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Sancor Sur'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
-                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#3b82f6"></span>
-                <span class="text-sm text-white/80">Sancor Sur</span>
-              </button>
-              <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Entre Ríos'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
-                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#a855f7"></span>
-                <span class="text-sm text-white/80">Entre Ríos</span>
-              </button>
-              <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Buenos Aires Norte'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
-                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#ef4444"></span>
-                <span class="text-sm text-white/80">Buenos Aires Norte</span>
-              </button>
-              <button onclick="document.getElementById('mapa-argentina').scrollIntoView({behavior:'smooth'}); setTimeout(()=>selectZone('Buenos Aires Sur'),350)" class="flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer">
-                <span class="h-3 w-3 rounded-full flex-shrink-0" style="background:#f59e0b"></span>
-                <span class="text-sm text-white/80">Buenos Aires Sur</span>
-              </button>
-            </div>
+            <div class="space-y-1" id="zone-quicklist"></div>
           </div>
         </div>
       </div>
@@ -501,73 +480,29 @@
     });
 
     // ── Zone data ─────────────────────────────────────────────────────
-    // Cada zona mapeada al id de su poligono en zonas.svg (1..5)
+    // Cada zona mapeada al id de su poligono en zonas-2026.svg (z1..z10)
+    // NOTA: nombres y representantes provisionales (placeholder) — ajustar con los datos reales.
+    const PLACEHOLDER_REP = {
+      name: 'Representante a designar',
+      email: 'info@fragaria.com.ar',
+      phone: '3462 450100',
+      whatsapp: '543462450100'
+    };
+    function mkZone(polyId, name, color, colorDark, coverage) {
+      return { polyId, color, colorDark, coverage,
+        rep: { ...PLACEHOLDER_REP, role: 'Zona ' + name } };
+    }
     const ZONES = {
-      'Sancor Norte': {
-        polyId: '1',
-        color: '#22c55e',
-        colorDark: '#16a34a',
-        coverage: 'Córdoba y Santa Fe (norte)',
-        rep: {
-          name: 'Luis Bagur',
-          role: 'Representante Zona Sancor Norte',
-          email: 'luis.bagur@fragaria.com.ar',
-          phone: '3462 60-3706',
-          whatsapp: '543462603706'
-        }
-      },
-      'Sancor Sur': {
-        polyId: '2',
-        color: '#3b82f6',
-        colorDark: '#2563eb',
-        coverage: 'Córdoba y Santa Fe (sur)',
-        rep: {
-          name: 'Rafael Stocco',
-          role: 'Representante Zona Sancor Sur',
-          email: 'rafael.stocco@fragaria.com.ar',
-          phone: '3462 54-5627',
-          whatsapp: '543462545627'
-        }
-      },
-      'Entre Ríos': {
-        polyId: '5',
-        color: '#a855f7',
-        colorDark: '#9333ea',
-        coverage: 'Entre Ríos',
-        rep: {
-          name: 'Juan Pablo Gainza',
-          role: 'Representante Zona Entre Ríos',
-          email: 'juanpablo.gainza@fragaria.com.ar',
-          phone: '3462 60-3708',
-          whatsapp: '543462603708'
-        }
-      },
-      'Buenos Aires Norte': {
-        polyId: '4',
-        color: '#ef4444',
-        colorDark: '#dc2626',
-        coverage: 'Norte de Buenos Aires',
-        rep: {
-          name: 'Maximiliano Arzani',
-          role: 'Representante Zona Buenos Aires Norte',
-          email: 'maximiliano.arzani@fragaria.com.ar',
-          phone: '3462 60-3752',
-          whatsapp: '543462603752'
-        }
-      },
-      'Buenos Aires Sur': {
-        polyId: '3',
-        color: '#f59e0b',
-        colorDark: '#d97706',
-        coverage: 'Sur de Buenos Aires',
-        rep: {
-          name: 'Fragaria S.A.',
-          role: 'Oficina Central — Zona Buenos Aires Sur',
-          email: 'info@fragaria.com.ar',
-          phone: '+54 3462 450100',
-          whatsapp: '543462450100'
-        }
-      }
+      'Cuyo':           mkZone('z1',  'Cuyo',          '#c9a227', '#a07e16', 'La Rioja · San Juan · oeste'),
+      'Noroeste':       mkZone('z2',  'Noroeste',      '#2f6b3a', '#1f4a27', 'Salta · Jujuy'),
+      'La Pampa':       mkZone('z3',  'La Pampa',      '#d83b3b', '#b02a2a', 'La Pampa · sur'),
+      'Norte':          mkZone('z4',  'Norte',         '#57a07a', '#3c7d59', 'Chaco · Santiago del Estero (norte)'),
+      'Centro':         mkZone('z5',  'Centro',        '#7a9a36', '#5c7626', 'Centro del país'),
+      'Buenos Aires':   mkZone('z6',  'Buenos Aires',  '#34a853', '#228b3e', 'Buenos Aires · Entre Ríos'),
+      'Santa Fe':       mkZone('z7',  'Santa Fe',      '#b0bf5c', '#8a9a3e', 'Santa Fe'),
+      'Nordeste':       mkZone('z8',  'Nordeste',      '#176b4a', '#0e4d34', 'Formosa · Corrientes · NEA'),
+      'Córdoba Norte':  mkZone('z9',  'Córdoba Norte', '#9c8f2f', '#7a6f20', 'Córdoba (norte)'),
+      'Córdoba':        mkZone('z10', 'Córdoba',       '#3aaedd', '#2486b0', 'Córdoba')
     };
 
     // poligono id -> nombre de zona
@@ -587,6 +522,21 @@
       pill.addEventListener('click', () => selectZone(zoneName));
       legend.appendChild(pill);
     });
+
+    // ── Quicklist del header (mismo set de zonas) ─────────────────────
+    const quicklist = document.getElementById('zone-quicklist');
+    if (quicklist) {
+      Object.entries(ZONES).forEach(([zoneName, zone]) => {
+        const btn = document.createElement('button');
+        btn.className = 'flex w-full items-center gap-3 rounded-lg px-2 py-1.5 transition hover:bg-white/10 cursor-pointer';
+        btn.innerHTML = `<span class="h-3 w-3 rounded-full flex-shrink-0" style="background:${zone.color}"></span><span class="text-sm text-white/80">${zoneName}</span>`;
+        btn.addEventListener('click', () => {
+          document.getElementById('mapa-argentina').scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => selectZone(zoneName), 350);
+        });
+        quicklist.appendChild(btn);
+      });
+    }
 
     // ── Mapa de zonas (zonas.svg) ─────────────────────────────────────
     let selectedZone = null;
@@ -609,9 +559,9 @@
     let zoneCentroids = {};
     function polyStyle(poly, zone) {
       poly.style.fill = zone.color;
-      poly.style.fillOpacity = 0.5;
+      poly.style.fillOpacity = 0.82;
       poly.style.stroke = zone.colorDark;
-      poly.style.strokeWidth = '1.5';
+      poly.style.strokeWidth = '2';
       poly.style.cursor = 'pointer';
       poly.style.transition = 'fill-opacity .25s ease';
     }
@@ -636,9 +586,9 @@
         const zone = ZONES[zoneName];
         poly.setAttribute('data-zone', zoneName);
         polyStyle(poly, zone);
-        poly.addEventListener('mouseenter', (e) => { poly.style.fillOpacity = 0.72; showTooltip(e, zoneName); });
+        poly.addEventListener('mouseenter', (e) => { poly.style.fillOpacity = 0.97; showTooltip(e, zoneName); });
         poly.addEventListener('mousemove', (e) => showTooltip(e, zoneName));
-        poly.addEventListener('mouseleave', () => { poly.style.fillOpacity = 0.5; tooltip.classList.add('hidden'); });
+        poly.addEventListener('mouseleave', () => { poly.style.fillOpacity = 0.82; tooltip.classList.add('hidden'); });
         poly.addEventListener('click', () => selectZone(zoneName));
       });
 
@@ -786,8 +736,8 @@
       document.getElementById('direct-contact-card').classList.remove('hidden');
     }
 
-    // Cargar zonas.svg e inicializar
-    fetch('./zonas.svg')
+    // Cargar zonas-2026.svg e inicializar
+    fetch('./zonas-2026.svg')
       .then(r => r.text())
       .then(txt => {
         const holder = document.getElementById('argentina-map');
