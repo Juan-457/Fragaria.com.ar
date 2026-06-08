@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 2000" role="img" aria-labelledby="map-title map-desc">
+  <title id="map-title">Zonas comerciales Fragaria 2026</title>
+  <desc id="map-desc">Mapa de Argentina con diez zonas comerciales seleccionables.</desc>
+  <image href="../Maps/MAPA-ZONAS-2026 (1).png" x="0" y="0" width="2000" height="2000" preserveAspectRatio="xMidYMid meet" />
+  <g id="zone-area-layer">
+    <path id="z1" class="zone-area" data-zone="NOA" d="M676 18 L745 16 L803 45 L852 22 L930 30 L978 108 L1087 188 L1048 298 L1028 326 L911 326 L905 445 L785 366 L720 408 L600 350 L610 270 L575 205 L655 162 Z" />
+    <path id="z2" class="zone-area" data-zone="NEA" d="M574 265 L712 265 L787 368 L724 425 L690 558 L635 560 L575 496 L532 538 L507 455 L540 360 Z" />
+    <path id="z3" class="zone-area" data-zone="Mesopotamia" d="M1010 296 L1128 286 L1228 206 L1288 286 L1266 414 L1185 532 L1108 642 L1050 610 L1018 506 L1032 420 Z" />
+    <path id="z4" class="zone-area" data-zone="Córdoba Norte" d="M735 405 L904 470 L912 560 L875 654 L721 664 L687 560 L708 455 Z" />
+    <path id="z5" class="zone-area" data-zone="Córdoba Sur" d="M688 560 L822 536 L900 632 L856 760 L754 804 L640 742 L624 612 Z" />
+    <path id="z6" class="zone-area" data-zone="Santa Fe y Entre Ríos" d="M908 326 L1040 326 L1032 450 L1090 626 L996 694 L880 645 L850 548 L905 510 Z" />
+    <path id="z7" class="zone-area" data-zone="Zona Núcleo" d="M720 660 L878 650 L994 698 L960 774 L855 830 L746 830 L704 770 Z" />
+    <path id="z8" class="zone-area" data-zone="Buenos Aires" d="M836 790 L960 778 L1128 716 L1198 746 L1140 882 L1055 922 L920 938 L838 908 Z" />
+    <path id="z9" class="zone-area" data-zone="Cuyo" d="M524 360 L650 560 L642 745 L612 875 L506 850 L455 755 L474 602 L500 480 Z" />
+    <path id="z10" class="zone-area" data-zone="Río Negro" d="M450 852 L620 840 L742 900 L825 956 L778 1055 L615 1060 L452 1110 L446 972 Z" />
+  </g>
+</svg>

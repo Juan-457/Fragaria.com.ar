@@ -47,17 +47,19 @@
       transition: fill 0.35s ease;
     }
 
-    /* Zone marker */
-    .zone-marker-group { cursor: pointer; transition: opacity 0.2s ease; }
-    .zone-marker-group.dimmed { opacity: 0.18; }
-    .marker-dot {
-      transition: r 0.2s ease, filter 0.2s ease;
+    /* Zone area */
+    .zone-area {
+      cursor: pointer;
+      fill: transparent;
+      stroke: transparent;
+      stroke-width: 10;
+      vector-effect: non-scaling-stroke;
+      transition: fill 0.18s ease, stroke 0.18s ease, filter 0.18s ease;
     }
-    .zone-marker-group:hover .marker-dot {
-      filter: brightness(1.25) drop-shadow(0 0 6px currentColor);
-    }
-    .zone-marker-group.active .marker-dot {
-      filter: drop-shadow(0 0 10px currentColor);
+    .zone-area:hover,
+    .zone-area.active {
+      stroke: #fff;
+      filter: drop-shadow(0 8px 14px rgba(0,0,0,0.28));
     }
 
     /* Zone legend pill */
@@ -546,7 +548,7 @@
       });
     }
 
-    // ── Mapa de zonas (Maps/zonas.svg) ────────────────────────────────
+    // ── Mapa de zonas (Maps/zonas-comerciales-2026.svg) ───────────────
     let selectedZone = null;
 
     const container = document.querySelector('#argentina-map').parentElement;
@@ -562,25 +564,19 @@
       tooltip.style.top = Math.max(y, 4) + 'px';
     }
 
-    // Maps/zonas.svg trae la zona real como imagen y marcadores vectoriales
-    // pequenos. Se usan solo para ubicar puntos circulares limpios.
     let zoneCentroids = {};
-    function markerStyle(el, zone, active = false) {
-      el.style.fill = zone.color;
-      el.style.fillOpacity = active ? 1 : 0.96;
-      el.style.stroke = '#ffffff';
-      el.style.strokeWidth = active ? '10' : '7';
-      el.style.cursor = 'pointer';
-      el.style.transition = 'filter .2s ease, opacity .2s ease';
-      el.style.vectorEffect = 'non-scaling-stroke';
-      el.style.filter = active ? 'drop-shadow(0 10px 16px rgba(0,0,0,.38))' : 'drop-shadow(0 4px 7px rgba(0,0,0,.26))';
-      el.setAttribute('r', active ? '42' : '18');
+
+    function areaStyle(area, zone, active = false) {
+      area.classList.toggle('active', active);
+      area.style.fill = active ? zone.color + '72' : 'transparent';
+      area.style.stroke = active ? zone.colorDark : 'transparent';
+      area.style.strokeWidth = active ? '14' : '10';
     }
 
-    function eachMarker(cb) {
+    function eachArea(cb) {
       const svgEl = document.getElementById('zonas-svg');
       if (!svgEl) return;
-      svgEl.querySelectorAll('.zone-marker').forEach(cb);
+      svgEl.querySelectorAll('.zone-area').forEach(cb);
     }
 
     function initZonesMap(svgEl) {
@@ -594,64 +590,69 @@
       svgEl.querySelectorAll('image').forEach(img => { img.style.pointerEvents = 'none'; });
 
       const NS = 'http://www.w3.org/2000/svg';
+      const labelLayer = document.createElementNS(NS, 'g');
+      labelLayer.setAttribute('id', 'zone-label-layer');
+      labelLayer.style.pointerEvents = 'none';
       zoneCentroids = {};
-      const markerLayer = document.createElementNS(NS, 'g');
-      markerLayer.setAttribute('id', 'zone-marker-layer');
-      const hitLayer = document.createElementNS(NS, 'g');
-      hitLayer.setAttribute('id', 'zone-hit-layer');
 
-      svgEl.querySelectorAll('polygon[id]').forEach(el => {
-        const zoneName = POLY_TO_ZONE[el.getAttribute('id')];
+      svgEl.querySelectorAll('.zone-area').forEach(area => {
+        const zoneName = area.dataset.zone || POLY_TO_ZONE[area.getAttribute('id')];
         if (!zoneName) return;
         const zone = ZONES[zoneName];
         if (!zone) return;
 
-        let b; try { b = el.getBBox(); } catch (e) { return; }
+        let b; try { b = area.getBBox(); } catch (e) { return; }
         const cx = b.x + b.width / 2;
         const cy = b.y + b.height / 2;
         zoneCentroids[zoneName] = [cx, cy];
-        el.style.display = 'none';
 
-        const marker = document.createElementNS(NS, 'circle');
-        marker.setAttribute('class', 'zone-marker');
-        marker.setAttribute('data-zone', zoneName);
-        marker.setAttribute('cx', cx);
-        marker.setAttribute('cy', cy);
-        markerStyle(marker, zone);
-        markerLayer.appendChild(marker);
+        areaStyle(area, zone, false);
+        area.setAttribute('tabindex', '0');
+        area.setAttribute('role', 'button');
+        area.setAttribute('aria-label', `Seleccionar zona ${zoneName}`);
 
-        const hit = document.createElementNS(NS, 'circle');
-        hit.setAttribute('class', 'zone-hit');
-        hit.setAttribute('data-zone', zoneName);
-        hit.setAttribute('cx', cx);
-        hit.setAttribute('cy', cy);
-        hit.setAttribute('r', '72');
-        hit.setAttribute('fill', 'transparent');
-        hit.style.cursor = 'pointer';
-        hit.style.pointerEvents = 'all';
-        hitLayer.appendChild(hit);
-      });
-      svgEl.appendChild(markerLayer);
-      svgEl.appendChild(hitLayer);
+        const label = document.createElementNS(NS, 'text');
+        label.setAttribute('x', cx);
+        label.setAttribute('y', cy);
+        label.setAttribute('text-anchor', 'middle');
+        label.setAttribute('dominant-baseline', 'middle');
+        label.setAttribute('font-size', zoneName.length > 15 ? '30' : '36');
+        label.setAttribute('font-weight', '800');
+        label.setAttribute('fill', '#17351f');
+        label.setAttribute('stroke', '#ffffff');
+        label.setAttribute('stroke-width', '7');
+        label.setAttribute('paint-order', 'stroke');
+        label.style.fontFamily = 'Space Grotesk, Arial, sans-serif';
+        label.style.opacity = '0';
+        label.textContent = zoneName;
+        labelLayer.appendChild(label);
+        area.dataset.labelIndex = String(labelLayer.children.length - 1);
 
-      svgEl.querySelectorAll('.zone-marker, .zone-hit').forEach(el => {
-        const zoneName = el.getAttribute('data-zone');
-        el.addEventListener('mouseenter', (e) => {
-          const marker = svgEl.querySelector(`.zone-marker[data-zone="${zoneName}"]`);
-          if (marker && selectedZone !== zoneName) {
-            marker.setAttribute('r', '26');
-            marker.style.filter = 'drop-shadow(0 8px 12px rgba(0,0,0,.34)) brightness(1.12)';
+        area.addEventListener('mouseenter', (e) => {
+          if (selectedZone !== zoneName) {
+            area.style.fill = zone.color + '36';
+            area.style.stroke = '#ffffff';
           }
+          label.style.opacity = '1';
           showTooltip(e, zoneName);
         });
-        el.addEventListener('mousemove', (e) => showTooltip(e, zoneName));
-        el.addEventListener('mouseleave', () => {
-          const marker = svgEl.querySelector(`.zone-marker[data-zone="${zoneName}"]`);
-          if (marker && selectedZone !== zoneName) markerStyle(marker, ZONES[zoneName]);
+        area.addEventListener('mousemove', (e) => showTooltip(e, zoneName));
+        area.addEventListener('mouseleave', () => {
+          if (selectedZone !== zoneName) {
+            areaStyle(area, zone, false);
+            label.style.opacity = '0';
+          }
           tooltip.classList.add('hidden');
         });
-        el.addEventListener('click', () => selectZone(zoneName));
+        area.addEventListener('click', () => selectZone(zoneName));
+        area.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            selectZone(zoneName);
+          }
+        });
       });
+      svgEl.appendChild(labelLayer);
 
       // Resaltado fuerte sobre el sector seleccionado.
       const pulse = document.createElementNS(NS, 'g');
@@ -659,17 +660,17 @@
       pulse.style.display = 'none';
       pulse.style.pointerEvents = 'none';
       pulse.innerHTML =
-        '<circle id="zone-halo" r="96" fill="#ffffff" opacity="0.2"/>' +
-        '<circle id="zone-ring" r="62" fill="none" stroke="#ffffff" stroke-width="9"/>' +
-        '<circle r="52" fill="none" stroke="#ffffff" stroke-width="5">' +
-          '<animate attributeName="r" values="52;120" dur="1.7s" repeatCount="indefinite"/>' +
+        '<circle id="zone-halo" r="118" fill="#ffffff" opacity="0.18"/>' +
+        '<circle id="zone-ring" r="76" fill="none" stroke="#ffffff" stroke-width="9"/>' +
+        '<circle r="66" fill="none" stroke="#ffffff" stroke-width="5">' +
+          '<animate attributeName="r" values="66;138" dur="1.7s" repeatCount="indefinite"/>' +
           '<animate attributeName="opacity" values="0.9;0" dur="1.7s" repeatCount="indefinite"/>' +
         '</circle>' +
-        '<circle r="52" fill="none" stroke="#111111" stroke-width="3">' +
-          '<animate attributeName="r" values="52;120" dur="1.7s" begin="0.55s" repeatCount="indefinite"/>' +
+        '<circle r="66" fill="none" stroke="#111111" stroke-width="3">' +
+          '<animate attributeName="r" values="66;138" dur="1.7s" begin="0.55s" repeatCount="indefinite"/>' +
           '<animate attributeName="opacity" values="0.45;0" dur="1.7s" begin="0.55s" repeatCount="indefinite"/>' +
         '</circle>' +
-        '<text id="zone-map-label" y="-112" text-anchor="middle" font-size="42" font-weight="800" fill="#153525" stroke="#ffffff" stroke-width="9" paint-order="stroke" style="font-family:Inter,Arial,sans-serif;"></text>';
+        '<text id="zone-map-label" y="-132" text-anchor="middle" font-size="42" font-weight="800" fill="#153525" stroke="#ffffff" stroke-width="9" paint-order="stroke" style="font-family:Space Grotesk,Arial,sans-serif;"></text>';
       svgEl.appendChild(pulse);
 
       document.getElementById('map-loading').style.display = 'none';
@@ -693,7 +694,13 @@
         pulse.style.display = '';
       }
 
-      eachMarker(marker => markerStyle(marker, ZONES[marker.getAttribute('data-zone')], marker.getAttribute('data-zone') === zoneName));
+      eachArea(area => {
+        const areaZoneName = area.dataset.zone;
+        const isActive = areaZoneName === zoneName;
+        areaStyle(area, ZONES[areaZoneName], isActive);
+        const label = document.getElementById('zone-label-layer')?.children[Number(area.dataset.labelIndex)];
+        if (label) label.style.opacity = isActive ? '1' : '0';
+      });
 
       // Update legend pills
       document.querySelectorAll('.zone-pill').forEach(pill => {
@@ -783,7 +790,11 @@
       selectedZone = null;
       const pulse = document.getElementById('zone-pulse');
       if (pulse) pulse.style.display = 'none';
-      eachMarker(marker => markerStyle(marker, ZONES[marker.getAttribute('data-zone')], false));
+      eachArea(area => {
+        areaStyle(area, ZONES[area.dataset.zone], false);
+        const label = document.getElementById('zone-label-layer')?.children[Number(area.dataset.labelIndex)];
+        if (label) label.style.opacity = '0';
+      });
       document.querySelectorAll('.zone-pill').forEach(pill => {
         pill.classList.remove('active');
         const z = ZONES[pill.dataset.zone];
@@ -794,8 +805,8 @@
       document.getElementById('direct-contact-card').classList.remove('hidden');
     }
 
-    // Cargar el mapa marcado desde Maps/zonas.svg e inicializar
-    fetch('../Maps/zonas.svg')
+    // Cargar el mapa marcado desde Maps/zonas-comerciales-2026.svg e inicializar
+    fetch('../Maps/zonas-comerciales-2026.svg')
       .then(r => r.text())
       .then(txt => {
         const holder = document.getElementById('argentina-map');
