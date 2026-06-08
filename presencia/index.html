@@ -52,7 +52,7 @@
       cursor: pointer;
       fill: rgba(82,183,136,0.34);
       stroke: rgba(255,255,255,0.72);
-      stroke-width: 10;
+      stroke-width: 2;
       vector-effect: non-scaling-stroke;
       transition: fill 0.18s ease, stroke 0.18s ease, filter 0.18s ease;
     }
@@ -580,17 +580,17 @@
       if (state === 'active') {
         area.style.fill = hexToRgba(zone.color, 0.78);
         area.style.stroke = '#ffffff';
-        area.style.strokeWidth = '18';
+        area.style.strokeWidth = '5';
         area.style.filter = 'drop-shadow(0 12px 18px rgba(0,0,0,.42))';
       } else if (state === 'muted') {
         area.style.fill = hexToRgba(zone.color, 0.22);
         area.style.stroke = 'rgba(255,255,255,0.45)';
-        area.style.strokeWidth = '8';
+        area.style.strokeWidth = '1.5';
         area.style.filter = 'none';
       } else {
         area.style.fill = hexToRgba(zone.color, 0.48);
         area.style.stroke = 'rgba(255,255,255,0.8)';
-        area.style.strokeWidth = '10';
+        area.style.strokeWidth = '2';
         area.style.filter = 'drop-shadow(0 3px 6px rgba(0,0,0,.18))';
       }
     }
@@ -660,7 +660,7 @@
           if (selectedZone !== zoneName) {
             area.style.fill = hexToRgba(zone.color, 0.66);
             area.style.stroke = '#ffffff';
-            area.style.strokeWidth = '14';
+            area.style.strokeWidth = '3.5';
             area.style.filter = 'drop-shadow(0 8px 14px rgba(0,0,0,.32))';
           }
           label.style.opacity = '1';
