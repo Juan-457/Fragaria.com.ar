@@ -729,7 +729,7 @@
         const isActive = areaZoneName === zoneName;
         areaStyle(area, ZONES[areaZoneName], isActive ? 'active' : 'muted');
         const label = document.getElementById('zone-label-layer')?.children[Number(area.dataset.labelIndex)];
-        if (label) label.style.opacity = isActive ? '1' : '0';
+        if (label) label.style.opacity = '0';
       });
 
       // Update legend pills
