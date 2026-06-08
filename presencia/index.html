@@ -50,8 +50,8 @@
     /* Zone area */
     .zone-area {
       cursor: pointer;
-      fill: transparent;
-      stroke: transparent;
+      fill: rgba(82,183,136,0.34);
+      stroke: rgba(255,255,255,0.72);
       stroke-width: 10;
       vector-effect: non-scaling-stroke;
       transition: fill 0.18s ease, stroke 0.18s ease, filter 0.18s ease;
@@ -59,7 +59,7 @@
     .zone-area:hover,
     .zone-area.active {
       stroke: #fff;
-      filter: drop-shadow(0 8px 14px rgba(0,0,0,0.28));
+      filter: drop-shadow(0 10px 16px rgba(0,0,0,0.34));
     }
 
     /* Zone legend pill */
@@ -566,11 +566,33 @@
 
     let zoneCentroids = {};
 
-    function areaStyle(area, zone, active = false) {
+    function hexToRgba(hex, alpha) {
+      const value = hex.replace('#', '');
+      const r = parseInt(value.slice(0, 2), 16);
+      const g = parseInt(value.slice(2, 4), 16);
+      const b = parseInt(value.slice(4, 6), 16);
+      return `rgba(${r},${g},${b},${alpha})`;
+    }
+
+    function areaStyle(area, zone, state = 'default') {
+      const active = state === 'active';
       area.classList.toggle('active', active);
-      area.style.fill = active ? zone.color + '72' : 'transparent';
-      area.style.stroke = active ? zone.colorDark : 'transparent';
-      area.style.strokeWidth = active ? '14' : '10';
+      if (state === 'active') {
+        area.style.fill = hexToRgba(zone.color, 0.78);
+        area.style.stroke = '#ffffff';
+        area.style.strokeWidth = '18';
+        area.style.filter = 'drop-shadow(0 12px 18px rgba(0,0,0,.42))';
+      } else if (state === 'muted') {
+        area.style.fill = hexToRgba(zone.color, 0.22);
+        area.style.stroke = 'rgba(255,255,255,0.45)';
+        area.style.strokeWidth = '8';
+        area.style.filter = 'none';
+      } else {
+        area.style.fill = hexToRgba(zone.color, 0.48);
+        area.style.stroke = 'rgba(255,255,255,0.8)';
+        area.style.strokeWidth = '10';
+        area.style.filter = 'drop-shadow(0 3px 6px rgba(0,0,0,.18))';
+      }
     }
 
     function eachArea(cb) {
@@ -612,7 +634,7 @@
         const cy = b.y + b.height / 2;
         zoneCentroids[zoneName] = [cx, cy];
 
-        areaStyle(area, zone, false);
+        areaStyle(area, zone, 'default');
         area.setAttribute('tabindex', '0');
         area.setAttribute('role', 'button');
         area.setAttribute('aria-label', `Seleccionar zona ${zoneName}`);
@@ -636,8 +658,10 @@
 
         area.addEventListener('mouseenter', (e) => {
           if (selectedZone !== zoneName) {
-            area.style.fill = zone.color + '36';
+            area.style.fill = hexToRgba(zone.color, 0.66);
             area.style.stroke = '#ffffff';
+            area.style.strokeWidth = '14';
+            area.style.filter = 'drop-shadow(0 8px 14px rgba(0,0,0,.32))';
           }
           label.style.opacity = '1';
           showTooltip(e, zoneName);
@@ -645,7 +669,7 @@
         area.addEventListener('mousemove', (e) => showTooltip(e, zoneName));
         area.addEventListener('mouseleave', () => {
           if (selectedZone !== zoneName) {
-            areaStyle(area, zone, false);
+            areaStyle(area, zone, 'default');
             label.style.opacity = '0';
           }
           tooltip.classList.add('hidden');
@@ -703,7 +727,7 @@
       eachArea(area => {
         const areaZoneName = area.dataset.zone;
         const isActive = areaZoneName === zoneName;
-        areaStyle(area, ZONES[areaZoneName], isActive);
+        areaStyle(area, ZONES[areaZoneName], isActive ? 'active' : 'muted');
         const label = document.getElementById('zone-label-layer')?.children[Number(area.dataset.labelIndex)];
         if (label) label.style.opacity = isActive ? '1' : '0';
       });
@@ -797,7 +821,7 @@
       const pulse = document.getElementById('zone-pulse');
       if (pulse) pulse.style.display = 'none';
       eachArea(area => {
-        areaStyle(area, ZONES[area.dataset.zone], false);
+        areaStyle(area, ZONES[area.dataset.zone], 'default');
         const label = document.getElementById('zone-label-layer')?.children[Number(area.dataset.labelIndex)];
         if (label) label.style.opacity = '0';
       });
@@ -816,6 +840,7 @@
       .then(r => r.text())
       .then(txt => {
         const holder = document.getElementById('argentina-map');
+        txt = txt.replaceAll('<polygon ', '<polygon fill="transparent" stroke="transparent" ');
         holder.innerHTML = txt;
         const svgEl = holder.querySelector('svg');
         if (svgEl) initZonesMap(svgEl);
