@@ -503,15 +503,15 @@
       return { polyId, color, colorDark, coverage, rep: rep || { ...CONTACTO_GENERAL } };
     }
     const ZONES = {
-      'Cuyo':           mkZone('9',  'Cuyo',          '#c0b868', '#7e7731', 'La Rioja · San Juan · oeste'),
+      'Cuyo':           mkZone('8',  'Cuyo',          '#c0b868', '#7e7731', 'La Rioja · San Juan · oeste'),
       'NOA':            mkZone('1',  'NOA',           '#385038', '#273b27', 'Noroeste argentino'),
-      'Río Negro':      mkZone('10', 'Río Negro',     '#006830', '#005027', 'Río Negro'),
+      'Río Negro':      mkZone('6',  'Río Negro',     '#006830', '#005027', 'Río Negro'),
       'NEA':            mkZone('2',  'NEA',           '#c4cccc', '#707b7b', 'Chaco · NEA'),
-      'Córdoba Norte':  mkZone('4',  'Córdoba Norte', '#88a060', '#596f3d', 'Córdoba (norte)'),
-      'Buenos Aires':   mkZone('8',  'Buenos Aires',  '#409860', '#2f7448', 'Buenos Aires'),
-      'Santa Fe y Entre Ríos': mkZone('6', 'Santa Fe y Entre Ríos', '#d0d8a8', '#7b854b', 'Santa Fe · Entre Ríos'),
-      'Mesopotamia':    mkZone('3',  'Mesopotamia',   '#88a090', '#5d7365', 'Mesopotamia'),
-      'Córdoba Sur':    mkZone('5',  'Córdoba Sur',   '#c0c880', '#7f8845', 'Córdoba (sur)'),
+      'Córdoba Norte':  mkZone('3',  'Córdoba Norte', '#88a060', '#596f3d', 'Córdoba (norte)'),
+      'Buenos Aires':   mkZone('4',  'Buenos Aires',  '#409860', '#2f7448', 'Buenos Aires'),
+      'Santa Fe y Entre Ríos': mkZone('9', 'Santa Fe y Entre Ríos', '#d0d8a8', '#7b854b', 'Santa Fe · Entre Ríos'),
+      'Mesopotamia':    mkZone('5',  'Mesopotamia',   '#88a090', '#5d7365', 'Mesopotamia'),
+      'Córdoba Sur':    mkZone('10', 'Córdoba Sur',   '#c0c880', '#7f8845', 'Córdoba (sur)'),
       'Zona Núcleo':    mkZone('7',  'Zona Núcleo',   '#c0d080', '#7f9040', 'Zona núcleo')
     };
 
@@ -548,7 +548,7 @@
       });
     }
 
-    // ── Mapa de zonas (Maps/zonas-comerciales-2026.svg) ───────────────
+    // ── Mapa de zonas (Maps/FinalMap.svg) ────────────────────────────
     let selectedZone = null;
 
     const container = document.querySelector('#argentina-map').parentElement;
@@ -588,6 +588,12 @@
       svgEl.style.display = 'block';
       svgEl.style.maxHeight = '760px';
       svgEl.querySelectorAll('image').forEach(img => { img.style.pointerEvents = 'none'; });
+      svgEl.querySelectorAll('polygon[id]').forEach(poly => {
+        const zoneName = POLY_TO_ZONE[poly.getAttribute('id')];
+        if (!zoneName) return;
+        poly.classList.add('zone-area');
+        poly.dataset.zone = zoneName;
+      });
 
       const NS = 'http://www.w3.org/2000/svg';
       const labelLayer = document.createElementNS(NS, 'g');
@@ -805,8 +811,8 @@
       document.getElementById('direct-contact-card').classList.remove('hidden');
     }
 
-    // Cargar el mapa marcado desde Maps/zonas-comerciales-2026.svg e inicializar
-    fetch('../Maps/zonas-comerciales-2026.svg')
+    // Cargar el mapa marcado desde Maps/FinalMap.svg e inicializar
+    fetch('../Maps/FinalMap.svg')
       .then(r => r.text())
       .then(txt => {
         const holder = document.getElementById('argentina-map');
