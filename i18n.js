@@ -16,7 +16,7 @@ const i18n = {
     'emp.label':'Empresa','emp.h2':'Una compañía argentina con evolución constante',
     'emp.p1':'Desde hace más de 37 años participamos activamente del mercado agropecuario, brindando soluciones para mejorar rendimiento, eficiencia y sustentabilidad en campo.',
     'emp.p2':'Nuestra propuesta combina desarrollo propio, producción y comercialización de insumos con foco técnico, respaldo comercial y cercanía con productores y distribuidores.',
-    'emp.item1.t':'Fertilizantes biológicos','emp.item1.d':'Productos para mejorar rendimiento con menor impacto ambiental.',
+    'emp.item1.t':'Inoculantes biológicos y bioestimulantes','emp.item1.d':'Productos para mejorar rendimiento con menor impacto ambiental.',
     'emp.item2.t':'Coadyuvantes','emp.item2.d':'Optimizadores de aplicaciones para mayor eficacia.',
     'emp.item3.t':'Especialidades agropecuarias','emp.item3.d':'Desarrollo con enfoque ambiental responsable.',
     /* ── INDEX valores/productos ── */
