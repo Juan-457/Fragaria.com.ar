@@ -46,6 +46,8 @@
     .product-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -16px rgba(5,46,22,.25); }
     .filter-btn, .adjuvant-btn { transition: background .15s, color .15s, border-color .15s; }
     .filter-btn.active, .adjuvant-btn.active { background: #15803d; color: #fff; border-color: #15803d; }
+    .organic-btn { transition: background .15s, color .15s, border-color .15s; }
+    .organic-btn.active { background: #15803d; color: #fff; border-color: #15803d; }
     .hidden-card { display: none !important; }
   </style>
 <link href="img/favicon-32.png" rel="icon" sizes="32x32"/>
@@ -119,6 +121,11 @@
           🔬 Otras Soluciones <span class="ml-1 text-xs opacity-60" id="count-otras-soluciones"></span>
 </button>
 </div>
+<div class="flex flex-wrap gap-2 lg:justify-end">
+<button aria-pressed="false" class="organic-btn rounded-full border border-fragaria-200 bg-fragaria-50 px-4 py-2 text-sm font-semibold text-fragaria-700 transition hover:border-fragaria-500" id="organic-toggle" type="button">
+          🌱 Solo orgánicos certificados <span class="ml-1 text-xs opacity-70" id="count-organic"></span>
+</button>
+</div>
 <div aria-label="Filtrar coadyuvantes por subsegmento" class="flex flex-wrap gap-2 lg:justify-end" id="adjuvant-buttons" role="group">
 <button class="adjuvant-btn active rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="todos">Todos los coadyuvantes</button>
 <button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-agua">Calidad de agua</button>
@@ -132,10 +139,11 @@
 <!-- PRODUCT GRID -->
 <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="product-grid">
 <!-- ── INSECTICIDAS / PLAGAS ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-adjuvant="coadyuvantes-especificos" data-category="coadyuvantes" data-crops="todos" data-name="jumkan">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-adjuvant="coadyuvantes-especificos" data-category="coadyuvantes" data-crops="todos" data-name="jumkan" data-organic="true">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Jumkan" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/Jumkanx5.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">JUM</span></div>
+<span class="organic-badge absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-fragaria-700 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white shadow-sm">🌱 Orgánico</span>
 </div>
 <div class="p-5">
 <span class="inline-block rounded-full bg-slate-100 text-slate-600 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">Coadyuvantes</span>
@@ -245,10 +253,11 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="trigo avena cebada maiz soja" data-name="trichorium">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="trigo avena cebada maiz soja" data-name="trichorium" data-organic="true">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Trichorium" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/trichoriuk2lt.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">TRI</span></div>
+<span class="organic-badge absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-fragaria-700 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white shadow-sm">🌱 Orgánico</span>
 </div>
 <div class="p-5">
 <span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
@@ -345,10 +354,11 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="acqua sensing">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="acqua sensing" data-organic="true">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Sensing" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/Acquasensing2lt.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SNS</span></div>
+<span class="organic-badge absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-fragaria-700 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white shadow-sm">🌱 Orgánico</span>
 </div>
 <div class="p-5">
 <span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
@@ -359,10 +369,11 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="maiz sorgo alfalfa pasturas" data-name="biosilo">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="maiz sorgo alfalfa pasturas" data-name="biosilo" data-organic="true">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Biosilo" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/BioSilocaja.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BIO</span></div>
+<span class="organic-badge absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-fragaria-700 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white shadow-sm">🌱 Orgánico</span>
 </div>
 <div class="p-5">
 <span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
@@ -696,8 +707,10 @@
     const cropFilter = document.getElementById('crop-filter');
     const resultCount = document.getElementById('result-count');
     const emptyState = document.getElementById('empty-state');
+    const organicToggle = document.getElementById('organic-toggle');
     let activeFilter = 'todos';
     let activeAdjuvant = 'todos';
+    let organicOnly = false;
 
     const categoryOrder = {
       'tratamiento-semillas': 1,
@@ -739,6 +752,8 @@
       categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
     });
     document.getElementById('count-todos').textContent = `(${cards.length})`;
+    const organicCount = cards.filter(c => c.dataset.organic === 'true').length;
+    document.getElementById('count-organic').textContent = `(${organicCount})`;
     Object.entries(categoryCounts).forEach(([cat, n]) => {
       const el = document.getElementById(`count-${cat}`);
       if (el) el.textContent = `(${n})`;
@@ -754,7 +769,8 @@
         const cardCrops = (card.dataset.crops || '').split(/\s+/);
         const cropMatch = crop === 'todos' || cardCrops.includes('todos') || cardCrops.includes(crop);
         const textMatch = !query || card.dataset.name.includes(query) || card.querySelector('h2').textContent.toLowerCase().includes(query);
-        if (catMatch && adjuvantMatch && cropMatch && textMatch) {
+        const organicMatch = !organicOnly || card.dataset.organic === 'true';
+        if (catMatch && adjuvantMatch && cropMatch && textMatch && organicMatch) {
           card.classList.remove('hidden-card');
           visible++;
         } else {
@@ -789,6 +805,15 @@
       });
     });
 
+    function setOrganic(on) {
+      organicOnly = on;
+      organicToggle.classList.toggle('active', on);
+      organicToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      applyFilters();
+    }
+
+    organicToggle.addEventListener('click', () => setOrganic(!organicOnly));
+
     searchInput.addEventListener('input', applyFilters);
     cropFilter.addEventListener('change', applyFilters);
     applyFilters();
@@ -797,6 +822,10 @@
     const params = new URLSearchParams(location.search);
     const urlCat = params.get('cat');
     const urlSub = params.get('sub');
+    if (params.get('organic') === '1') {
+      setOrganic(true);
+      setTimeout(() => document.getElementById('filtros').scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+    }
     if (urlCat) {
       const targetBtn = document.querySelector(`[data-filter="${urlCat}"]`);
       if (targetBtn) {
