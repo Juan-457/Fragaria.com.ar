@@ -196,7 +196,8 @@
 
   <!-- HERO -->
   <header id="inicio" class="relative min-h-screen overflow-hidden bg-ink-950 pt-20">
-    <video id="hero-video" class="js-lazy-video absolute inset-0 h-full w-full object-cover" muted playsinline preload="none" aria-hidden="true"></video>
+    <video id="hero-video-a" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
+    <video id="hero-video-b" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
     <div class="absolute inset-0 bg-ink-950/30"></div>
     <div class="dot-grid absolute inset-0 opacity-30"></div>
     <!-- Glow blobs -->
@@ -616,10 +617,14 @@
         return;
       }
 
-      const heroVideo = document.getElementById('hero-video');
-      if (!heroVideo) return;
+      const vids = [
+        document.getElementById('hero-video-a'),
+        document.getElementById('hero-video-b')
+      ];
+      if (!vids[0] || !vids[1]) return;
 
-      // Clips encadenados: se reproducen uno tras otro y vuelven a empezar en loop.
+      // Clips encadenados: se reproducen uno tras otro y vuelven a empezar en loop,
+      // con un crossfade (fundido) entre clip y clip para evitar el corte brusco.
       const heroPlaylist = [
         'FX30-6141-web.mp4',
         'FX30-6174-web.mp4',
@@ -627,20 +632,47 @@
         'FX30-6157-web.mp4',
         'FX30-6168-web.mp4'
       ];
-      let heroIndex = 0;
+      const FADE_LEAD = 0.7;   // seg antes del final donde arranca el fundido
+      const FADE_MS = 700;     // debe coincidir con duration-700 del <video>
+      let active = 0;          // índice del video visible
+      let clip = 0;            // índice del clip actual en la playlist
+      let switching = false;
 
-      function playHeroClip(index) {
-        heroVideo.src = heroPlaylist[index];
-        heroVideo.load();
-        heroVideo.play().catch(() => {});
+      function preload(el, idx) {
+        el.src = heroPlaylist[idx];
+        el.load();
       }
 
-      heroVideo.addEventListener('ended', () => {
-        heroIndex = (heroIndex + 1) % heroPlaylist.length;
-        playHeroClip(heroIndex);
+      function crossfade() {
+        if (switching) return;
+        switching = true;
+        const cur = vids[active];
+        const nxt = vids[active ^ 1];
+        try { nxt.currentTime = 0; } catch (e) {}
+        nxt.play().catch(() => {});
+        nxt.style.opacity = '1';   // entra
+        cur.style.opacity = '0';   // sale
+        active ^= 1;
+        clip = (clip + 1) % heroPlaylist.length;
+        // El video que quedó oculto precarga el clip siguiente al siguiente.
+        preload(cur, (clip + 1) % heroPlaylist.length);
+        setTimeout(() => { cur.pause(); switching = false; }, FADE_MS);
+      }
+
+      vids.forEach((v) => {
+        v.addEventListener('timeupdate', () => {
+          if (v !== vids[active] || !v.duration) return;
+          if (v.duration - v.currentTime <= FADE_LEAD) crossfade();
+        });
+        // Respaldo si el navegador no dispara timeupdate cerca del final.
+        v.addEventListener('ended', () => { if (v === vids[active]) crossfade(); });
       });
 
-      playHeroClip(0);
+      // Arranque: clip 0 visible en vids[0], clip 1 precargado en vids[1].
+      preload(vids[0], 0);
+      preload(vids[1], 1);
+      vids[0].style.opacity = '1';
+      vids[0].play().catch(() => {});
     }
 
     window.addEventListener('load', () => {
