@@ -196,8 +196,8 @@
 
   <!-- HERO -->
   <header id="inicio" class="relative min-h-screen overflow-hidden bg-ink-950 pt-20">
-    <video id="hero-video-a" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
-    <video id="hero-video-b" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
+    <video id="hero-video-a" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-200 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
+    <video id="hero-video-b" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-200 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
     <div class="absolute inset-0 bg-ink-950/30"></div>
     <div class="dot-grid absolute inset-0 opacity-30"></div>
     <!-- Glow blobs -->
@@ -633,7 +633,7 @@
         'FX30-6168-web.mp4'
       ];
       const RATE = 0.6;        // cámara lenta: clip de ~2.5s pasa a durar ~4.2s
-      const FADE_MS = 300;     // debe coincidir con duration-300 del <video>
+      const FADE_MS = 200;     // debe coincidir con duration-200 del <video>
       // Disparar el cruce cuando falta, en tiempo de video, lo equivalente a
       // FADE_MS de reloj (se escala por RATE). Solape breve = casi imperceptible.
       const FADE_LEAD = (FADE_MS / 1000) * RATE;
