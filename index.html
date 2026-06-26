@@ -194,9 +194,7 @@
 
   <!-- HERO -->
   <header id="inicio" class="relative min-h-screen overflow-hidden pt-20">
-    <video class="js-lazy-video absolute inset-0 h-full w-full object-cover" muted loop playsinline preload="none" aria-hidden="true">
-      <source data-src="hero2-optimized.mp4" type="video/mp4" />
-    </video>
+    <video id="hero-video" class="js-lazy-video absolute inset-0 h-full w-full object-cover" muted playsinline preload="none" aria-hidden="true"></video>
     <div class="absolute inset-0 bg-ink-950/65"></div>
     <div class="dot-grid absolute inset-0 opacity-30"></div>
     <!-- Glow blobs -->
@@ -612,14 +610,31 @@
         return;
       }
 
-      document.querySelectorAll('.js-lazy-video').forEach((video) => {
-        video.querySelectorAll('source[data-src]').forEach((source) => {
-          source.src = source.dataset.src;
-          source.removeAttribute('data-src');
-        });
-        video.load();
-        video.play().catch(() => {});
+      const heroVideo = document.getElementById('hero-video');
+      if (!heroVideo) return;
+
+      // Clips encadenados: se reproducen uno tras otro y vuelven a empezar en loop.
+      const heroPlaylist = [
+        'FX30-6141-web.mp4',
+        'FX30-6174-web.mp4',
+        'FX30-6149-web.mp4',
+        'FX30-6157-web.mp4',
+        'FX30-6168-web.mp4'
+      ];
+      let heroIndex = 0;
+
+      function playHeroClip(index) {
+        heroVideo.src = heroPlaylist[index];
+        heroVideo.load();
+        heroVideo.play().catch(() => {});
+      }
+
+      heroVideo.addEventListener('ended', () => {
+        heroIndex = (heroIndex + 1) % heroPlaylist.length;
+        playHeroClip(heroIndex);
       });
+
+      playHeroClip(0);
     }
 
     window.addEventListener('load', () => {
