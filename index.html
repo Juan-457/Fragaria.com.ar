@@ -632,8 +632,11 @@
         'FX30-6157-web.mp4',
         'FX30-6168-web.mp4'
       ];
-      const FADE_LEAD = 0.7;   // seg antes del final donde arranca el fundido
+      const RATE = 0.6;        // cámara lenta: clip de ~2.5s pasa a durar ~4.2s
       const FADE_MS = 700;     // debe coincidir con duration-700 del <video>
+      // Disparar el fundido cuando falta, en tiempo de video, lo equivalente a
+      // FADE_MS de reloj (se escala por RATE para que el solape sea proporcional).
+      const FADE_LEAD = (FADE_MS / 1000) * RATE;
       let active = 0;          // índice del video visible
       let clip = 0;            // índice del clip actual en la playlist
       let switching = false;
@@ -643,14 +646,10 @@
         el.load();
       }
 
-      function crossfade() {
-        if (switching) return;
-        switching = true;
+      function doSwap() {
         const cur = vids[active];
         const nxt = vids[active ^ 1];
-        try { nxt.currentTime = 0; } catch (e) {}
-        nxt.play().catch(() => {});
-        nxt.style.opacity = '1';   // entra
+        nxt.style.opacity = '1';   // entra (ya está reproduciendo con frame visible)
         cur.style.opacity = '0';   // sale
         active ^= 1;
         clip = (clip + 1) % heroPlaylist.length;
@@ -659,7 +658,21 @@
         setTimeout(() => { cur.pause(); switching = false; }, FADE_MS);
       }
 
+      function crossfade() {
+        if (switching) return;
+        switching = true;
+        const nxt = vids[active ^ 1];
+        try { nxt.currentTime = 0; } catch (e) {}
+        nxt.playbackRate = RATE;
+        // Recién fundimos cuando el clip entrante ya tiene frame (sin flash/fantasma).
+        nxt.play().then(() => {
+          if (nxt.readyState >= 2) doSwap();
+          else nxt.addEventListener('playing', doSwap, { once: true });
+        }).catch(() => { doSwap(); });
+      }
+
       vids.forEach((v) => {
+        v.addEventListener('loadedmetadata', () => { v.playbackRate = RATE; });
         v.addEventListener('timeupdate', () => {
           if (v !== vids[active] || !v.duration) return;
           if (v.duration - v.currentTime <= FADE_LEAD) crossfade();
@@ -672,6 +685,7 @@
       preload(vids[0], 0);
       preload(vids[1], 1);
       vids[0].style.opacity = '1';
+      vids[0].playbackRate = RATE;
       vids[0].play().catch(() => {});
     }
 
