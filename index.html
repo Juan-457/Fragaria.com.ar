@@ -196,8 +196,8 @@
 
   <!-- HERO -->
   <header id="inicio" class="relative min-h-screen overflow-hidden bg-ink-950 pt-20">
-    <video id="hero-video-a" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
-    <video id="hero-video-b" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
+    <video id="hero-video-a" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
+    <video id="hero-video-b" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
     <div class="absolute inset-0 bg-ink-950/30"></div>
     <div class="dot-grid absolute inset-0 opacity-30"></div>
     <!-- Glow blobs -->
@@ -633,9 +633,9 @@
         'FX30-6168-web.mp4'
       ];
       const RATE = 0.6;        // cámara lenta: clip de ~2.5s pasa a durar ~4.2s
-      const FADE_MS = 700;     // debe coincidir con duration-700 del <video>
-      // Disparar el fundido cuando falta, en tiempo de video, lo equivalente a
-      // FADE_MS de reloj (se escala por RATE para que el solape sea proporcional).
+      const FADE_MS = 500;     // debe coincidir con duration-500 del <video>
+      // Empezar a fundir a negro cuando falta, en tiempo de video, lo equivalente
+      // a FADE_MS de reloj (se escala por RATE).
       const FADE_LEAD = (FADE_MS / 1000) * RATE;
       let active = 0;          // índice del video visible
       let clip = 0;            // índice del clip actual en la playlist
@@ -646,39 +646,43 @@
         el.load();
       }
 
-      function doSwap() {
-        const cur = vids[active];
-        const nxt = vids[active ^ 1];
-        nxt.style.opacity = '1';   // entra (ya está reproduciendo con frame visible)
-        cur.style.opacity = '0';   // sale
-        active ^= 1;
-        clip = (clip + 1) % heroPlaylist.length;
-        // El video que quedó oculto precarga el clip siguiente al siguiente.
-        preload(cur, (clip + 1) % heroPlaylist.length);
-        setTimeout(() => { cur.pause(); switching = false; }, FADE_MS);
-      }
-
-      function crossfade() {
+      // Fundido a negro secuencial: primero se apaga el clip actual (queda el fondo
+      // oscuro del hero), y recién después entra el siguiente. Nunca se ven los dos.
+      function fadeToNext() {
         if (switching) return;
         switching = true;
-        const nxt = vids[active ^ 1];
-        try { nxt.currentTime = 0; } catch (e) {}
-        nxt.playbackRate = RATE;
-        // Recién fundimos cuando el clip entrante ya tiene frame (sin flash/fantasma).
-        nxt.play().then(() => {
-          if (nxt.readyState >= 2) doSwap();
-          else nxt.addEventListener('playing', doSwap, { once: true });
-        }).catch(() => { doSwap(); });
+        const cur = vids[active];
+        cur.style.opacity = '0';            // 1) fade out a negro
+
+        setTimeout(() => {                  // 2) ya está oscuro: preparar el siguiente
+          cur.pause();
+          const nxt = vids[active ^ 1];
+          active ^= 1;
+          clip = (clip + 1) % heroPlaylist.length;
+          try { nxt.currentTime = 0; } catch (e) {}
+          nxt.playbackRate = RATE;
+
+          const showIt = () => {
+            nxt.style.opacity = '1';        // 3) fade in del nuevo clip
+            preload(cur, (clip + 1) % heroPlaylist.length);
+            setTimeout(() => { switching = false; }, FADE_MS);
+          };
+
+          nxt.play().then(() => {
+            if (nxt.readyState >= 2) showIt();
+            else nxt.addEventListener('playing', showIt, { once: true });
+          }).catch(() => { showIt(); });
+        }, FADE_MS);
       }
 
       vids.forEach((v) => {
         v.addEventListener('loadedmetadata', () => { v.playbackRate = RATE; });
         v.addEventListener('timeupdate', () => {
           if (v !== vids[active] || !v.duration) return;
-          if (v.duration - v.currentTime <= FADE_LEAD) crossfade();
+          if (v.duration - v.currentTime <= FADE_LEAD) fadeToNext();
         });
         // Respaldo si el navegador no dispara timeupdate cerca del final.
-        v.addEventListener('ended', () => { if (v === vids[active]) crossfade(); });
+        v.addEventListener('ended', () => { if (v === vids[active]) fadeToNext(); });
       });
 
       // Arranque: clip 0 visible en vids[0], clip 1 precargado en vids[1].
