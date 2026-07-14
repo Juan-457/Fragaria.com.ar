@@ -727,7 +727,26 @@
       document.getElementById('map-loading').style.display = 'none';
     }
 
-    function selectZone(zoneName) {
+    function centerViewportOnZone(zoneName) {
+      const svgEl = document.getElementById('zonas-svg');
+      const c = zoneCentroids[zoneName];
+      if (!svgEl || !c || typeof svgEl.createSVGPoint !== 'function') return;
+
+      const matrix = svgEl.getScreenCTM();
+      if (!matrix) return;
+
+      const point = svgEl.createSVGPoint();
+      point.x = c[0];
+      point.y = c[1];
+      const screenPoint = point.matrixTransform(matrix);
+
+      window.scrollTo({
+        top: window.scrollY + screenPoint.y - (window.innerHeight / 2),
+        behavior: 'smooth'
+      });
+    }
+
+    function selectZone(zoneName, options = {}) {
       selectedZone = zoneName;
       const zone = ZONES[zoneName];
 
@@ -766,6 +785,10 @@
       document.getElementById('direct-contact-card').classList.add('hidden');
       const panelZone = document.getElementById('panel-zone');
       panelZone.classList.remove('hidden');
+
+      if (options.center !== false) {
+        requestAnimationFrame(() => centerViewportOnZone(zoneName));
+      }
 
       panelZone.innerHTML = `
         <div class="panel-card rounded-2xl border bg-white shadow-lg overflow-hidden" style="border-color:${zone.color}40">
