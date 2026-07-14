@@ -262,6 +262,20 @@
 </a>
 </div>
 </article>
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="soluciones-biologicas" data-crops="trigo avena cebada maiz soja" data-name="biofertilizante duo">
+<div class="card-img-wrapper relative bg-fragaria-50">
+<img alt="Biofertilizante Duo" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/Biostimulante Acqua2lt.webp"/>
+<div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">DUO</span></div>
+</div>
+<div class="p-5">
+<span class="inline-block rounded-full bg-violet-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
+<h2 class="mt-2 text-base font-bold text-slate-900">Biofertilizante Duo</h2>
+<p class="mt-1 text-xs leading-5 text-slate-500">Biofertilizante Acqua Duo para potenciar el arranque y la nutrición inicial del cultivo.</p>
+<a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/biofertilizante-duo/">
+            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</div>
+</article>
 <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="soluciones-biologicas" data-crops="trigo avena cebada maiz soja" data-name="trichorium" data-organic="true">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Trichorium" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/trichoriuk2lt.webp"/>
@@ -307,20 +321,6 @@
 </div>
 </article>
 <!-- ── INOCULANTES ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="soja" data-name="acqua legumbres">
-<div class="card-img-wrapper relative bg-fragaria-50">
-<img alt="Acqua Legumbres" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/AcquaLegumbres2000cc.webp"/>
-<div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ACQ</span></div>
-</div>
-<div class="p-5">
-<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
-<h2 class="mt-2 text-base font-bold text-slate-900">Acqua Legumbres</h2>
-<p class="mt-1 text-xs leading-5 text-slate-500">INOCULANTE PARA VICIA, ARVEJA Y LENTEJA</p>
-<a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-legumbres/">
-            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</a>
-</div>
-</article>
 <article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="soluciones-biologicas" data-crops="soja" data-name="acqua nod triple">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Nod Triple" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/AcquaNodtriple2Lt.webp"/>
@@ -726,14 +726,14 @@
     let organicOnly = false;
 
     const categoryOrder = {
-      'tratamiento-semillas': 1,
-      bioestimulacion: 2,
+      bioestimulacion: 1,
+      'tratamiento-semillas': 2,
       coadyuvantes: 3,
       'otras-soluciones': 4
     };
     const adjuvantOrder = {
-      'calidad-agua': 1,
-      'calidad-aplicacion': 2,
+      'calidad-aplicacion': 1,
+      'calidad-agua': 2,
       'coadyuvantes-especificos': 3
     };
     const seedOrder = {
@@ -742,26 +742,40 @@
       pacs: 3
     };
     const productOrder = {
-      'acqua protector': 1,
-      ph4: 2,
-      'bq-max': 3,
-      'bioemag 76': 4,
-      'lecithin silicon max': 5,
-      jumkan: 6
+      'inghol pack': 1,
+      'lecithin silicon max': 2,
+      inghol: 3,
+      'acqua sensing': 4,
+      'acqua nod triple': 5,
+      'biofertilizante duo': 6,
+      trichorium: 7,
+      'acqua pack bio': 8,
+      'pack bio trigo': 9,
+      'acqua pack': 10,
+      'synergi pack': 11,
+      'acqua protector': 12,
+      synergi: 13,
+      'bq max': 14,
+      'bioemag 76': 15,
+      jumkan: 16,
+      ph: 17,
+      'biomethyl max': 18,
+      mirkoil: 19,
+      'inghol ts': 20
     };
 
     cards.forEach((card, index) => { card.dataset.initialOrder = index; });
     cards
       .slice()
       .sort((a, b) => {
+        const productDiff = (productOrder[a.dataset.name] || 99) - (productOrder[b.dataset.name] || 99);
+        if (productDiff) return productDiff;
         const categoryDiff = (categoryOrder[a.dataset.category] || 99) - (categoryOrder[b.dataset.category] || 99);
         if (categoryDiff) return categoryDiff;
         const adjuvantDiff = (adjuvantOrder[a.dataset.adjuvant] || 99) - (adjuvantOrder[b.dataset.adjuvant] || 99);
         if (adjuvantDiff) return adjuvantDiff;
         const seedDiff = (seedOrder[a.dataset.seed] || 99) - (seedOrder[b.dataset.seed] || 99);
         if (seedDiff) return seedDiff;
-        const productDiff = (productOrder[a.dataset.name] || 99) - (productOrder[b.dataset.name] || 99);
-        if (productDiff) return productDiff;
         return Number(a.dataset.initialOrder) - Number(b.dataset.initialOrder);
       })
       .forEach(card => productGrid.appendChild(card));
