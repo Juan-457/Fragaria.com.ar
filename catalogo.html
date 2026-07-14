@@ -44,8 +44,10 @@
     .card-img-wrapper { aspect-ratio: 730/887; overflow: hidden; }
     .product-card { transition: transform .2s, box-shadow .2s; }
     .product-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -16px rgba(5,46,22,.25); }
-    .filter-btn, .adjuvant-btn { transition: background .15s, color .15s, border-color .15s; }
-    .filter-btn.active, .adjuvant-btn.active { background: #15803d; color: #fff; border-color: #15803d; }
+    .filter-btn, .adjuvant-btn, .seed-btn { transition: background .15s, color .15s, border-color .15s; }
+    .filter-btn.active, .adjuvant-btn.active, .seed-btn.active { background: #15803d; color: #fff; border-color: #15803d; }
+    .subfilter-panel { display: none; }
+    .subfilter-panel.is-open { display: flex; }
     .organic-btn { transition: background .15s, color .15s, border-color .15s; }
     .organic-btn.active { background: #15803d; color: #fff; border-color: #15803d; }
     .hidden-card { display: none !important; }
@@ -108,13 +110,13 @@
 <button class="filter-btn active rounded-full border border-fragaria-700 px-4 py-2 text-sm font-semibold text-fragaria-700" data-filter="todos">
           Todos <span class="ml-1 text-xs opacity-70" id="count-todos"></span>
 </button>
-<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="tratamiento-semillas">
+<button aria-expanded="false" aria-controls="seed-buttons" class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="tratamiento-semillas">
           🌾 Tratamiento de semilla <span class="ml-1 text-xs opacity-60" id="count-tratamiento-semillas"></span>
 </button>
 <button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="bioestimulacion">
           🌿 Bioestimulante <span class="ml-1 text-xs opacity-60" id="count-bioestimulacion"></span>
 </button>
-<button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="coadyuvantes">
+<button aria-expanded="false" aria-controls="adjuvant-buttons" class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="coadyuvantes">
           ⚗️ Coadyuvantes <span class="ml-1 text-xs opacity-60" id="count-coadyuvantes"></span>
 </button>
 <button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="otras-soluciones">
@@ -126,7 +128,15 @@
           🌱 Solo orgánicos certificados <span class="ml-1 text-xs opacity-70" id="count-organic"></span>
 </button>
 </div>
-<div aria-label="Filtrar coadyuvantes por subsegmento" class="flex flex-wrap gap-2 lg:justify-end" id="adjuvant-buttons" role="group">
+<div aria-label="Filtrar tratamiento de semilla por subsegmento" class="subfilter-panel flex-wrap gap-2 rounded-2xl border border-violet-100 bg-violet-50/80 p-3 lg:justify-end" id="seed-buttons" role="group">
+<span class="w-full text-xs font-bold uppercase tracking-wide text-violet-700 lg:text-right">Tratamiento de semilla</span>
+<button class="seed-btn active rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-seed="todos">Todos</button>
+<button class="seed-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-seed="soluciones-biologicas">Soluciones biológicas</button>
+<button class="seed-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-seed="cura-semilla">Cura semilla</button>
+<button class="seed-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-seed="pacs">PACS</button>
+</div>
+<div aria-label="Filtrar coadyuvantes por subsegmento" class="subfilter-panel flex-wrap gap-2 rounded-2xl border border-slate-200 bg-slate-50/90 p-3 lg:justify-end" id="adjuvant-buttons" role="group">
+<span class="w-full text-xs font-bold uppercase tracking-wide text-slate-600 lg:text-right">Coadyuvantes</span>
 <button class="adjuvant-btn active rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="todos">Todos los coadyuvantes</button>
 <button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-agua">Calidad de agua</button>
 <button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-aplicacion">Calidad de aplicación</button>
@@ -211,7 +221,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="synergi">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="cura-semilla" data-crops="soja" data-name="synergi">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Synergi" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/Synergicaja.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SYN</span></div>
@@ -225,13 +235,13 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="soja maiz trigo mani cebada" data-name="better">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="cura-semilla" data-crops="soja maiz trigo mani cebada" data-name="better">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Better" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/betterCurasemillascja.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">BET</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-amber-100 text-amber-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">Otras Soluciones</span>
+<span class="inline-block rounded-full bg-violet-100 text-violet-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">Tratamiento de semilla</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Better</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Fungicida para tratamiento de semillas que combina la acción sistémica y de contacto para garantizar un stand de...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/better/">
@@ -253,7 +263,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="trigo avena cebada maiz soja" data-name="trichorium" data-organic="true">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="soluciones-biologicas" data-crops="trigo avena cebada maiz soja" data-name="trichorium" data-organic="true">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Trichorium" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/trichoriuk2lt.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">TRI</span></div>
@@ -269,7 +279,7 @@
 </div>
 </article>
 <!-- ── FERTILIZANTES / NUTRICIÓN ── -->
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="trigo avena cebada maiz soja pasturas" data-name="inghol ts">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="soluciones-biologicas" data-crops="trigo avena cebada maiz soja pasturas" data-name="inghol ts">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Inghol TS" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/Ingholts2lt.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ING</span></div>
@@ -312,7 +322,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="acqua nod triple">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="soluciones-biologicas" data-crops="soja" data-name="acqua nod triple">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Nod Triple" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/AcquaNodtriple2Lt.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">NOD</span></div>
@@ -326,7 +336,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="acqua pack">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="pacs" data-crops="soja" data-name="acqua pack">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Pack" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/AquaPackcaja.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ACQ</span></div>
@@ -340,7 +350,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="trigo maiz avena cebada soja" data-name="acqua protector">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="soluciones-biologicas" data-crops="trigo maiz avena cebada soja" data-name="acqua protector">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Protector" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-protector.png"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ACQ</span></div>
@@ -354,7 +364,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="acqua sensing" data-organic="true">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="soluciones-biologicas" data-crops="soja" data-name="acqua sensing" data-organic="true">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Sensing" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/Acquasensing2lt.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SNS</span></div>
@@ -384,7 +394,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="synergi pack">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="pacs" data-crops="soja" data-name="synergi pack">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Synergi Pack" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/SynergiPackcaja.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">SPK</span></div>
@@ -539,7 +549,7 @@
 </a>
 </div>
 </article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="soja" data-name="acqua pack bio">
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="pacs" data-crops="soja" data-name="acqua pack bio">
 <div class="card-img-wrapper relative bg-fragaria-50">
 <img alt="Acqua Pack Bio +" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="Productos_images/acquapackcaja.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ACQ</span></div>
@@ -553,7 +563,7 @@
 </a>
 </div>
 </article>
-<article id="pack-bio-trigo" class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-crops="trigo maiz avena cebada" data-name="pack bio trigo">
+<article id="pack-bio-trigo" class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="pacs" data-crops="trigo maiz avena cebada" data-name="pack bio trigo">
 <div class="card-img-wrapper relative bg-white">
 <img alt="Pack Bio Trigo" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logopacktrigo.webp"/>
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">PAC</span></div>
@@ -703,6 +713,9 @@
     const productGrid = document.getElementById('product-grid');
     const filterBtns = document.querySelectorAll('.filter-btn');
     const adjuvantBtns = document.querySelectorAll('.adjuvant-btn');
+    const seedBtns = document.querySelectorAll('.seed-btn');
+    const adjuvantPanel = document.getElementById('adjuvant-buttons');
+    const seedPanel = document.getElementById('seed-buttons');
     const searchInput = document.getElementById('search-input');
     const cropFilter = document.getElementById('crop-filter');
     const resultCount = document.getElementById('result-count');
@@ -710,6 +723,7 @@
     const organicToggle = document.getElementById('organic-toggle');
     let activeFilter = 'todos';
     let activeAdjuvant = 'todos';
+    let activeSeed = 'todos';
     let organicOnly = false;
 
     const categoryOrder = {
@@ -722,6 +736,11 @@
       'calidad-agua': 1,
       'calidad-aplicacion': 2,
       'coadyuvantes-especificos': 3
+    };
+    const seedOrder = {
+      'soluciones-biologicas': 1,
+      'cura-semilla': 2,
+      pacs: 3
     };
     const productOrder = {
       'acqua protector': 1,
@@ -740,6 +759,8 @@
         if (categoryDiff) return categoryDiff;
         const adjuvantDiff = (adjuvantOrder[a.dataset.adjuvant] || 99) - (adjuvantOrder[b.dataset.adjuvant] || 99);
         if (adjuvantDiff) return adjuvantDiff;
+        const seedDiff = (seedOrder[a.dataset.seed] || 99) - (seedOrder[b.dataset.seed] || 99);
+        if (seedDiff) return seedDiff;
         const productDiff = (productOrder[a.dataset.name] || 99) - (productOrder[b.dataset.name] || 99);
         if (productDiff) return productDiff;
         return Number(a.dataset.initialOrder) - Number(b.dataset.initialOrder);
@@ -765,12 +786,13 @@
       let visible = 0;
       cards.forEach(card => {
         const catMatch = activeFilter === 'todos' || card.dataset.category === activeFilter;
-        const adjuvantMatch = activeAdjuvant === 'todos' || card.dataset.adjuvant === activeAdjuvant;
+        const adjuvantMatch = activeFilter !== 'coadyuvantes' || activeAdjuvant === 'todos' || card.dataset.adjuvant === activeAdjuvant;
+        const seedMatch = activeFilter !== 'tratamiento-semillas' || activeSeed === 'todos' || card.dataset.seed === activeSeed;
         const cardCrops = (card.dataset.crops || '').split(/\s+/);
         const cropMatch = crop === 'todos' || cardCrops.includes('todos') || cardCrops.includes(crop);
         const textMatch = !query || card.dataset.name.includes(query) || card.querySelector('h2').textContent.toLowerCase().includes(query);
         const organicMatch = !organicOnly || card.dataset.organic === 'true';
-        if (catMatch && adjuvantMatch && cropMatch && textMatch && organicMatch) {
+        if (catMatch && adjuvantMatch && seedMatch && cropMatch && textMatch && organicMatch) {
           card.classList.remove('hidden-card');
           visible++;
         } else {
@@ -779,6 +801,14 @@
       });
       resultCount.textContent = `${visible} producto${visible !== 1 ? 's' : ''} encontrado${visible !== 1 ? 's' : ''}`;
       emptyState.classList.toggle('hidden', visible > 0);
+    }
+
+    function updateSubfilterPanels() {
+      const showAdjuvants = activeFilter === 'coadyuvantes';
+      const showSeed = activeFilter === 'tratamiento-semillas';
+      adjuvantPanel.classList.toggle('is-open', showAdjuvants);
+      seedPanel.classList.toggle('is-open', showSeed);
+      filterBtns.forEach(b => b.setAttribute('aria-expanded', (b.dataset.filter === activeFilter && (showAdjuvants || showSeed)) ? 'true' : 'false'));
     }
 
     filterBtns.forEach(btn => {
@@ -790,6 +820,11 @@
           activeAdjuvant = 'todos';
           adjuvantBtns.forEach(b => b.classList.toggle('active', b.dataset.adjuvant === 'todos'));
         }
+        if (activeFilter !== 'tratamiento-semillas') {
+          activeSeed = 'todos';
+          seedBtns.forEach(b => b.classList.toggle('active', b.dataset.seed === 'todos'));
+        }
+        updateSubfilterPanels();
         applyFilters();
       });
     });
@@ -799,8 +834,25 @@
         adjuvantBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeAdjuvant = btn.dataset.adjuvant;
+        activeSeed = 'todos';
+        seedBtns.forEach(b => b.classList.toggle('active', b.dataset.seed === 'todos'));
         activeFilter = 'coadyuvantes';
         filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === 'coadyuvantes'));
+        updateSubfilterPanels();
+        applyFilters();
+      });
+    });
+
+    seedBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        seedBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeSeed = btn.dataset.seed;
+        activeAdjuvant = 'todos';
+        adjuvantBtns.forEach(b => b.classList.toggle('active', b.dataset.adjuvant === 'todos'));
+        activeFilter = 'tratamiento-semillas';
+        filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === 'tratamiento-semillas'));
+        updateSubfilterPanels();
         applyFilters();
       });
     });
@@ -816,6 +868,7 @@
 
     searchInput.addEventListener('input', applyFilters);
     cropFilter.addEventListener('change', applyFilters);
+    updateSubfilterPanels();
     applyFilters();
 
     // Auto-filter via URL ?cat= and ?sub= parameters (usado desde el nav)
@@ -840,6 +893,15 @@
             activeAdjuvant = urlSub;
           }
         }
+        if (urlCat === 'tratamiento-semillas' && urlSub) {
+          const targetSub = document.querySelector(`[data-seed="${urlSub}"]`);
+          if (targetSub) {
+            seedBtns.forEach(b => b.classList.remove('active'));
+            targetSub.classList.add('active');
+            activeSeed = urlSub;
+          }
+        }
+        updateSubfilterPanels();
         applyFilters();
         setTimeout(() => targetBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }), 200);
       }
