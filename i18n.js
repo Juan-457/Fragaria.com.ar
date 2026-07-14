@@ -23,7 +23,7 @@ const i18n = {
     'val.label':'Nuestros productos','val.h2':'Soluciones para cada etapa del cultivo',
     'val.c1.t':'Coadyuvantes','val.c1.d':'Optimizadores de mezclas y correctores de agua para aplicaciones más eficaces.','val.c1.l':'Ver productos →',
     'val.c2.t':'Tratamiento de Semillas','val.c2.d':'Inoculantes y curasemillas para una implantación segura y mayor nodulación.','val.c2.l':'Ver productos →',
-    'val.c3.t':'Bioestimulación y Nutrición','val.c3.d':'Biofertilizantes y estimulantes para potenciar el crecimiento y rendimiento del cultivo.','val.c3.l':'Ver productos →',
+    'val.c3.t':'Bioestimulantes y Fertilizantes','val.c3.d':'Biofertilizantes y estimulantes para potenciar el crecimiento y rendimiento del cultivo.','val.c3.l':'Ver productos →',
     'val.c4.t':'Otras Soluciones','val.c4.d':'Fungicidas, insecticidas y productos complementarios para el manejo integral del cultivo.','val.c4.l':'Ver productos →',
     /* ── INDEX líneas ── */
     'lin.label':'Líneas de trabajo','lin.h2':'Nuestras especialidades','lin.wa':'Consultar por WhatsApp',
