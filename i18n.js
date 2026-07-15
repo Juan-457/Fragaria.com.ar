@@ -23,7 +23,7 @@ const i18n = {
     'val.label':'Nuestros productos','val.h2':'Soluciones para cada etapa del cultivo',
     'val.c1.t':'Coadyuvantes','val.c1.d':'Optimizadores de mezclas y correctores de agua para aplicaciones más eficaces.','val.c1.l':'Ver productos →',
     'val.c2.t':'Tratamiento de Semillas','val.c2.d':'Inoculantes y curasemillas para una implantación segura y mayor nodulación.','val.c2.l':'Ver productos →',
-    'val.c3.t':'Bioestimulantes y Fertilizantes','val.c3.d':'Biofertilizantes y estimulantes para potenciar el crecimiento y rendimiento del cultivo.','val.c3.l':'Ver productos →',
+    'val.c3.t':'Bioestimulantes y Fertilizantes','val.c3.d':'Bioestimulante y fertilizante para potenciar el crecimiento y rendimiento del cultivo.','val.c3.l':'Ver productos →',
     'val.c4.t':'Otras Soluciones','val.c4.d':'Fungicidas, insecticidas y productos complementarios para el manejo integral del cultivo.','val.c4.l':'Ver productos →',
     /* ── INDEX líneas ── */
     'lin.label':'Líneas de trabajo','lin.h2':'Nuestras especialidades','lin.wa':'Consultar por WhatsApp',
@@ -155,7 +155,7 @@ const i18n = {
     'val.label':'Nossos produtos','val.h2':'Soluções para cada etapa do cultivo',
     'val.c1.t':'Coadjuvantes','val.c1.d':'Otimizadores de misturas e corretores de água para aplicações mais eficazes.','val.c1.l':'Ver produtos →',
     'val.c2.t':'Tratamento de Sementes','val.c2.d':'Inoculantes e curasementes para implantação segura e maior nodulação.','val.c2.l':'Ver produtos →',
-    'val.c3.t':'Bioestimulação e Nutrição','val.c3.d':'Biofertilizantes e estimulantes para potencializar o crescimento e rendimento da cultura.','val.c3.l':'Ver produtos →',
+    'val.c3.t':'Bioestimulação e Nutrição','val.c3.d':'Bioestimulante e fertilizante para potencializar o crescimento e rendimento da cultura.','val.c3.l':'Ver produtos →',
     'val.c4.t':'Outras Soluções','val.c4.d':'Fungicidas, inseticidas e produtos complementares para o manejo integrado da cultura.','val.c4.l':'Ver produtos →',
     'lin.label':'Linhas de trabalho','lin.h2':'Nossas especialidades','lin.wa':'Consultar pelo WhatsApp',
     'ig.h2':'Novidades da Fragaria','ig.desc':'Siga-nos para ver lançamentos, ensaios e conteúdo técnico em tempo real.','ig.btn':'Ver no Instagram',
