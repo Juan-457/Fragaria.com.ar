@@ -82,7 +82,7 @@
 </div>
 <main class="mx-auto my-10 max-w-7xl rounded-3xl border border-white/30 bg-white/90 px-6 py-12 shadow-soft backdrop-blur-sm lg:px-10">
 <!-- SEARCH + FILTERS -->
-<div class="mb-10 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between" id="filtros">
+<div class="mb-10 flex flex-col gap-6" id="filtros">
 <!-- Search -->
 <div class="flex w-full flex-col gap-3 sm:max-w-sm">
 <div class="relative w-full">
@@ -104,8 +104,8 @@
 </select>
 </div>
 <!-- Filters -->
-<div class="flex flex-col gap-3 lg:items-end">
-<div aria-label="Filtrar por categoría" class="flex flex-wrap gap-2 lg:justify-end" id="filter-buttons" role="group">
+<div class="flex flex-col gap-3">
+<div aria-label="Filtrar por categoría" class="flex flex-wrap gap-2" id="filter-buttons" role="group">
 <button class="filter-btn active rounded-full border border-fragaria-700 px-4 py-2 text-sm font-semibold text-fragaria-700" data-filter="todos">
           Todos <span class="ml-1 text-xs opacity-70" id="count-todos"></span>
 </button>
@@ -113,7 +113,7 @@
           🌾 Tratamiento de semilla <span class="ml-1 text-xs opacity-60" id="count-tratamiento-semillas"></span>
 </button>
 <button class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="bioestimulacion">
-          🌿 Bioestimulante <span class="ml-1 text-xs opacity-60" id="count-bioestimulacion"></span>
+          🌿 Bioestimulantes y fertilizantes <span class="ml-1 text-xs opacity-60" id="count-bioestimulacion"></span>
 </button>
 <button aria-expanded="false" aria-controls="adjuvant-buttons" class="filter-btn rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-filter="coadyuvantes">
           ⚗️ Coadyuvantes <span class="ml-1 text-xs opacity-60" id="count-coadyuvantes"></span>
@@ -122,20 +122,20 @@
           🔬 Otras Soluciones <span class="ml-1 text-xs opacity-60" id="count-otras-soluciones"></span>
 </button>
 </div>
-<div class="flex flex-wrap gap-2 lg:justify-end">
+<div class="flex flex-wrap gap-2">
 <button aria-pressed="false" class="organic-btn rounded-full border border-fragaria-200 bg-fragaria-50 px-4 py-2 text-sm font-semibold text-fragaria-700 transition hover:border-fragaria-500" id="organic-toggle" type="button">
           🌱 Solo orgánicos certificados <span class="ml-1 text-xs opacity-70" id="count-organic"></span>
 </button>
 </div>
-<div aria-label="Filtrar tratamiento de semilla por subsegmento" class="subfilter-panel flex-wrap gap-2 rounded-2xl border border-violet-100 bg-violet-50/80 p-3 lg:justify-end" id="seed-buttons" role="group">
-<span class="w-full text-xs font-bold uppercase tracking-wide text-violet-700 lg:text-right">Tratamiento de semilla</span>
+<div aria-label="Filtrar tratamiento de semilla por subsegmento" class="subfilter-panel flex-wrap gap-2 rounded-2xl border border-violet-100 bg-violet-50/80 p-3" id="seed-buttons" role="group">
+<span class="w-full text-xs font-bold uppercase tracking-wide text-violet-700">Tratamiento de semilla</span>
 <button class="seed-btn active rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-seed="todos">Todos</button>
 <button class="seed-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-seed="soluciones-biologicas">Soluciones biológicas</button>
 <button class="seed-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-seed="cura-semilla">Curasemillas</button>
 <button class="seed-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-seed="pacs">Packs</button>
 </div>
-<div aria-label="Filtrar coadyuvantes por subsegmento" class="subfilter-panel flex-wrap gap-2 rounded-2xl border border-slate-200 bg-slate-50/90 p-3 lg:justify-end" id="adjuvant-buttons" role="group">
-<span class="w-full text-xs font-bold uppercase tracking-wide text-slate-600 lg:text-right">Coadyuvantes</span>
+<div aria-label="Filtrar coadyuvantes por subsegmento" class="subfilter-panel flex-wrap gap-2 rounded-2xl border border-slate-200 bg-slate-50/90 p-3" id="adjuvant-buttons" role="group">
+<span class="w-full text-xs font-bold uppercase tracking-wide text-slate-600">Coadyuvantes</span>
 <button class="adjuvant-btn active rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="todos">Todos los coadyuvantes</button>
 <button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-agua">Calidad de agua</button>
 <button class="adjuvant-btn rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-fragaria-500 hover:text-fragaria-700" data-adjuvant="calidad-aplicacion">Calidad de aplicación</button>
@@ -202,20 +202,6 @@
 <h2 class="mt-2 text-base font-bold text-slate-900">MIRKA 50%</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">CURASEMILLAS/FUNGICIDAS MIRKA CARBENZADIM 50%</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/mirka-50/">
-            Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</a>
-</div>
-</article>
-<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="otras-soluciones" data-crops="girasol maiz sorgo soja algodon alfalfa" data-name="mirka metalaxil-m">
-<div class="card-img-wrapper relative bg-fragaria-50">
-<img alt="MIRKA METALAXIL-M" class="h-full w-full object-contain p-4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/mirka-metalaxil-m.png"/>
-<div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">MTX</span></div>
-</div>
-<div class="p-5">
-<span class="inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700">Otras Soluciones</span>
-<h2 class="mt-2 text-base font-bold text-slate-900">MIRKA METALAXIL-M</h2>
-<p class="mt-1 text-xs leading-5 text-slate-500">Fungicida - curasemilla sistémico, formulado con Metalaxil-M (35%), especialmente indicado para el...</p>
-<a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/mirka-metalaxil-m/">
             Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </a>
 </div>
@@ -312,7 +298,7 @@
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ING</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-emerald-100 text-emerald-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">Bioestimulante</span>
+<span class="inline-block rounded-full bg-emerald-100 text-emerald-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">Bioestimulantes y fertilizantes</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Inghol Pack</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">La solución definitiva para potenciar el rendimiento y la sanidad del cultivo. Este pack estratégico combina la máxima...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/inghol-pack/">
@@ -360,6 +346,20 @@
 <p class="mt-1 text-xs leading-5 text-slate-500">Protector bacteriano para tratamiento de semilla de múltiple acción. Adhiere al microorganismo para un mayor contacto...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-protector/">
             Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</div>
+</article>
+<article class="product-card rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden" data-category="tratamiento-semillas" data-seed="soluciones-biologicas" data-crops="arveja lenteja vicia" data-name="acqua legumbres">
+<div class="card-img-wrapper relative bg-fragaria-50">
+<img alt="Acqua Legumbres" class="h-full w-full scale-[1.6] object-contain p-1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="img/acqua-legumbres.png"/>
+<div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ACQ</span></div>
+</div>
+<div class="p-5">
+<span class="inline-block rounded-full bg-violet-100 text-violet-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">Tratamiento de semilla</span>
+<h2 class="mt-2 text-base font-bold text-slate-900">Acqua Legumbres</h2>
+<p class="mt-1 text-xs leading-5 text-slate-500">Inoculante biológico premium para vicia, arveja y lenteja a base de Rhizobium leguminosarum...</p>
+<a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/acqua-legumbres/">
+Ver producto <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </a>
 </div>
 </article>
@@ -596,7 +596,7 @@
 <div class="absolute inset-0 hidden items-center justify-center bg-fragaria-50"><span class="text-3xl font-extrabold text-fragaria-200">ING</span></div>
 </div>
 <div class="p-5">
-<span class="inline-block rounded-full bg-emerald-100 text-emerald-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">Bioestimulante</span>
+<span class="inline-block rounded-full bg-emerald-100 text-emerald-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide">Bioestimulantes y fertilizantes</span>
 <h2 class="mt-2 text-base font-bold text-slate-900">Inghol</h2>
 <p class="mt-1 text-xs leading-5 text-slate-500">Bioestimulante antiestresante de alta eficiencia para aplicación foliar, formulado con fitohormonas de origen...</p>
 <a class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-fragaria-700 hover:text-fragaria-900" href="productos/inghol-foliar/">
@@ -742,26 +742,31 @@
       pacs: 3
     };
     const productOrder = {
+      // Orden pedido por el cliente 2026-07-21 (rank 1-10)
       'inghol pack': 1,
       'lecithin silicon max': 2,
-      inghol: 3,
-      'acqua sensing': 4,
-      'acqua nod triple': 5,
-      'biofertilizante duo': 6,
-      trichorium: 7,
-      'acqua pack bio': 8,
-      'pack bio trigo': 9,
-      'acqua pack': 10,
-      'synergi pack': 11,
-      'acqua protector': 12,
-      synergi: 13,
-      'bq max': 14,
-      'bioemag 76': 15,
-      jumkan: 16,
-      ph: 17,
-      'biomethyl max': 18,
-      mirkoil: 19,
-      'inghol ts': 20
+      'acqua nod triple': 3,
+      'biofertilizante duo': 4,
+      trichorium: 5,
+      'bq max': 6,
+      biosilo: 7,
+      'biosilo start': 8,
+      inghol: 9,
+      'acqua sensing': 10,
+      // Resto de productos con rank previo, renumerados a partir de 11 sin pisar el 1-10
+      'acqua pack bio': 11,
+      'pack bio trigo': 12,
+      'acqua pack': 13,
+      'synergi pack': 14,
+      synergi: 15,
+      'bioemag 76': 16,
+      jumkan: 17,
+      ph: 18,
+      'biomethyl max': 19,
+      mirkoil: 20,
+      'inghol ts': 21,
+      // Siempre al final del catálogo
+      'acqua protector': 200
     };
 
     cards.forEach((card, index) => { card.dataset.initialOrder = index; });
