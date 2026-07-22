@@ -151,7 +151,7 @@
   </nav>
 
   <header class="relative overflow-hidden bg-white pt-36 pb-20">
-    <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <video id="hero-video" class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
       <source src="lab.mp4" type="video/mp4" />
     </video>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
@@ -177,7 +177,7 @@
         </div>
       </div>
       <div class="mt-10 w-full">
-        <div class="relative w-full rounded-[2rem] border border-forest-900/10 bg-forest-900 p-6 sm:p-8">
+        <div class="relative w-full rounded-[2rem] border border-forest-900/10 bg-forest-900/25 backdrop-blur-md p-6 sm:p-8">
           <div class="pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-br from-lime-400/10 via-emerald-300/5 to-cyan-300/10"></div>
           <div class="relative">
             <h2 class="text-2xl font-black text-white sm:text-3xl" data-i18n="ep.hist.title">Nuestra historia en evolución</h2>
@@ -516,6 +516,13 @@
         });
       }, { threshold: 0.3 });
       io.observe(sec);
+    })();
+
+    // Video del hero en cámara lenta
+    (function () {
+      var v = document.getElementById('hero-video');
+      if (!v) return;
+      v.playbackRate = 0.6;
     })();
   </script>
 </body>
