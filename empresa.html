@@ -151,9 +151,8 @@
   </nav>
 
   <header class="relative overflow-hidden bg-white min-h-screen pt-36 pb-20">
-    <video id="hero-video" class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-      <source src="lab.mp4" type="video/mp4" />
-    </video>
+    <video id="hero-video-a" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-200 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
+    <video id="hero-video-b" class="js-lazy-video absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-200 ease-in-out" muted playsinline preload="none" aria-hidden="true"></video>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
       <div class="grid gap-8 lg:grid-cols-[2fr_3fr] lg:items-center">
         <!-- Izquierda: label + título + breadcrumb -->
@@ -518,12 +517,78 @@
       io.observe(sec);
     })();
 
-    // Video del hero en cámara lenta
-    (function () {
-      var v = document.getElementById('hero-video');
-      if (!v) return;
-      v.playbackRate = 0.6;
-    })();
+    // Hero: lab.mp4 (laboratorio) encadena a FX30-6153.mp4 y vuelve a empezar en loop,
+    // con crossfade entre clip y clip. Mismo patrón que el hero de index.html.
+    function loadEmpresaHeroVideo() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.connection?.saveData) {
+        return;
+      }
+
+      const vids = [
+        document.getElementById('hero-video-a'),
+        document.getElementById('hero-video-b')
+      ];
+      if (!vids[0] || !vids[1]) return;
+
+      const heroPlaylist = ['lab-web.mp4', 'FX30-6153-web.mp4'];
+      const RATE = 0.6;        // cámara lenta, igual que antes
+      const FADE_MS = 200;     // debe coincidir con duration-200 del <video>
+      const FADE_LEAD = (FADE_MS / 1000) * RATE;
+      let active = 0;
+      let clip = 0;
+      let switching = false;
+
+      function preload(el, idx) {
+        el.src = heroPlaylist[idx];
+        el.load();
+      }
+
+      function fadeToNext() {
+        if (switching) return;
+        switching = true;
+        const cur = vids[active];
+        const nxt = vids[active ^ 1];
+        try { nxt.currentTime = 0; } catch (e) {}
+        nxt.playbackRate = RATE;
+
+        const showIt = () => {
+          nxt.style.opacity = '1';
+          cur.style.opacity = '0';
+          active ^= 1;
+          clip = (clip + 1) % heroPlaylist.length;
+          preload(cur, (clip + 1) % heroPlaylist.length);
+          setTimeout(() => { cur.pause(); switching = false; }, FADE_MS);
+        };
+
+        nxt.play().then(() => {
+          if (nxt.readyState >= 2) showIt();
+          else nxt.addEventListener('playing', showIt, { once: true });
+        }).catch(() => { showIt(); });
+      }
+
+      vids.forEach((v) => {
+        v.addEventListener('loadedmetadata', () => { v.playbackRate = RATE; });
+        v.addEventListener('timeupdate', () => {
+          if (v !== vids[active] || !v.duration) return;
+          if (v.duration - v.currentTime <= FADE_LEAD) fadeToNext();
+        });
+        v.addEventListener('ended', () => { if (v === vids[active]) fadeToNext(); });
+      });
+
+      preload(vids[0], 0);
+      preload(vids[1], 1);
+      vids[0].style.opacity = '1';
+      vids[0].playbackRate = RATE;
+      vids[0].play().catch(() => {});
+    }
+
+    window.addEventListener('load', () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadEmpresaHeroVideo, { timeout: 1600 });
+      } else {
+        setTimeout(loadEmpresaHeroVideo, 600);
+      }
+    });
   </script>
 </body>
 </html>
