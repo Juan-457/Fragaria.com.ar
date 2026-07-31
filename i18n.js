@@ -422,6 +422,8 @@ const i18n = {
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'pf.hds.section':"Hojas de Seguridad",
     'pf.etiquetas.section':"Etiquetas",
+    'pf.ensayos.section':"Ensayos",
+    'pf.ensayos.btn':"Ver ensayos",
 
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'pf.certorganico.section':"Certificaciones orgánicas",
@@ -839,6 +841,8 @@ const i18n = {
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'pf.hds.section':"Safety Data Sheets",
     'pf.etiquetas.section':"Labels",
+    'pf.ensayos.section':"Trials",
+    'pf.ensayos.btn':"View trials",
 
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'pf.certorganico.section':"Organic certifications",
@@ -1256,6 +1260,8 @@ const i18n = {
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'pf.hds.section':"Fichas de Segurança",
     'pf.etiquetas.section':"Rótulos",
+    'pf.ensayos.section':"Ensaios",
+    'pf.ensayos.btn':"Ver ensaios",
 
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'pf.certorganico.section':"Certificações orgânicas",
@@ -1673,6 +1679,8 @@ const i18n = {
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'pf.hds.section':"Паспорта безопасности",
     'pf.etiquetas.section':"Этикетки",
+    'pf.ensayos.section':"Испытания",
+    'pf.ensayos.btn':"Смотреть испытания",
 
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'pf.certorganico.section':"Органическая сертификация",
