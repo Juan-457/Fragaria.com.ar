@@ -7,7 +7,7 @@ const i18n = {
     /* ── INDEX hero ── */
     'hero.badge':'Agro · Tecnología · Sustentabilidad',
     'hero.h1.1':'Innovación','hero.h1.2':'para una','hero.h1.3':'agricultura','hero.h1.4':'eficiente',
-    'hero.desc':'Fragaria S.A. desarrolla, produce y comercializa fertilizantes biológicos, coadyuvantes y especialidades agropecuarias con más de 37 años de trayectoria.',
+    'hero.desc':'Fragaria S.A. desarrolla, produce y comercializa insumos biológicos, coadyuvantes y especialidades agropecuarias con más de 37 años de trayectoria.',
     'hero.btn1':'Productos','hero.btn2':'Ver empresa',
     /* ── INDEX metrics card ── */
     'card.title':'Fragaria en cifras','card.tray':'Trayectoria','card.anos':'años',
@@ -16,7 +16,7 @@ const i18n = {
     'emp.label':'Empresa','emp.h2':'Una compañía argentina con evolución constante',
     'emp.p1':'Desde hace más de 37 años participamos activamente del mercado agropecuario, brindando soluciones para mejorar rendimiento, eficiencia y sustentabilidad en campo.',
     'emp.p2':'Nuestra propuesta combina desarrollo propio, producción y comercialización de insumos con foco técnico, respaldo comercial y cercanía con productores y distribuidores.',
-    'emp.item1.t':'Diseño y desarrollo','emp.item1.d':'Equipo propio de I+D que convierte ciencia de suelo en soluciones aplicables a campo.',
+    'emp.item1.t':'Diseño y desarrollo','emp.item1.d':'Equipo propio de D&D que convierte ciencia de suelo en soluciones aplicables a campo.',
     'emp.item2.t':'Calidad en formulación','emp.item2.d':'Procesos productivos rigurosos que garantizan consistencia y desempeño en cada lote.',
     'emp.item3.t':'Compromiso ambiental','emp.item3.d':'Prácticas responsables que reducen nuestra huella en cada etapa de producción.',
     /* ── INDEX valores/productos ── */
