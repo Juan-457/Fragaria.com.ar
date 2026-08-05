@@ -6,7 +6,7 @@ const i18n = {
     'nav.presencia':'Presencia','nav.contacto':'Contacto','nav.inicio':'Inicio',
     /* ── INDEX hero ── */
     'hero.badge':'Agro · Tecnología · Sustentabilidad',
-    'hero.h1.1':'hola','hero.h1.2':'ole','hero.h1.3':'','hero.h1.4':'',
+    'hero.h1.1':'Innovación','hero.h1.2':'para una','hero.h1.3':'agricultura','hero.h1.4':'eficiente',
     'hero.desc':'Fragaria S.A. desarrolla, produce y comercializa insumos biológicos, coadyuvantes y especialidades agropecuarias con más de 37 años de trayectoria.',
     'hero.btn1':'Productos','hero.btn2':'Ver empresa',
     /* ── INDEX metrics card ── */
