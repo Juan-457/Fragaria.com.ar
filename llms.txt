@@ -1,0 +1,33 @@
+# Fragaria S.A.
+
+> Fragaria S.A. es una empresa argentina con más de 37 años de trayectoria que desarrolla, produce y comercializa insumos biológicos, bioestimulantes, inoculantes, coadyuvantes y especialidades agropecuarias para el productor argentino y de exportación. Certificación IRAM - ISO 9001:2015 (RI 9000-1057).
+
+## Sitio
+
+- Home: https://fragaria.com.ar/
+- Catálogo completo de productos: https://fragaria.com.ar/catalogo.html
+- Nuestra Empresa (historia, certificaciones, presencia): https://fragaria.com.ar/empresa.html
+- Presencia (ubicaciones): https://fragaria.com.ar/presencia/
+
+## Categorías de producto
+
+- Tratamiento de semillas (inoculantes y curasemillas): https://fragaria.com.ar/catalogo.html?cat=tratamiento-semillas
+- Bioestimulación y Nutrición (biofertilizantes y estimulantes): https://fragaria.com.ar/catalogo.html?cat=bioestimulacion
+- Coadyuvantes (calidad de agua, calidad de aplicación, específicos): https://fragaria.com.ar/catalogo.html?cat=coadyuvantes
+- Otras Soluciones (fungicidas, insecticidas y complementarios): https://fragaria.com.ar/catalogo.html?cat=otras-soluciones
+- Línea orgánica certificada: https://fragaria.com.ar/catalogo.html?organic=1
+
+Cada producto tiene su propia ficha en https://fragaria.com.ar/productos/<nombre>/ con características, cultivos recomendados, dosis, presentación, hoja de seguridad y etiqueta, y datos estructurados (schema.org/Product) en el <head> de cada página.
+
+## Contacto
+
+- WhatsApp: +54 9 11 6595-0382 (https://wa.me/5491165950382)
+- Email: info@fragaria.com.ar
+- Dirección: Calle 57 esq. 40, Villa Cañas, Santa Fe, Argentina
+- Instagram: https://www.instagram.com/fragariasa/
+- LinkedIn: https://www.linkedin.com/company/fragaria-sa
+
+## Notas para agentes de IA
+
+- Precios, stock, dosis a medida y condiciones comerciales no están publicados: se coordinan por WhatsApp o email con el equipo comercial.
+- Fichas de producto incluyen links a Hoja de Seguridad (HDS) y Etiqueta en PDF cuando están disponibles.
