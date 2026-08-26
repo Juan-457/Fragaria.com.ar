@@ -645,11 +645,22 @@
       }
     });
 
+    const FRAGARIA_FORM_SUBMIT_LIMIT = 4;
+
     function handleSubmit(e) {
       e.preventDefault();
       const form = e.target;
       const btn = form.querySelector('button[type=submit]');
       const btnDefaultText = btn.textContent;
+
+      let submits = 0;
+      try { submits = Number(sessionStorage.getItem('fragaria_contact_submits') || 0); } catch (err) {}
+      if (submits >= FRAGARIA_FORM_SUBMIT_LIMIT) {
+        btn.textContent = 'Ya enviaste varios mensajes, escribinos por WhatsApp';
+        setTimeout(() => { btn.textContent = btnDefaultText; }, 4000);
+        return;
+      }
+
       const fd = new FormData(form);
       const payload = {
         nombre: (fd.get('nombre') || '').trim(),
@@ -663,11 +674,15 @@
 
       fetch('https://n8n.srv1089625.hstgr.cloud/webhook/fragaria-contacto', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-fragaria-form-secret': 'b7cf333dc9f3ab05ff78971542264c95b05be32d5f102bfd'
+        },
         body: JSON.stringify(payload)
       })
         .then((res) => {
           if (!res.ok) throw new Error('HTTP ' + res.status);
+          try { sessionStorage.setItem('fragaria_contact_submits', String(submits + 1)); } catch (err) {}
           btn.textContent = '¡Mensaje enviado! ✓';
           btn.classList.add('bg-forest-500');
           btn.classList.remove('bg-gold-500', 'hover:bg-gold-400');
