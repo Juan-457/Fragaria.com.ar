@@ -408,7 +408,7 @@ const i18n = {
     'pres.map.error.sub':"Verificá tu conexión a internet.",
     'pres.role.gerente':"Gerente comercial",
     'pres.role.director':"Director comercial",
-    'pres.role.tecnico':"Responsable de servicios técnicos",
+    'pres.role.tecnico':"Responsable de Productos y Marketing",
 
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'cat.result.one':"producto encontrado",
@@ -827,7 +827,7 @@ const i18n = {
     'pres.map.error.sub':"Check your internet connection.",
     'pres.role.gerente':"Commercial manager",
     'pres.role.director':"Commercial director",
-    'pres.role.tecnico':"Head of technical services",
+    'pres.role.tecnico':"Head of Products and Marketing",
 
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'cat.result.one':"product found",
@@ -1246,7 +1246,7 @@ const i18n = {
     'pres.map.error.sub':"Verifique sua conexão com a internet.",
     'pres.role.gerente':"Gerente comercial",
     'pres.role.director':"Diretor comercial",
-    'pres.role.tecnico':"Responsável por serviços técnicos",
+    'pres.role.tecnico':"Responsável por Produtos e Marketing",
 
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'cat.result.one':"produto encontrado",
@@ -1665,7 +1665,7 @@ const i18n = {
     'pres.map.error.sub':"Проверьте подключение к интернету.",
     'pres.role.gerente':"Коммерческий менеджер",
     'pres.role.director':"Коммерческий директор",
-    'pres.role.tecnico':"Руководитель технического обслуживания",
+    'pres.role.tecnico':"Руководитель по продуктам и маркетингу",
 
     /* ── i18n expansion (fichas + presencia + empresa + index + catalogo) ── */
     'cat.result.one':"продукт найден",
