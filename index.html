@@ -433,19 +433,19 @@
             <div class="mt-8 space-y-5">
               <div>
                 <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400" data-i18n="con.form.name.l">Nombre completo</label>
-                <input type="text" required placeholder="Juan García" data-i18n-placeholder="con.form.name.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
+                <input type="text" name="nombre" required placeholder="Juan García" data-i18n-placeholder="con.form.name.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
               </div>
               <div>
                 <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400" data-i18n="con.form.email.l">Email</label>
-                <input type="email" required placeholder="juan@ejemplo.com" data-i18n-placeholder="con.form.email.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
+                <input type="email" name="email" required placeholder="juan@ejemplo.com" data-i18n-placeholder="con.form.email.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
               </div>
               <div>
                 <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400" data-i18n="con.form.phone.l">Teléfono (opcional)</label>
-                <input type="tel" placeholder="+54 9 ..." data-i18n-placeholder="con.form.phone.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
+                <input type="tel" name="telefono" placeholder="+54 9 ..." data-i18n-placeholder="con.form.phone.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition" />
               </div>
               <div>
                 <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gold-400" data-i18n="con.form.msg.l">Mensaje</label>
-                <textarea required rows="4" placeholder="Contanos en qué podemos ayudarte..." data-i18n-placeholder="con.form.msg.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition resize-none"></textarea>
+                <textarea name="mensaje" required rows="4" placeholder="Contanos en qué podemos ayudarte..." data-i18n-placeholder="con.form.msg.p" class="w-full rounded-xl border border-forest-900/15 bg-white px-4 py-3 text-forest-900 placeholder-forest-900/35 focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 transition resize-none"></textarea>
               </div>
               <button type="submit" class="w-full rounded-xl bg-gold-500 py-4 text-sm font-bold text-forest-900 transition hover:bg-gold-400 active:scale-95" data-i18n="con.form.btn">
                 Enviar mensaje →
@@ -647,11 +647,43 @@
 
     function handleSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('button[type=submit]');
-      btn.textContent = '¡Mensaje enviado! ✓';
-      btn.classList.add('bg-forest-500');
-      btn.classList.remove('bg-gold-500', 'hover:bg-gold-400');
-      setTimeout(() => { e.target.reset(); btn.textContent = 'Enviar mensaje →'; btn.classList.remove('bg-forest-500'); btn.classList.add('bg-gold-500','hover:bg-gold-400'); }, 3000);
+      const form = e.target;
+      const btn = form.querySelector('button[type=submit]');
+      const btnDefaultText = btn.textContent;
+      const fd = new FormData(form);
+      const payload = {
+        nombre: (fd.get('nombre') || '').trim(),
+        email: (fd.get('email') || '').trim(),
+        telefono: (fd.get('telefono') || '').trim(),
+        mensaje: (fd.get('mensaje') || '').trim()
+      };
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      fetch('https://n8n.srv1089625.hstgr.cloud/webhook/fragaria-contacto', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          btn.textContent = '¡Mensaje enviado! ✓';
+          btn.classList.add('bg-forest-500');
+          btn.classList.remove('bg-gold-500', 'hover:bg-gold-400');
+          setTimeout(() => {
+            form.reset();
+            btn.disabled = false;
+            btn.textContent = btnDefaultText;
+            btn.classList.remove('bg-forest-500');
+            btn.classList.add('bg-gold-500', 'hover:bg-gold-400');
+          }, 3000);
+        })
+        .catch(() => {
+          btn.disabled = false;
+          btn.textContent = 'Error, reintentá →';
+          setTimeout(() => { btn.textContent = btnDefaultText; }, 3000);
+        });
     }
 
     function animateCounter(el, duration = 1200) {
