@@ -44,7 +44,7 @@ const i18n = {
     'ft.dev':'Desarrollado por','ft.copy':'© 2026 Fragaria S.A. Todos los derechos reservados.',
     /* ── EMPRESA PAGE ── */
     'ep.badge':'Conocé','ep.h1a':'Nuestra','ep.h1b':'Empresa',
-    'ep.desc':'Empresa argentina con más de 37 años en el mercado agropecuario. Desarrollamos, producimos y comercializamos fertilizantes biológicos, bioestimulantes y coadyuvantes con planta propia, exportando a Asia, Europa y África.',
+    'ep.desc':'Empresa Argentina con más de 37 años en el mercado agropecuario. Desarrollamos, producimos y comercializamos fertilizantes biológicos, bioestimulantes y coadyuvantes con planta propia, exportando a Asia, Europa y África.',
     'ep.logo.title':'El significado de nuestro logo',
     'ep.logo.sub':'Cada elemento representa un pilar de nuestra identidad.',
     'ep.logo.etica.t':'La Ética','ep.logo.etica.d':'Nunca permite quebrar la ley, pero la complementa y la humaniza, por eso es más importante.',
