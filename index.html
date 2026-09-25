@@ -715,11 +715,10 @@
       btn.disabled = true;
       btn.textContent = 'Enviando...';
 
-      fetch('https://n8n.srv1089625.hstgr.cloud/webhook/fragaria-contacto', {
+      fetch('https://form.umanoai.com.ar/fragaria-contacto', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'x-fragaria-form-secret': 'b7cf333dc9f3ab05ff78971542264c95b05be32d5f102bfd'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload)
       })
