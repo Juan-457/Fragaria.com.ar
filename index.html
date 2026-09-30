@@ -593,7 +593,18 @@
       const open = !menu.classList.contains('hidden');
       menu.classList.toggle('hidden', open);
       chevron.style.transform = open ? '' : 'rotate(180deg)';
+      if (!open) clampProductosMenu();
     }
+    // El menú está anclado a la derecha con ancho fijo: en notebooks (<1440px) se
+    // salía por la izquierda y cortaba la 1ra columna (Tratamiento de semillas).
+    function clampProductosMenu() {
+      const menu = document.getElementById('productos-mega-menu');
+      if (!menu || menu.classList.contains('hidden')) return;
+      menu.style.transform = '';
+      const left = menu.getBoundingClientRect().left;
+      if (left < 16) menu.style.transform = 'translateX(' + (16 - left) + 'px)';
+    }
+    window.addEventListener('resize', clampProductosMenu);
     document.addEventListener('click', () => {
       const menu = document.getElementById('productos-mega-menu');
       const chevron = document.getElementById('productos-chevron');
