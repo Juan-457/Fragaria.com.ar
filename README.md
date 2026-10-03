@@ -34,6 +34,20 @@ Sitio web estatico corporativo de Fragaria S.A., orientado a presentar empresa, 
 
 No requiere build.
 
+## Medición
+
+Las páginas públicas cargan el contenedor `GTM-WN74DD6P`, que administra el
+GA4 anterior `G-XBJRWPZS5Z` y el píxel de Meta. El archivo compartido
+`tracking.js` conserva el GA4 `G-ZKQ3P02MDB` que alimenta el reporte mensual
+y el evento `whatsapp_click_contact`, dirigido explícitamente a esa propiedad.
+La delegación de clics cubre también los enlaces creados por el mapa de Presencia.
+
+No agregar `G-ZKQ3P02MDB` al contenedor mientras se configure desde
+`tracking.js`: cada navegación debe emitir una sola vista por propiedad.
+Las páginas nuevas deben incluir el mismo bloque GTM, el noscript y una ruta
+relativa correcta a `tracking.js`. Las páginas identificadas como preview quedan
+fuera de la medición productiva. Un clic a WhatsApp no equivale a un lead.
+
 ## Verlo localmente
 
 ```bash
