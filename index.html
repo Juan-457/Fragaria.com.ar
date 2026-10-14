@@ -702,6 +702,8 @@
 
     const FRAGARIA_FORM_SUBMIT_LIMIT = 4;
 
+    // Marca de carga: el proxy descarta envíos sin ella o demasiado rápidos (anti-bots).
+    const FRAGARIA_PAGE_LOADED_AT = Date.now();
     function handleSubmit(e) {
       e.preventDefault();
       const form = e.target;
@@ -721,7 +723,8 @@
         nombre: (fd.get('nombre') || '').trim(),
         email: (fd.get('email') || '').trim(),
         telefono: (fd.get('telefono') || '').trim(),
-        mensaje: (fd.get('mensaje') || '').trim()
+        mensaje: (fd.get('mensaje') || '').trim(),
+        _t: FRAGARIA_PAGE_LOADED_AT
       };
 
       btn.disabled = true;
